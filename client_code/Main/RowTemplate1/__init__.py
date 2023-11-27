@@ -8,3 +8,6 @@ class RowTemplate1(RowTemplate1Template):
     # Any code you write here will run before the form opens.
     self.name.text = self.item["name"]
     self.m.text = self.item["m"]
+    self.n.text = self.item["n"]
+    self.e.text = self.item["e"]
+    self.on.text = self.item["ob"]

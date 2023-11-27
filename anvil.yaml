@@ -9,6 +9,7 @@ allow_embedding: false
 name: MobiTest
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
   server_spec: null}
-metadata: {logo_img: 'asset:kag2.jpg'}
+metadata: {logo_img: 'asset:kag2.jpg', description: Test Mobi App to be integrated to MH project later on,
+  title: MobiTest}
 startup_form: null
 renamed: true

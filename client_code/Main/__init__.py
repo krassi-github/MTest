@@ -9,7 +9,6 @@ class Main(MainTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-    self.repeating_panel_1.items = [{"name": "T_main", "m": "M2"}]
     '''
     self.is_pwa_on_mobile()
     #
@@ -23,10 +22,12 @@ class Main(MainTemplate):
     #if Globals.is_pwa and Globals.is_mobile:
       #self.timer_1.interval = None
     '''
+    self.refresh_data()
 
   def refresh_data(self, **event_args):
-    ## self.updatestuff_func()
+    self.repeating_panel_1.items = anvil.server.call("get_status")
     pass
+    
   def is_pwa_on_mobile(self,**kwargs):
     is_pwa = anvil.js.window.matchMedia("(display-mode: standalone)").matches
     is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
