@@ -7,8 +7,45 @@ components:
   properties: {col_widths: '{}'}
   name: content_panel
   layout_properties: {slot: default}
-  components: []
+  components:
+  - name: data_grid_1
+    properties:
+      columns:
+      - {id: JKSDUP, title: Лек, data_key: name}
+      - {id: VJQQOR, title: Су, data_key: morning}
+      - {id: OJLQEN, title: Об, data_key: noon}
+      - {id: TMDUTV, data_key: evening, title: Ве}
+      - {id: OJKCOG, data_key: on_need, title: Ну}
+      rows_per_page: 15
+      show_page_controls: false
+    type: DataGrid
+    components:
+    - name: repeating_panel_1
+      properties: {item_template: Main.RowTemplate1}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'HJVISW,FIBJEX'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+- name: flow_panel_1
+  properties: {spacing: none, vertical_align: top, align: center}
+  type: FlowPanel
+  layout_properties: {slot: title}
+  components:
+  - name: left_b
+    properties: {text: L}
+    type: Button
+    layout_properties: {}
+  - name: date
+    properties: {text: 2023/11/27}
+    type: Label
+    layout_properties: {}
+  - name: right_b
+    properties: {text: R}
+    type: Button
+    layout_properties: {}
+- name: title
+  properties: {text: Int}
+  type: Label
+  layout_properties: {slot: top-left-btn}
