@@ -30,8 +30,9 @@ class Form1(Form1Template):
 
   # Bunch of handlers
   def on_touch_start(self, **event_args):
-     pass
+    pass
   def on_touch_move(self, **event_args):
     pass
   def on_touch_end(self, **event_args):
     pass
+    
