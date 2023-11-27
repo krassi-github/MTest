@@ -12,4 +12,5 @@ runtime_options: {version: 2, client_version: '3', server_version: python3-sandb
 metadata: {logo_img: 'asset:kag2.jpg', description: Test Mobi App to be integrated to MH project later on,
   title: MobiTest}
 startup_form: null
+uplink_visible: true
 renamed: true

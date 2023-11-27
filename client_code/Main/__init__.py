@@ -1,5 +1,6 @@
 from ._anvil_designer import MainTemplate
 from anvil import *
+import anvil.server
 import anvil.js
 from .. import Globals
 
@@ -9,7 +10,8 @@ class Main(MainTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-    '''
+    self.row_spacing = 0
+    self.repeating_panel_1.row_spacing = 0
     self.is_pwa_on_mobile()
     #
     content_panel = anvil.js.get_dom_node(self.content_panel)
@@ -21,12 +23,15 @@ class Main(MainTemplate):
     # If there is a poll timer
     #if Globals.is_pwa and Globals.is_mobile:
       #self.timer_1.interval = None
-    '''
+      
     self.refresh_data()
 
   def refresh_data(self, **event_args):
-    self.repeating_panel_1.items = anvil.server.call("get_status")
-    pass
+    date = anvil.server.call("get_time")
+    r, self.repeating_panel_1.items = anvil.server.call("get_status", date)
+    if r < 0:
+      self.date.text = f"PROBLEM {r}"
+      self.date.foreground = red   
     
   def is_pwa_on_mobile(self,**kwargs):
     is_pwa = anvil.js.window.matchMedia("(display-mode: standalone)").matches

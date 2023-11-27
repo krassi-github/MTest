@@ -1,5 +1,6 @@
 /**
  This CSS implements the Material Design 3 look and feel for Anvil apps.
+ 27-11-2023  0height role transfered from MH theme.css  kag
  **/
 
 /* Stop panel-cols cutting off drop shadows */
@@ -168,7 +169,14 @@ color: %color:On Primary Container%;
 .designer .structure {
   height: initial;
 }
-
+/*  27-11-2023 transfered from MH theme.css  */
+.anvil-role-0height {        
+  margin-top: 0px !important;    // 28-03-34 kag old value = 0px;
+  margin-bottom: 0px !important;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  line-height: 70%;              // kag It works well old value= 50%;
+}
 .app-bar {
   z-index: 1000;
   position: fixed;
