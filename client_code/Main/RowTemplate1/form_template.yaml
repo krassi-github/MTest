@@ -34,7 +34,7 @@ components:
   layout_properties: {column: TMDUTV}
   components:
   - name: e
-    properties: {text: e_lbl}
+    properties: {text: ''}
     type: Label
     layout_properties: {grid_position: 'UKHHXN,DYXPIF'}
 - name: link_5
@@ -43,6 +43,6 @@ components:
   layout_properties: {column: OJKCOG}
   components:
   - name: 'on'
-    properties: {text: on_lbl}
+    properties: {text: ''}
     type: Label
     layout_properties: {grid_position: 'SVFINZ,GYXXYF'}
