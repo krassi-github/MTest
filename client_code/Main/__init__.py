@@ -4,14 +4,19 @@ import anvil.server
 import anvil.js
 from .. import Globals
 
+# status FORMAT
+'''    s = {"name": r[name], "code": r[r_m_code], "morning": r[morning],
+         "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
+         "e_ex": False, "on_need": r[on_need], "on_ex": False}link_1.tag'''
+
 
 class Main(MainTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-    self.row_spacing = 0
-    self.repeating_panel_1.row_spacing = 0
+    #self.row_spacing = 0
+    #self.repeating_panel_1.row_spacing = 0
     self.is_pwa_on_mobile()
     #
     content_panel = anvil.js.get_dom_node(self.content_panel)

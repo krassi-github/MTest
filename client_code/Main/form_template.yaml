@@ -11,13 +11,15 @@ components:
   - name: data_grid_1
     properties:
       columns:
-      - {id: JKSDUP, title: Лек, data_key: name, width: '160', expand: false}
+      - {id: JKSDUP, title: Лек, data_key: name, width: '180', expand: false}
       - {id: VJQQOR, title: Су, data_key: morning}
       - {id: OJLQEN, title: Об, data_key: noon}
       - {id: TMDUTV, data_key: evening, title: Ве}
       - {id: OJKCOG, data_key: on_need, title: Ну}
       rows_per_page: 15
       show_page_controls: false
+      spacing_above: small
+      auto_header: true
     type: DataGrid
     components:
     - name: repeating_panel_1

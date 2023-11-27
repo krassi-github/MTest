@@ -15,6 +15,7 @@ components:
       role: [0height]
     type: Label
     layout_properties: {grid_position: 'BSCNDA,ZZTGYQ'}
+  event_bindings: {click: link_1_click}
 - name: link_2
   properties: {role: 0height}
   type: Link
@@ -24,6 +25,7 @@ components:
     properties: {text: '', role: 0height}
     type: Label
     layout_properties: {grid_position: 'DQAVTV,KXOCPA'}
+  event_bindings: {click: link_2_click}
 - name: link_3
   properties: {role: 0height}
   type: Link
@@ -33,6 +35,7 @@ components:
     properties: {text: '', role: 0height}
     type: Label
     layout_properties: {grid_position: 'GFOVAD,HSYYIN'}
+  event_bindings: {click: link_3_click}
 - name: link_4
   properties:
     role: [0height]
@@ -43,6 +46,7 @@ components:
     properties: {text: '', role: 0height}
     type: Label
     layout_properties: {grid_position: 'UKHHXN,DYXPIF'}
+  event_bindings: {click: link_4_click}
 - name: link_5
   properties: {role: 0height}
   type: Link
@@ -52,3 +56,4 @@ components:
     properties: {text: '', role: 0height}
     type: Label
     layout_properties: {grid_position: 'SVFINZ,GYXXYF'}
+  event_bindings: {click: link_5_click}
