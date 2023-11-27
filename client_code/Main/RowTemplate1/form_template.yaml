@@ -16,7 +16,7 @@ components:
   layout_properties: {column: VJQQOR}
   components:
   - name: m
-    properties: {text: m_lbl}
+    properties: {text: ''}
     type: Label
     layout_properties: {grid_position: 'DQAVTV,KXOCPA'}
 - name: link_3
@@ -25,7 +25,7 @@ components:
   layout_properties: {column: OJLQEN}
   components:
   - name: n
-    properties: {text: n_lbl}
+    properties: {text: ''}
     type: Label
     layout_properties: {grid_position: 'GFOVAD,HSYYIN'}
 - name: link_4
