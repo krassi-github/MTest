@@ -6,7 +6,7 @@ components:
   type: Link
   layout_properties: {column: JKSDUP}
   components:
-  - name: name_lbl
+  - name: name
     properties: {}
     type: Label
     layout_properties: {grid_position: 'BSCNDA,ZZTGYQ'}
@@ -15,7 +15,7 @@ components:
   type: Link
   layout_properties: {column: VJQQOR}
   components:
-  - name: label_2
+  - name: m
     properties: {text: m_lbl}
     type: Label
     layout_properties: {grid_position: 'DQAVTV,KXOCPA'}
@@ -24,7 +24,7 @@ components:
   type: Link
   layout_properties: {column: OJLQEN}
   components:
-  - name: label_3
+  - name: n
     properties: {text: n_lbl}
     type: Label
     layout_properties: {grid_position: 'GFOVAD,HSYYIN'}
@@ -33,7 +33,7 @@ components:
   type: Link
   layout_properties: {column: TMDUTV}
   components:
-  - name: label_4
+  - name: e
     properties: {text: e_lbl}
     type: Label
     layout_properties: {grid_position: 'UKHHXN,DYXPIF'}
@@ -42,7 +42,7 @@ components:
   type: Link
   layout_properties: {column: OJKCOG}
   components:
-  - name: label_5
+  - name: 'on'
     properties: {text: on_lbl}
     type: Label
     layout_properties: {grid_position: 'SVFINZ,GYXXYF'}
