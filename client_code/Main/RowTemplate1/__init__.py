@@ -45,7 +45,7 @@ class RowTemplate1(RowTemplate1Template):
   def link_5_click(self, **event_args):
     self.take('on', self.link_5.tag)
 
-  def take(self, time, medicine):
+  def take(self, time, med_code):
     alert(Take(), title="Въведи Лекарство!", buttons="Запиши", Large=True)
   
 
