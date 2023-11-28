@@ -5,7 +5,7 @@ from ... import Globals
 from .. Take import Take
 
 # status FORMAT
-'''    s = {"name": r[name], "code": r[r_m_code], "morning": r[morning],
+'''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
          "e_ex": False, "on_need": r[on_need], "on_ex": False}'''
 
