@@ -7,17 +7,29 @@ class Take(TakeTemplate):
   def __init__(self, time, med_code):
     # Set Form properties and Data Bindings.
     self.init_components()    # **properties
-    #print(properties.items())    
-
     self.time_box.text = anvil.server.call("get_time")[11:]
+    Globals.intake_time = self.time_box.text
     self.medicine.text = Globals.get_med_name(med_code)
-    self.pcs_box.text = Globals.get_med_pcs(med_code, time)    
+    self.pcs_box.text, self.type.text = Globals.get_pcs_type(med_code, time)
+    Globals.intake_pcs = self.pcs_box.text
 
 
-  def ok_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+  def time_box_lost_focus(self, **event_args):
+    time_box_pressed_enter()
+    
+  def time_box_change(self, **event_args):
+    time_box_pressed_enter()
 
-  def cancel_click(self, **event_args):
-    """This method is called when the button is clicked"""
+  def time_box_pressed_enter(self, **event_args):
+    
+    Globals.intake_time = self.time_box.text
+
+  def pcs_box_lost_focus(self, **event_args):
+    pcs_box_pressed_enter()
+
+  def pcs_box_change(self, **event_args):
+    pcs_box_pressed_enter()
+
+  def pcs_box_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
     pass

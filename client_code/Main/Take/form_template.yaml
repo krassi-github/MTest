@@ -4,6 +4,7 @@ components:
   properties: {align: center}
   type: TextBox
   layout_properties: {grid_position: 'LOSQRJ,XEJKFA'}
+  event_bindings: {lost_focus: time_box_lost_focus, change: time_box_change, pressed_enter: time_box_pressed_enter}
 - name: medicine
   properties: {align: center}
   type: Label
@@ -12,6 +13,8 @@ components:
   properties: {align: center}
   type: TextBox
   layout_properties: {grid_position: 'NTUBMV,LKFEPL'}
+  event_bindings: {pressed_enter: pcs_box_pressed_enter, lost_focus: pcs_box_lost_focus,
+    change: pcs_box_change}
 - name: type
   properties: {align: center}
   type: Label
