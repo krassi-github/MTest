@@ -33,7 +33,8 @@ class Main(MainTemplate):
 
   def refresh_data(self, **event_args):
     date = anvil.server.call("get_time")
-    r, self.repeating_panel_1.items = anvil.server.call("get_status", date)
+    r = Globals.load_data(date)
+    self.repeating_panel_1.items = Globals.status
     if r < 0:
       self.date.text = f"PROBLEM {r}"
       self.date.foreground = red   
