@@ -2,6 +2,7 @@ from ._anvil_designer import MainTemplate
 from anvil import *
 import anvil.server
 import anvil.js
+from anvil.js import window
 from .. import Globals
 
 # status FORMAT
@@ -15,6 +16,7 @@ class Main(MainTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
+
     #self.row_spacing = 0
     #self.repeating_panel_1.row_spacing = 0
     self.is_pwa_on_mobile()

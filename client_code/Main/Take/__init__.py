@@ -1,6 +1,8 @@
 from ._anvil_designer import TakeTemplate
 from anvil import *
 import anvil.server
+import anvil.js
+from anvil.js import window
 from ... import Globals
 from ... import validation
 
@@ -25,8 +27,10 @@ class Take(TakeTemplate):
 
   def time_box_pressed_enter(self, **event_args):
     r, m = self.validator.validate_time(self.time_box.text)
-    if r:
-      alert(content=m, title="Грешка!")
+    print(f"Time validation r= {r}  {m}")
+    if not r:      
+      window.confirm(m)
+      return()
     else:
       Globals.intake_time = self.time_box.text
 
@@ -38,3 +42,4 @@ class Take(TakeTemplate):
 
   def pcs_box_pressed_enter(self, **event_args):
     pass
+
