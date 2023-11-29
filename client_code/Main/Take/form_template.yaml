@@ -24,4 +24,17 @@ components:
   properties: {align: center}
   type: Label
   layout_properties: {grid_position: 'PNYOMD,XLSMIL'}
+- name: flow_panel_1
+  properties: {align: center}
+  type: FlowPanel
+  layout_properties: {grid_position: 'IAVITJ,YNUNFE'}
+  components:
+  - name: lbl
+    properties: {text: 'Бележки:', role: input-prompt, italic: true}
+    type: Label
+    layout_properties: {}
+  - name: notes
+    properties: {}
+    type: TextArea
+    event_bindings: {lost_focus: notes_lost_focus}
 is_package: true

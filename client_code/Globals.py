@@ -12,9 +12,14 @@ status = []
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
-         "e_ex": False, "on_need": r[on_need], "on_ex": False}link_1.tag'''
+         "e_ex": False, "on_need": r[on_need], "on_ex": False}'''
+#Intake data format:
+#int_id	time	m_code	det_code	type	pcs	note
+
+
 intake_time = ""
 intake_pcs = 0.0
+intake_notes = ""
 
 def load_data(date):
   global status  

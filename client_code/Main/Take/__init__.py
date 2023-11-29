@@ -68,5 +68,8 @@ class Take(TakeTemplate):
       self.pcs_box.text = self.pcs_copy    
     self.msg_box.text = ""
 
+  def notes_lost_focus(self, **event_args):
+    Globals.intake_notes = self.notes.text
+
 
 
