@@ -16,19 +16,17 @@ class Validator():
     if re.match(time_pattern, time_str):
       return(True, "")
     else:
-      return(False, f"'{time_str}' НЕ е валиден HH:MM формат")
+      return(False, f"'{time_str}' НЕВАЛИДЕН HH:MM формат")
 
   
-  def validate_dec(self, decimal_str):
-    # Regular expression pattern for X.Y format decimal
-    decimal_pattern = r'^\d\.\d$'
+  def validate_pcs(self, decimal_integer_pattern):
+    # Regular expression pattern for X.Y format decimal or one-digit integer
+    decimal_integer_pattern = r'^(\d\.\d|\d)$'
 
-    # Check if the provided decimal string matches the pattern
-    if re.match(decimal_pattern, decimal_str):
+    # Check if the provided string matches the pattern
+    if re.match(decimal_integer_pattern, input_str):
         return(True, "")
     else:
-        print(f"The decimal '{decimal_str}' is not in a valid X.Y format.")
-        return(False, f"'{decimal_str}' НЕ е валиден X.Y формат")
-
+        return(False, f"'{decimal_str}' НЕВАЛИДЕН формат")
  
     
