@@ -13,14 +13,9 @@ class Take(TakeTemplate):
     self.medicine.text = Globals.get_med_name(med_code)
     self.pcs_box.text, self.type.text = Globals.get_pcs_type(med_code, time)
     Globals.intake_pcs = self.pcs_box.text
-    # This is an example of how to validate a form
+    #  validate a form
     self.validator = validation.Validator()
-    self.validator.require_text_field(self.time_box, self.name_missing_lbl)
-
-  
-
-  
-
+    self.validator.require_time(self.time_box_text)
   
 
 

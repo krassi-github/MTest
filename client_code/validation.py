@@ -1,39 +1,16 @@
 import anvil.server
-# This is a module.
-# You can define variables and functions here, and use them from any form. For example, in a top-level form:
-#
-#    from . import Module1
+
+
 class Validator():
-  """
-A Validator instance performs form validation. You give it
-a set of components, and for each component you specify
-a checking function (a predicate), and optionally an error
-label that will be shown if the component is *not* valid.
 
-It will show error labels when the component is not valid
-
-Add components to it with the require() method. Eg:
-
-  validator.require(self.text_box_1, ['change', 'lost_focus'],
-                    lambda tb: tb.text != '',
-                    self.error_lbl_1)
-                    
-It also has some utility functions for common requirements
-such as "this text box must have text in it", or
-"this checkbox must be checked".
-
-Use the enable_when_valid() method to provide a component
-that will be enabled (via its `enable` property) only when
-all requirements are met. Or just use the is_valid() method
-to check the status of the form.
-
-  validator.enable_when_valid(self.submit_button)
-
-  """
   def __init__(self):
     self._validity = {}
     self._actions = []
     self._component_checks = []
+
+  # Time format HH:MM
+  def require_time(self, time):
+    
     
   def require(self, component, event_list, predicate, error_lbl=None, show_errors_immediately=False):
     def check_this_component(**e):
