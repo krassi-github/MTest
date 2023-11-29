@@ -50,7 +50,10 @@ class RowTemplate1(RowTemplate1Template):
           title="Въведи Лекарство!", 
           buttons=[("ЗАПИС", True), ("Отказ", False)],)
     if r:
-      alert(content="Потвърдете запис на данни. \nПроцесът е НЕОБРАТИМ!",
+      r = alert(content="Потвърдете запис на данни. \nПроцесът е НЕОБРАТИМ!",
            title="Потвърждение",
           buttons=[("ЗАПИС", True), ("Отказ", False)],)
+      if r:
+        Globals.put_intake()
+      
       

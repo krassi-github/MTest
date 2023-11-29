@@ -37,7 +37,7 @@ def get_med_name(med_code):
 
 
 def get_pcs_type(med_code, time):
-  global status
+  global status, intake_type
   r = -1.0
   t = "-"
   for i in range(len(status)):
@@ -45,17 +45,27 @@ def get_pcs_type(med_code, time):
       if time == "m":
         r = status[i]["morning"]
         t = "сутрин"
+        intake_type = "morning"
       elif time == "n":
         r = status[i]["noon"]
         t = "обед"
+        intake_type = "noon"
       elif time == "e":
         r = status[i]["evening"]
         t = "вечер"
+        intake_type = "evening"
       elif time == "on_need":
         r = status[i]["on"]
         t = "при нужда"
+        intake_type = "on_need"
       else:
         anvil.server.call("mh_log", -401, f"get_med_pcs() Invalid time= {time}")
   return(r, t)
       
 
+def put_intake():
+  global intake_time, intake_pcs, intake_type, intake_notes, status
+
+  record = 
+
+  
