@@ -30,7 +30,15 @@ class Take(TakeTemplate):
     r, m = self.validator.validate_time(self.time_box.text)
     print(f"Time validation r= {r}  ")
     if not r:      
-      window.confirm(m)
+      # window.confirm(m)
+      self.time_box.scroll_into_view(smooth=True)
+      self.text_box.background = 'pink'
+      self.text_box.placeholder = 'Class Name Required'
+      self.text_box.align = 'center'
+      time.sleep(1.5) #Ensures that the warning text persists for ~1.5 seconds 
+      self.text_box.background = None
+      self.text_box.placeholder = None
+      self.text_box.align = 'left'
       return()
     else:
       Globals.intake_time = self.time_box.text
