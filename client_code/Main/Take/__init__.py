@@ -15,9 +15,7 @@ class Take(TakeTemplate):
     Globals.intake_pcs = self.pcs_box.text
     #  validate a form
     self.validator = validation.Validator()
-    self.validator.require_time(self.time_box_text)
   
-
 
   def time_box_lost_focus(self, **event_args):
     time_box_pressed_enter()
@@ -36,5 +34,5 @@ class Take(TakeTemplate):
     pcs_box_pressed_enter()
 
   def pcs_box_pressed_enter(self, **event_args):
-    """This method is called when the user presses Enter in this text box"""
-    pass
+    r, m = self.validator.validate_time(self.time_box_text)
+    

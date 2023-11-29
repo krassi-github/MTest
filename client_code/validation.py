@@ -1,29 +1,25 @@
 import anvil.server
 import re
 
-def validate_time(time_str):
-    # Regular expression pattern for HH:MM and HH:MM:SS formats
-    time_pattern = r'^([0-1][0-9]|2[0-3]):([0-5][0-9])(:([0-5][0-9]))?$'
-
-    # Check if the provided time string matches the pattern
-    if re.match(time_pattern, time_str):
-        print(f"The time '{time_str}' is valid.")
-        return True
-    else:
-        print(f"The time '{time_str}' is not in a valid HH:MM or HH:MM:SS format.")
-        return False
-
 
 class Validator():
 
   def __init__(self):
-    self._validity = {}
-    self._actions = []
-    self._component_checks = []
+    pass
 
   # Time format HH:MM
-  def require_time(self, time):
-    
+def validate_time(time_str):
+  # Regular expression pattern for HH:MM format
+  time_pattern = r'^([0-1][0-9]|2[0-3]):([0-5][0-9])$'
+
+  # Check if the provided time string matches the pattern
+  if re.match(time_pattern, time_str):
+    print(f"The time '{time_str}' is valid in HH:MM format.")
+    return(True)
+  else:
+    return(False, f"The time '{time_str}' is not in a valid HH:MM format")
+
+ 
     
   def require(self, component, event_list, predicate, error_lbl=None, show_errors_immediately=False):
     def check_this_component(**e):
