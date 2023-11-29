@@ -46,9 +46,12 @@ class RowTemplate1(RowTemplate1Template):
     self.take('on', self.link_5.tag)
 
   def take(self, time, med_code):
-    alert(Take(time, med_code), 
+    r = alert(Take(time, med_code), 
           title="Въведи Лекарство!", 
           buttons=[("ЗАПИС", True), ("Отказ", False)],)
+    if r:
+      
+    
   
 
 

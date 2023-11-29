@@ -4,7 +4,6 @@ import anvil.server
 #
 #    from . import Module1
 #
-#    Module1.say_hello()
 #
 is_pwa = False
 is_mobile = False
@@ -14,7 +13,8 @@ status = []
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
          "e_ex": False, "on_need": r[on_need], "on_ex": False}link_1.tag'''
-
+intake_time = ""
+intake_pcs = 0.0
 
 def load_data(date):
   global status  
