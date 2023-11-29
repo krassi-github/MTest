@@ -8,16 +8,15 @@ class Validator():
     pass
 
   # Time format HH:MM
-def validate_time(time_str):
-  # Regular expression pattern for HH:MM format
-  time_pattern = r'^([0-1][0-9]|2[0-3]):([0-5][0-9])$'
-
-  # Check if the provided time string matches the pattern
-  if re.match(time_pattern, time_str):
-    print(f"The time '{time_str}' is valid in HH:MM format.")
-    return(True)
-  else:
-    return(False, f"The time '{time_str}' is not in a valid HH:MM format")
+  def validate_time(self, time_str):
+    # Regular expression pattern for HH:MM format
+    time_pattern = r'^([0-1][0-9]|2[0-3]):([0-5][0-9])$'
+  
+    # Check if the provided time string matches the pattern
+    if re.match(time_pattern, time_str):
+      return(True)
+    else:
+      return(False, f"The time '{time_str}' is not in a valid HH:MM format")
 
  
     

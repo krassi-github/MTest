@@ -18,21 +18,23 @@ class Take(TakeTemplate):
   
 
   def time_box_lost_focus(self, **event_args):
-    time_box_pressed_enter()
+    self.time_box_pressed_enter()
     
   def time_box_change(self, **event_args):
-    time_box_pressed_enter()
+    self.time_box_pressed_enter()
 
   def time_box_pressed_enter(self, **event_args):
-    
-    Globals.intake_time = self.time_box.text
+    r, m = self.validator.validate_time(self.time_box.text)
+    if r:
+      alert(content=m, title="Грешка!")
+    else:
+      Globals.intake_time = self.time_box.text
 
   def pcs_box_lost_focus(self, **event_args):
-    pcs_box_pressed_enter()
+    self.pcs_box_pressed_enter()
 
   def pcs_box_change(self, **event_args):
-    pcs_box_pressed_enter()
+    self.pcs_box_pressed_enter()
 
   def pcs_box_pressed_enter(self, **event_args):
-    r, m = self.validator.validate_time(self.time_box_text)
-    
+    pass
