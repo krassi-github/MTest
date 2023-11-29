@@ -29,7 +29,9 @@ class Take(TakeTemplate):
     self.time_copy = self.time_box.text
 
   def time_box_pressed_enter(self, **event_args):
+    m = ""
     r, m = self.validator.validate_time(self.time_box.text)
+    print(f"TIME {r}  {m}")
     if not r:      
       # window.confirm(m)
       self.err_msg("time", m)
@@ -43,13 +45,12 @@ class Take(TakeTemplate):
     self.pcs_copy = self.pcs_box.text
 
   def pcs_box_pressed_enter(self, **event_args):
-    self.pcs_box.text
-    r, m = self.validator.validate_pcs()
+    r, m = self.validator.validate_pcs(self.pcs_box.text)
     if not r:      
       # window.confirm(m)
       self.err_msg("pcs", m)
     else:
-      Globals.intake_pcs = self.time_box.text
+      Globals.intake_pcs = self.pcs_box.text
 
   def err_msg(self, box: str, msg):
     self.time_box.scroll_into_view(smooth=True)
@@ -57,15 +58,15 @@ class Take(TakeTemplate):
       self.time_box.background = 'pink'
     elif box == "pcs":
       self.pcs_box.background = 'pink'
-    self.msg_box.text = m  
+    self.msg_box.text = msg
     self.msg_box.foreground = "red"
     time.sleep(3.5) #Ensures that the warning text persists for ~1.5 seconds 
     if box == "time":
       self.time_box.background = None
       self.time_box.text = self.time_copy
     elif box == "pcs":
-      self.time_pcs.background = None
-      self.time_pcs.text = self.time_copy    
+      self.pcs_box.background = None
+      self.pcs_box.text = self.pcs_copy    
     self.msg_box.text = ""
 
 

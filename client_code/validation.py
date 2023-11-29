@@ -19,7 +19,7 @@ class Validator():
       return(False, f"'{time_str}' НЕВАЛИДЕН HH:MM формат")
 
   
-  def validate_pcs(self, decimal_integer_pattern):
+  def validate_pcs(self, input_str):
     # Regular expression pattern for X.Y format decimal or one-digit integer
     decimal_integer_pattern = r'^(\d\.\d|\d)$'
 
@@ -27,6 +27,5 @@ class Validator():
     if re.match(decimal_integer_pattern, input_str):
         return(True, "")
     else:
-        return(False, f"'{decimal_str}' НЕВАЛИДЕН формат")
- 
+        return(False, f"НЕВАЛИДЕН формат") 
     
