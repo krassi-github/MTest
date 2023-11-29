@@ -5,6 +5,7 @@ import anvil.js
 from anvil.js import window
 from ... import Globals
 from ... import validation
+from ... Form1 import Form1
 
 class Take(TakeTemplate):
   def __init__(self, time, med_code):
@@ -17,6 +18,7 @@ class Take(TakeTemplate):
     Globals.intake_pcs = self.pcs_box.text
     #  validate a form
     self.validator = validation.Validator()
+    Form1.call_js('showJsAlert', 'Грешка')
   
 
   def time_box_lost_focus(self, **event_args):
