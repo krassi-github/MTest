@@ -19,6 +19,7 @@ status = []
 
 intake_time = ""
 intake_pcs = 0.0
+intake_type = ""
 intake_notes = ""
 
 def load_data(date):
