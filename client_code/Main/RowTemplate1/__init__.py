@@ -54,6 +54,8 @@ class RowTemplate1(RowTemplate1Template):
            title="Потвърждение",
           buttons=[("ЗАПИС", True), ("Отказ", False)],)
       if r:
-        Globals.put_intake()
+        r = Globals.put_intake()
+        if r < 0:
+          alert(f"Неуспешен запис код {r}", title="Съобщение")
       
       

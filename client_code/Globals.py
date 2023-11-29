@@ -18,6 +18,7 @@ status = []
 
 
 intake_time = ""
+intake_code = "" 
 intake_pcs = 0.0
 intake_type = ""
 intake_notes = ""
@@ -42,6 +43,7 @@ def get_pcs_type(med_code, time):
   t = "-"
   for i in range(len(status)):
     if med_code == status[i]["code"]:
+      intake_code = status[i]["code"]
       if time == "m":
         r = status[i]["morning"]
         t = "сутрин"
@@ -65,7 +67,11 @@ def get_pcs_type(med_code, time):
 
 def put_intake():
   global intake_time, intake_pcs, intake_type, intake_notes, status
-
-  record = 
+  
+  date = anvil.server.call("get_time")
+  # parameters list: time, m_code, type, pcs, notes 
+  r = anvil.server.call("put_intake", date[:10]+intake_time, intake_code, \
+                        intake_type, intake_pcs, intake_notes)
+  return(r)
 
   
