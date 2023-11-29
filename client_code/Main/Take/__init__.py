@@ -23,11 +23,12 @@ class Take(TakeTemplate):
     self.time_box_pressed_enter()
     
   def time_box_change(self, **event_args):
-    self.time_box_pressed_enter()
+    #self.time_box_pressed_enter()
+    pass
 
   def time_box_pressed_enter(self, **event_args):
     r, m = self.validator.validate_time(self.time_box.text)
-    print(f"Time validation r= {r}  {m}")
+    print(f"Time validation r= {r}  ")
     if not r:      
       window.confirm(m)
       return()
