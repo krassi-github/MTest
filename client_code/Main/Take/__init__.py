@@ -31,7 +31,6 @@ class Take(TakeTemplate):
   def time_box_pressed_enter(self, **event_args):
     m = ""
     r, m = self.validator.validate_time(self.time_box.text)
-    print(f"TIME {r}  {m}")
     if not r:      
       # window.confirm(m)
       self.err_msg("time", m)

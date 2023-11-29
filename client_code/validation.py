@@ -16,7 +16,7 @@ class Validator():
     if re.match(time_pattern, time_str):
       return(True, "")
     else:
-      return(False, f"'{time_str}' НЕВАЛИДЕН HH:MM формат")
+      return(False, f"НЕВАЛИДЕН HH:MM формат")
 
   
   def validate_pcs(self, input_str):
