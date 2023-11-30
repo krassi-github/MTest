@@ -25,7 +25,7 @@ class RowTemplate1(RowTemplate1Template):
       self.n.foreground = "red"
     self.e.text = self.item["evening"]
     if self.item["e_ex"]:
-      self.e.foerground = "red"
+      self.e.foreground = "red"
     self.on.text = self.item["on_need"]
     if self.item["on_ex"]:
       self.on.foreground = "red"
@@ -67,6 +67,6 @@ class RowTemplate1(RowTemplate1Template):
           alert(f"Неуспешен запис  {r}", title="Съобщение")
         else:
           alert(f"Успешен запис ", title="Съобщение")
-        self.parent.parent.parent.parent.refresh_data()  # to reach the Main
+    self.parent.parent.parent.parent.refresh_data()  # to reach the Main
       
       
