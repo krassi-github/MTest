@@ -58,6 +58,6 @@ class RowTemplate1(RowTemplate1Template):
         if r < 0:
           alert(f"Неуспешен запис  {r}", title="Съобщение")
         else:
-          alert(f"Успешен запис  {r}", title="Съобщение")
+          alert(f"Успешен запис ", title="Съобщение")
       
       
