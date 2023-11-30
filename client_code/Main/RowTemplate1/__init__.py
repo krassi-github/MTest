@@ -56,6 +56,8 @@ class RowTemplate1(RowTemplate1Template):
       if r:
         r = Globals.put_intake()
         if r < 0:
-          alert(f"Неуспешен запис код {r}", title="Съобщение")
+          alert(f"Неуспешен запис  {r}", title="Съобщение")
+        else:
+          alert(f"Успешен запис  {r}", title="Съобщение")
       
       
