@@ -17,7 +17,6 @@ class Take(TakeTemplate):
     self.medicine.text = Globals.get_med_name(med_code)
     self.pcs_box.text, self.type.text = Globals.get_pcs_type(med_code, time)
     Globals.intake_pcs = self.pcs_box.text
-    Globals.intake_type = self.type.text
     self.pcs_copy = self.pcs_box.text
     #  tp validate a form components
     self.validator = validation.Validator()
