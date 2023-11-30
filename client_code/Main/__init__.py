@@ -37,7 +37,7 @@ class Main(MainTemplate):
     date = anvil.server.call("get_time")
     r = Globals.load_data(date)
     self.repeating_panel_1.items = Globals.status
-    self.dgnst.text = Globals.status
+    # self.dgnst.text = Globals.status
     if r < 0:
       self.date.text = f"PROBLEM {r}"
       self.date.foreground = red   

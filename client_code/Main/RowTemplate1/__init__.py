@@ -19,22 +19,23 @@ class RowTemplate1(RowTemplate1Template):
     self.name.text = self.item["name"]
     self.m.text = self.item["morning"]
     if self.item["m_ex"]:
-      self.m.forground = "red"
+      self.m.foreground = "red"
     self.n.text = self.item["noon"]
     if self.item["n_ex"]:
-      self.n.forground = "red"
+      self.n.foreground = "red"
     self.e.text = self.item["evening"]
     if self.item["e_ex"]:
-      self.e.forground = "red"
+      self.e.foerground = "red"
     self.on.text = self.item["on_need"]
     if self.item["on_ex"]:
-      self.on.forground = "red"
+      self.on.foreground = "red"
     font_size = 20
     self.name.font_size = font_size
     self.m.font_size = font_size
     self.n.font_size = font_size
     self.e.font_size = font_size
     self.on.font_size = font_size
+
 
   def link_1_click(self, **event_args):
     """This method is called when the link is clicked"""
@@ -66,5 +67,6 @@ class RowTemplate1(RowTemplate1Template):
           alert(f"Неуспешен запис  {r}", title="Съобщение")
         else:
           alert(f"Успешен запис ", title="Съобщение")
+        self.parent.parent.parent.parent.refresh_data()  # to reach the Main
       
       
