@@ -19,6 +19,7 @@ class Main(MainTemplate):
 
     #self.row_spacing = 0
     #self.repeating_panel_1.row_spacing = 0
+    self.date.text = anvil.server.call("get_time")[:10]
     self.is_pwa_on_mobile()
     #
     content_panel = anvil.js.get_dom_node(self.content_panel)
