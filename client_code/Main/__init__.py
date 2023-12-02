@@ -3,6 +3,7 @@ from anvil import *
 import anvil.server
 import anvil.js
 from anvil.js import window
+import datetime
 from .. import Globals
 
 # status FORMAT
@@ -20,7 +21,7 @@ class Main(MainTemplate):
     #self.row_spacing = 0
     #self.repeating_panel_1.row_spacing = 0
     Globals.cur_date = anvil.server.call("get_time")[:10]
-    show_date()
+    self.show_date()
     self.is_pwa_on_mobile()
     #
     content_panel = anvil.js.get_dom_node(self.content_panel)
@@ -44,8 +45,8 @@ class Main(MainTemplate):
       self.date.text = f"PROBLEM {r}"
       self.date.foreground = red
 
-    def show_date(self):
-      self.date.text = Globals.cur_date
+  def show_date(self):
+    self.date.text = Globals.cur_date
     
   def is_pwa_on_mobile(self,**kwargs):
     is_pwa = anvil.js.window.matchMedia("(display-mode: standalone)").matches
