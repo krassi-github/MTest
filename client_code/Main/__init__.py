@@ -19,7 +19,8 @@ class Main(MainTemplate):
 
     #self.row_spacing = 0
     #self.repeating_panel_1.row_spacing = 0
-    self.date.text = anvil.server.call("get_time")[:10]
+    Globals.cur_date = anvil.server.call("get_time")[:10]
+    show_date()
     self.is_pwa_on_mobile()
     #
     content_panel = anvil.js.get_dom_node(self.content_panel)
@@ -41,7 +42,10 @@ class Main(MainTemplate):
     # self.dgnst.text = Globals.status
     if r < 0:
       self.date.text = f"PROBLEM {r}"
-      self.date.foreground = red   
+      self.date.foreground = red
+
+    def show_date(self):
+      self.date.text = Globals.cur_date
     
   def is_pwa_on_mobile(self,**kwargs):
     is_pwa = anvil.js.window.matchMedia("(display-mode: standalone)").matches
@@ -74,3 +78,11 @@ class Main(MainTemplate):
   def on_touch_end(self, **event_args):
     pass
   '''
+
+  def left_b_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def right_b_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

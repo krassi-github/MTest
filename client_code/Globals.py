@@ -16,6 +16,7 @@ status = []
 #Intake data format:
 #int_id	time	m_code	det_code	type	pcs	note
 
+cur_date = "" 
 
 intake_time = ""
 intake_code = "" 

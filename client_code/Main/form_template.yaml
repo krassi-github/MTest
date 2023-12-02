@@ -40,18 +40,24 @@ components:
   type: FlowPanel
   layout_properties: {slot: title}
   components:
+  - name: spacer_1
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {width: 58.333343505859375}
   - name: left_b
-    properties: {text: L}
+    properties: {text: '', icon: 'fa:arrow-left'}
     type: Button
     layout_properties: {}
+    event_bindings: {click: left_b_click}
   - name: date
     properties: {text: 2023/11/27}
     type: Label
     layout_properties: {}
   - name: right_b
-    properties: {text: R}
+    properties: {text: '', icon: 'fa:arrow-right'}
     type: Button
     layout_properties: {}
+    event_bindings: {click: right_b_click}
 - name: title
   properties: {text: Intake}
   type: Label
