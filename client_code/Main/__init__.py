@@ -9,7 +9,7 @@ from .. import Globals
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
-         "e_ex": False, "on_need": r[on_need], "on_ex": False}'''
+         "e_ex": False, "on_need": r[on_need], "o_ex": False}'''
 
 
 class Main(MainTemplate):
@@ -42,7 +42,7 @@ class Main(MainTemplate):
     self.repeating_panel_1.items = Globals.status
     # self.dgnst.text = Globals.status
     if r < 0:
-      self.date.text = f"PROBLEM {r}"
+      self.date.text = f"Message {r}"
       self.date.foreground = "red"
 
   def show_date(self):
