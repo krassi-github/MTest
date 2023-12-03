@@ -43,7 +43,7 @@ class Main(MainTemplate):
     # self.dgnst.text = Globals.status
     if r < 0:
       self.date.text = f"PROBLEM {r}"
-      self.date.foreground = red
+      self.date.foreground = "red"
 
   def show_date(self):
     self.date.text = Globals.cur_date
