@@ -12,7 +12,7 @@ status = []
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
-         "e_ex": False, "on_need": r[on_need], "on_ex": False}'''
+         "e_ex": False, "on_need": r[on_need], "o_ex": False}'''
 #Intake data format:
 #int_id	time	m_code	det_code	type	pcs	note
 
@@ -57,12 +57,12 @@ def get_pcs_type(med_code, time):
         r = status[i]["evening"]
         t = "вечер"
         intake_type = "evening"
-      elif time == "on_need":
-        r = status[i]["on"]
+      elif time == "on":
+        r = status[i]["on_need"]
         t = "при нужда"
         intake_type = "on_need"
       else:
-        anvil.server.call("mh_log", -401, f"get_med_pcs() Invalid time= {time}")
+        anvil.server.call("mh_log", -431, f"get_pcs_type() Invalid time= {time}")
   return(r, t)
       
 

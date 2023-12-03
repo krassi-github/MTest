@@ -7,7 +7,7 @@ from .. Take import Take
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
-         "e_ex": False, "on_need": r[on_need], "on_ex": False}'''
+         "e_ex": False, "on_need": r[on_need], "o_ex": False}'''
 
 class RowTemplate1(RowTemplate1Template):
   def __init__(self, **properties):
@@ -27,7 +27,7 @@ class RowTemplate1(RowTemplate1Template):
     if self.item["e_ex"]:
       self.e.foreground = "red"
     self.on.text = self.item["on_need"]
-    if self.item["on_ex"]:
+    if self.item["o_ex"]:
       self.on.foreground = "red"
     font_size = 20
     self.name.font_size = font_size
