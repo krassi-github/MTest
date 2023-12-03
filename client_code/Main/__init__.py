@@ -23,7 +23,7 @@ class Main(MainTemplate):
     Globals.cur_date = anvil.server.call("get_time")[:10]
     self.show_date()
     self.is_pwa_on_mobile()
-    #
+    #                                                          
     content_panel = anvil.js.get_dom_node(self.content_panel)
     content_panel.addEventListener('touchstart', self.on_touch_start)
     content_panel.addEventListener('touchmove', self.on_touch_move)
