@@ -47,7 +47,7 @@ components:
     layout_properties: {width: 11}
   - name: left_b
     properties: {text: '', icon: 'fa:arrow-up', role: tonal-button, icon_align: top,
-      align: right}
+      align: center}
     type: Button
     layout_properties: {}
     event_bindings: {click: left_b_click}
