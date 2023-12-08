@@ -83,7 +83,7 @@ class Main(MainTemplate):
   '''
 
   def left_b_click(self, **event_args):
-    """This method is called when the button is clicked"""
+    new_date = datetime.datetime.strptime(Globals.cur_date, "%Y-%m-%d")
     pass
 
   def right_b_click(self, **event_args):
