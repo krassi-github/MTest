@@ -20,7 +20,7 @@ class Main(MainTemplate):
 
     #self.row_spacing = 0
     #self.repeating_panel_1.row_spacing = 0
-    self.left_b.width = "85%"
+    self.left_b.width = "90%"
     self.right_b.width = "90%"
     Globals.cur_date = anvil.server.call("get_time")[:10]
     self.show_date()
@@ -83,8 +83,9 @@ class Main(MainTemplate):
   '''
 
   def left_b_click(self, **event_args):
-    new_date = datetime.datetime.strptime(Globals.cur_date, "%Y-%m-%d")
-    pass
+    new_date = datetime.datetime.strptime(Globals.cur_date, "%Y/%m/%d") + datetime.timedelta(days=1)
+    Globals.cur_date = datetime.strftime(new_date, "%Y/%m/%d")
+    self.show_date()
 
   def right_b_click(self, **event_args):
     """This method is called when the button is clicked"""
