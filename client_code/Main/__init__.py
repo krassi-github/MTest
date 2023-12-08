@@ -22,7 +22,7 @@ class Main(MainTemplate):
     #self.repeating_panel_1.row_spacing = 0
     self.left_b.width = "90%"
     self.right_b.width = "90%"
-    Globals.cur_date = anvil.server.call("get_time")[:10]
+    Globals.cur_date = anvil.server.call("get_time")
     self.show_date()
     self.is_pwa_on_mobile()
     #                                                          
@@ -38,8 +38,7 @@ class Main(MainTemplate):
       
     self.refresh_data()
 
-  def refresh_data(self, **event_args):
-    date = anvil.server.call("get_time")
+  def refresh_data(self, date):
     r = Globals.load_data(date)
     self.repeating_panel_1.items = Globals.status
     # self.dgnst.text = Globals.status
@@ -48,7 +47,7 @@ class Main(MainTemplate):
       self.date.foreground = "red"
 
   def show_date(self):
-    self.date.text = Globals.cur_date
+    self.date.text = Globals.cur_date[:10]
     
   def is_pwa_on_mobile(self,**kwargs):
     is_pwa = anvil.js.window.matchMedia("(display-mode: standalone)").matches
@@ -83,8 +82,8 @@ class Main(MainTemplate):
   '''
 
   def left_b_click(self, **event_args):
-    new_date = datetime.datetime.strptime(Globals.cur_date, "%Y/%m/%d") + datetime.timedelta(days=1)
-    Globals.cur_date = datetime.strftime(new_date, "%Y/%m/%d")
+    new_date = datetime.datetime.strptime(Globals.cur_date, "%Y/%m/%d %H:%M") + datetime.timedelta(days=1)
+    Globals.cur_date = datetime.strftime(new_date, "%Y/%m/%d %H:%M")
     self.show_date()
 
   def right_b_click(self, **event_args):
