@@ -36,7 +36,7 @@ class Main(MainTemplate):
     #if Globals.is_pwa and Globals.is_mobile:
       #self.timer_1.interval = None
       
-    self.refresh_data()
+    self.refresh_data(Globals.cur_date)
 
   def refresh_data(self, date):
     r = Globals.load_data(date)
@@ -82,10 +82,16 @@ class Main(MainTemplate):
   '''
 
   def left_b_click(self, **event_args):
-    new_date = datetime.datetime.strptime(Globals.cur_date, "%Y/%m/%d %H:%M") + datetime.timedelta(days=1)
-    Globals.cur_date = datetime.strftime(new_date, "%Y/%m/%d %H:%M")
-    self.show_date()
+    self.show_move("up")
 
   def right_b_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    self.show_move("dn")
+
+  def show_move(self, direction):
+    if direction == "up":
+      new_date = datetime.datetime.strptime(Globals.cur_date, "%Y/%m/%d %H:%M") - datetime.timedelta(days=1)
+    else:
+      new_date = datetime.datetime.strptime(Globals.cur_date, "%Y/%m/%d %H:%M") + datetime.timedelta(days=1)
+    Globals.cur_date = datetime.datetime.strftime(new_date, "%Y/%m/%d %H:%M")
+    self.show_date()
+    self.refresh_data(Globals.cur_date)
