@@ -68,7 +68,7 @@ class Main(MainTemplate):
     if self.touch_start_y is not None and self.touch_end_y is not None:
       pull_distance = self.touch_end_y - self.touch_start_y
       if pull_distance > 50:
-        self.refresh_data()
+        self.refresh_data(Globals.cur_date)
     self.touch_start_y = None
     self.touch_end_y = None
 
