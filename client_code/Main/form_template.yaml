@@ -65,6 +65,7 @@ components:
     properties: {text: '', icon: 'fa:edit', role: outlined-button}
     type: Button
     layout_properties: {}
+    event_bindings: {click: edit_click}
 - name: title
   properties: {text: Intake, spacing_below: none}
   type: Label

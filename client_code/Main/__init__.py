@@ -97,3 +97,8 @@ class Main(MainTemplate):
     Globals.cur_date = datetime.datetime.strftime(new_date, "%Y/%m/%d %H:%M")
     self.show_date()
     self.refresh_data(Globals.cur_date)
+
+  def edit_click(self, **event_args):
+    self.edit.background = "red"
+    Globals.mode = "ëdit"
+

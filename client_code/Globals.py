@@ -17,6 +17,7 @@ status = []
 #int_id	time	m_code	det_code	type	pcs	note
 
 cur_date = ""     # YYYY/MM/DD
+mode = "create"   # create or edit
 
 intake_time = ""
 intake_code = "" 
