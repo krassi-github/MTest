@@ -22,6 +22,8 @@ class Main(MainTemplate):
     #self.repeating_panel_1.row_spacing = 0
     self.left_b.width = "90%"
     self.right_b.width = "90%"
+    self.edit.width = "90%"
+    
     Globals.cur_date = anvil.server.call("get_time")
     self.show_date()
     self.is_pwa_on_mobile()

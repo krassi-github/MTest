@@ -61,6 +61,10 @@ components:
     type: Button
     layout_properties: {}
     event_bindings: {click: right_b_click}
+  - name: edit
+    properties: {text: '', icon: 'fa:edit', role: outlined-button}
+    type: Button
+    layout_properties: {}
 - name: title
   properties: {text: Intake, spacing_below: none}
   type: Label
