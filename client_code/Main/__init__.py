@@ -101,7 +101,7 @@ class Main(MainTemplate):
   def edit_click(self, **event_args):
     if Globals.mode == "create":
       self.edit.background = "red"
-      Globals.mode = "ëdit"
+      Globals.mode = "edit"
     else:
       self.edit.background = "white"
       Globals.mode = "create"
