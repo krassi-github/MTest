@@ -22,9 +22,8 @@ class Main(MainTemplate):
     #self.repeating_panel_1.row_spacing = 0
     self.left_b.width = "90%"
     self.right_b.width = "90%"
-    self.edit.width = "90%"
-    self.spacer_2.width = "10"
-    self.flag.text = self.spacer_2.width + ' ' + self.spacer_1.width
+    self.edit.width = "90%"      #  self.spacer_1
+    self.flow_panel_1.width = "300"
 
     Globals.cur_date = anvil.server.call("get_time")
     self.show_date()

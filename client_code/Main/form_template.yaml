@@ -62,9 +62,9 @@ components:
     layout_properties: {}
     event_bindings: {click: right_b_click}
   - name: spacer_2
-    properties: {height: 32}
+    properties: {height: 35.99998474121094}
     type: Spacer
-    layout_properties: {width: 37.066650390625}
+    layout_properties: {width: 85.86115800781249}
   - name: edit
     properties: {text: '', icon: 'fa:edit', role: outlined-button}
     type: Button
