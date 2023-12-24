@@ -99,6 +99,12 @@ class Main(MainTemplate):
     self.refresh_data(Globals.cur_date)
 
   def edit_click(self, **event_args):
-    self.edit.background = "red"
-    Globals.mode = "ëdit"
+    if Globals.mode == "create":
+      self.edit.background = "red"
+      self.flag.text = '*'
+      Globals.mode = "edit"
+    else:
+      self.edit.background = "white"
+      self.flag.text = ''
+      Globals.mode = "create"
 
