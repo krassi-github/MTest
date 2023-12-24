@@ -23,7 +23,9 @@ class Main(MainTemplate):
     self.left_b.width = "90%"
     self.right_b.width = "90%"
     self.edit.width = "90%"
-    
+    self.spacer_2.width = "10"
+    self.flag.text = self.spacer_2.width + ' ' + self.spacer_1.width
+
     Globals.cur_date = anvil.server.call("get_time")
     self.show_date()
     self.is_pwa_on_mobile()

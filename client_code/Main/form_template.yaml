@@ -37,7 +37,7 @@ components:
   name: navbar_links
   layout_properties: {slot: nav-right}
 - name: flow_panel_1
-  properties: {spacing: none, vertical_align: top, align: justify, spacing_below: none}
+  properties: {spacing: none, vertical_align: top, align: left, spacing_below: none}
   type: FlowPanel
   layout_properties: {slot: title}
   components:
@@ -64,15 +64,16 @@ components:
   - name: spacer_2
     properties: {height: 32}
     type: Spacer
-    layout_properties: {width: 29.39996337890625}
+    layout_properties: {width: 37.066650390625}
   - name: edit
     properties: {text: '', icon: 'fa:edit', role: outlined-button}
     type: Button
     layout_properties: {}
     event_bindings: {click: edit_click}
   - name: flag
-    properties: {}
+    properties: {icon_align: top}
     type: Label
+    layout_properties: {}
 - name: title
   properties: {text: Intake, spacing_below: none}
   type: Label
