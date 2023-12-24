@@ -37,7 +37,7 @@ components:
   name: navbar_links
   layout_properties: {slot: nav-right}
 - name: flow_panel_1
-  properties: {spacing: none, vertical_align: top, align: left, spacing_below: none}
+  properties: {spacing: none, vertical_align: top, align: justify, spacing_below: none}
   type: FlowPanel
   layout_properties: {slot: title}
   components:
