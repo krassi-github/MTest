@@ -66,7 +66,7 @@ components:
     type: Spacer
     layout_properties: {width: 85.86115800781249}
   - name: edit
-    properties: {text: '', icon: 'fa:edit', role: outlined-button}
+    properties: {text: '', icon: 'fa:edit', role: outlined-button, icon_align: top}
     type: Button
     layout_properties: {}
     event_bindings: {click: edit_click}

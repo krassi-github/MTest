@@ -12,7 +12,7 @@ class Take(TakeTemplate):
     # Set Form properties and Data Bindings.
     self.init_components()    # **properties
     if Globals.mode == "edit":
-      daily_intakes = ancil.server.call("get_intakes", Globals.cur_date, med_code, time, )
+      daily_intakes = anvil.server.call("get_intakes", Globals.cur_date, med_code, time, )
     self.time_box.text = anvil.server.call("get_time")[11:]
     Globals.intake_time = self.time_box.text
     self.time_copy = self.time_box.text
