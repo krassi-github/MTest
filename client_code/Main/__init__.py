@@ -101,8 +101,10 @@ class Main(MainTemplate):
   def edit_click(self, **event_args):
     if Globals.mode == "create":
       self.edit.background = "red"
+      self.flag.text = '*'
       Globals.mode = "edit"
     else:
       self.edit.background = "white"
+      self.flag.text = ''
       Globals.mode = "create"
 

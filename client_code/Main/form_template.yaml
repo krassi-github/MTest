@@ -61,11 +61,18 @@ components:
     type: Button
     layout_properties: {}
     event_bindings: {click: right_b_click}
+  - name: spacer_2
+    properties: {height: 32}
+    type: Spacer
+    layout_properties: {width: 29.39996337890625}
   - name: edit
     properties: {text: '', icon: 'fa:edit', role: outlined-button}
     type: Button
     layout_properties: {}
     event_bindings: {click: edit_click}
+  - name: flag
+    properties: {}
+    type: Label
 - name: title
   properties: {text: Intake, spacing_below: none}
   type: Label
