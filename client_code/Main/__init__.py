@@ -5,6 +5,7 @@ import anvil.js
 from anvil.js import window
 import datetime
 from .. import Globals
+from . Change import Change
 
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
@@ -104,8 +105,14 @@ class Main(MainTemplate):
       self.edit.background = "red"
       self.flag.text = '*'
       Globals.mode = "edit"
+      self.content_panel.clear()
+      self.new_panel = Change()
+      self.content_panel.add_component(self.new_panel)
+      get_open_form().raise_event("x-Date-Change")    # raise_event('x-foo') _on_children
     else:
       self.edit.background = "white"
       self.flag.text = ''
       Globals.mode = "create"
+      self.content_panel.clear()
+      open_form("Main")
 
