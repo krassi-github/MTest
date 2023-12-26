@@ -35,7 +35,7 @@ def load_data(date):
 
 def load_intakes(date):  # YYYY/MM/DD
   global daily_intakes
-  r, daily_intakes = anvil.server.call(date)
+  r, daily_intakes = anvil.server.call("get_daily_intakes", date)
   return(r)
   
 def get_med_name(med_code):
