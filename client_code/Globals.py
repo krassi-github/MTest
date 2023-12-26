@@ -16,7 +16,7 @@ status = []
 #Intake data format:
 #int_id	time	m_code	det_code	type	pcs	note
 
-cur_date = ""     # YYYY/MM/DD
+cur_date = None     # YYYY/MM/DD
 mode = "create"   # create or edit
 
 intake_time = ""
@@ -30,7 +30,8 @@ def load_data(date):
   r, status = anvil.server.call("get_status", date)
   return(r)
 
-
+def load_intakes(date):
+  
 def get_med_name(med_code):
   global status
   for i in range(len(status)):
@@ -76,6 +77,8 @@ def put_intake():
                         intake_type, intake_pcs, intake_notes)
   return(r)
 
+
+# ====================================================================================
 # for real testing only 
 # MIT License
 

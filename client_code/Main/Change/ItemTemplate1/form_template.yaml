@@ -1,0 +1,24 @@
+is_package: true
+container: {type: ColumnPanel}
+components:
+- name: data_row_panel_1
+  properties: {}
+  type: DataRowPanel
+  layout_properties: {grid_position: 'FHCQNU,MYJMHG'}
+  components:
+  - name: dr_time
+    properties: {}
+    type: TextBox
+    layout_properties: {}
+- name: dr_med
+  properties: {}
+  type: TextBox
+  layout_properties: {grid_position: 'FHCQNU,JQKZWK'}
+- name: dr_qty
+  properties: {}
+  type: TextBox
+  layout_properties: {grid_position: 'FHCQNU,JXSGHQ'}
+- name: dr_pcs
+  properties: {}
+  type: TextBox
+  layout_properties: {grid_position: 'FHCQNU,DZAQHQ'}

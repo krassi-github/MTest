@@ -11,7 +11,7 @@ class Change(ChangeTemplate):
     # Any code you write here will run before the form opens.
     self.set_event_handler("x-Date-Change", self.date_change)
     print("Change --> Handler set")
-    self.label_1.text = "LBL"
+    self.label_1.text = Globals.cur_date
 
 
   def date_change(self, **kw):
