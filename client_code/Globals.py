@@ -17,10 +17,10 @@ status = []
 #int_id	time	m_code	det_code	type	pcs	note
 daily_intakes = []
 # daily_intakes FORMAT
-# rd_time, rd_name, rd_qty, rd_pcs
+# rd_time, rd_name, rd_weight, rd_pcs
 
 cur_date = None     # YYYY/MM/DD
-mode = "create"   # create or edit
+mode = "create"     # create or edit
 
 intake_time = ""
 intake_code = "" 
@@ -35,7 +35,8 @@ def load_data(date):
 
 def load_intakes(date):  # YYYY/MM/DD
   global daily_intakes
-  r, daily_intakes = anvil.server.call("get_daily_intakes", date)
+  r, daily_intakes = anvil.server.call("get_daily_intakes", date[:10])
+
   return(r)
   
 def get_med_name(med_code):

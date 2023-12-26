@@ -1,5 +1,7 @@
 is_package: true
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {wrap_on: never}
 components:
 - name: data_row_panel_1
   properties: {}
