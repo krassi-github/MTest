@@ -15,6 +15,9 @@ status = []
          "e_ex": False, "on_need": r[on_need], "o_ex": False}'''
 #Intake data format:
 #int_id	time	m_code	det_code	type	pcs	note
+daily_intakes = []
+# daily_intakes FORMAT
+# rd_time, rd_name, rd_qty, rd_pcs
 
 cur_date = None     # YYYY/MM/DD
 mode = "create"   # create or edit
@@ -31,6 +34,9 @@ def load_data(date):
   return(r)
 
 def load_intakes(date):
+  global daily_intakes
+  r, daily_intakes = anvil.server.call(date)
+  pass
   
 def get_med_name(med_code):
   global status
