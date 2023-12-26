@@ -104,12 +104,9 @@ class Main(MainTemplate):
       Globals.mode = "edit"
       self.content_panel.clear()
       self.new_panel = Change()
-      print("================   '\n'Main --> to call add_component ")
       self.content_panel.add_component(self.new_panel)
-      print("Main --> Event will COME ")
       self.content_panel.raise_event_on_children("x-Date-Change")    # 
       #self.content_panel.raise_event("x-Date-Change")    #Не сработи i s self.edit
-      print("Event was thrown")
     else:
       self.edit.background = "white"
       self.flag.text = ''

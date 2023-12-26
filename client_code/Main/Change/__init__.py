@@ -10,11 +10,10 @@ class Change(ChangeTemplate):
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
     self.set_event_handler("x-Date-Change", self.date_change)
-    print("Change --> Handler set")
     self.label_1.text = Globals.cur_date
 
 
   def date_change(self, **kw):
-    print("We are IN")
     self.label_1.text = "Change form REACHED"
-    
+    Globals.load_intakes(Globals.cur_date)
+    self.repeating_panel_1.items = Globals.daily_intakes
