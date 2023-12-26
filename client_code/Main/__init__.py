@@ -18,9 +18,6 @@ class Main(MainTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Any code you write here will run before the form opens.
-
-    #self.row_spacing = 0
-    #self.repeating_panel_1.row_spacing = 0
     self.left_b.width = "90%"
     self.right_b.width = "90%"
     self.edit.width = "90%"      #  self.spacer_1
@@ -107,8 +104,12 @@ class Main(MainTemplate):
       Globals.mode = "edit"
       self.content_panel.clear()
       self.new_panel = Change()
+      print("================   '\n'Main --> to call add_component ")
       self.content_panel.add_component(self.new_panel)
-      get_open_form().raise_event("x-Date-Change")    # raise_event('x-foo') _on_children
+      print("Main --> Event will COME ")
+      self.content_panel.raise_event_on_children("x-Date-Change")    # 
+      #self.content_panel.raise_event("x-Date-Change")    #Не сработи i s self.edit
+      print("Event was thrown")
     else:
       self.edit.background = "white"
       self.flag.text = ''
