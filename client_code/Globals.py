@@ -33,7 +33,7 @@ def load_data(date):
   r, status = anvil.server.call("get_status", date)
   return(r)
 
-def load_intakes(date):
+def load_intakes(date):  # YYYY/MM/DD
   global daily_intakes
   r, daily_intakes = anvil.server.call(date)
   pass
