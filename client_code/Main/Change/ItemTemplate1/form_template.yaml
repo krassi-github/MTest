@@ -16,7 +16,11 @@ components:
 - name: dr_med
   properties: {role: 0height}
   type: Label
-  layout_properties: {grid_position: 'FHCQNU,DZTDDV'}
+  layout_properties: {grid_position: 'FHCQNU,DZTDDV EMEYAD,UFWLWK'}
+- name: link_1
+  properties: {}
+  type: Link
+  layout_properties: {grid_position: 'FHCQNU,DZTDDV ZCNKYH,ZWZRWE'}
 - name: dr_qty
   properties: {role: 0height}
   type: Label

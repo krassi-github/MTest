@@ -13,7 +13,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'ASRPSB,WIHUAE'}
 - name: repeating_panel_1
-  properties: {item_template: Main.Change.ItemTemplate1}
+  properties: {item_template: Main.Change.ItemTemplate1, role: scroll}
   type: RepeatingPanel
   layout_properties: {grid_position: 'ZRFMLT,UHDGSS'}
 is_package: true
