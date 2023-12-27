@@ -15,5 +15,6 @@ class ItemTemplate1(ItemTemplate1Template):
     self.dr_pcs.text = self.item['rd_pcs']
 
   def link_1_click(self, **event_args):
-    alert(content="ready to SORT")
-    pass
+    Globals.sorting()
+    self.parent.parent.rp_refresh()
+    

@@ -15,12 +15,16 @@ class Change(ChangeTemplate):
     self.label_1.text = Globals.cur_date[:10]
     print(f"Change __init__()")
     Globals.load_intakes(Globals.cur_date)
-    self.repeating_panel_1.items = Globals.daily_intakes
+    self.rp_refresh()
 
 
   def date_change(self, **kw):
     self.label_1.text = Globals.cur_date[:10]
     Globals.load_intakes(Globals.cur_date)
-    self.repeating_panel_1.items = Globals.daily_intakes
+    self.rp_refresh()
     print(f"date_change()")
+
+  def rp_refresh(self):
+    self.repeating_panel_1.items = Globals.daily_intakes
+  
 

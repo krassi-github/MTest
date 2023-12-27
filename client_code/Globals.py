@@ -1,4 +1,5 @@
 import anvil.server
+import copy
 # This is a module.
 # You can define variables and functions here, and use them from any form. For example, in a top-level form:
 #
@@ -16,6 +17,7 @@ status = []
 #Intake data format:
 #int_id	time	m_code	det_code	type	pcs	note
 daily_intakes = []
+daily_intakes_cpy = []
 # daily_intakes FORMAT
 # rd_time, rd_name, rd_weight, rd_pcs
 
@@ -85,7 +87,34 @@ def put_intake():
   return(r)
 
 
-def sorting()
+def sorting():
+  global daily_intakes, daily_intakes_cpy
+  
+  if not hasattr(sorting, "cntr"):
+    sorting.cntr = 0  # Initialize the static variable
+
+  if not sorting.cntr:
+    # first entry -> sort asc
+    daily_intakes_cpy = copy.copy(daily_intakes)
+    n = False
+    sorting.cntr += 1
+  elif sorting.cntr == 1:
+    # second entry -> sort dsc
+    n = True
+    sorting.cntr += 1
+  else:
+    sorting.cntr = 0
+    daily_intakes = daily_intakes_cpy
+    return()    
+  daily_intakes = sorted(daily_intakes, key=lambda x: x['rd_name'], reverse=n)
+  return()
+
+
+
+  
+
+  
+
 # ====================================================================================
 # for real testing only 
 # MIT License
