@@ -58,7 +58,7 @@ class Main(MainTemplate):
 
 
 
-  # Bunch of handlers
+  # Bunch of handlers 3d party
   def on_touch_start(self, event):
     self.touch_start_y = event.touches[0].clientY
 
@@ -84,9 +84,14 @@ class Main(MainTemplate):
 
   def left_b_click(self, **event_args):
     self.show_move("up")
+    if Globals.mode != "create":
+      self.content_panel.raise_event_on_children("x-Date-Change")
 
   def right_b_click(self, **event_args):
     self.show_move("dn")
+    if Globals.mode != "create":
+      self.content_panel.raise_event_on_children("x-Date-Change")
+      
 
   def show_move(self, direction):
     if direction == "up":
@@ -105,7 +110,7 @@ class Main(MainTemplate):
       self.content_panel.clear()
       self.new_panel = Change()
       self.content_panel.add_component(self.new_panel)
-      self.content_panel.raise_event_on_children("x-Date-Change")    # 
+      #self.content_panel.raise_event_on_children("x-Date-Change")    # 
       #self.content_panel.raise_event("x-Date-Change")    #Не сработи i s self.edit
     else:
       self.edit.background = "white"

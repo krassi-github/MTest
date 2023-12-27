@@ -1,7 +1,7 @@
 is_package: true
 container:
   type: ColumnPanel
-  properties: {wrap_on: never}
+  properties: {wrap_on: never, col_widths: '{"MYJMHG":15,"JQKZWK":25,"JXSGHQ":10,"DZAQHQ":10}'}
 components:
 - name: data_row_panel_1
   properties: {}
