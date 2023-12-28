@@ -80,7 +80,7 @@ def get_pcs_type(med_code, time):
 def put_intake():
   global intake_time, intake_pcs, intake_type, intake_notes, status
   
-  date = anvil.server.call("get_time")
+  date = cur_date
   # parameters list: time, m_code, type, pcs, notes 
   r = anvil.server.call("put_intake", date[:10]+' '+intake_time, intake_code, \
                         intake_type, intake_pcs, intake_notes)
