@@ -22,7 +22,7 @@ class Change(ChangeTemplate):
     self.label_1.text = Globals.cur_date[:10]
     Globals.load_intakes(Globals.cur_date)
     self.rp_refresh()
-    print(f"date_change()")
+
 
   def rp_refresh(self):
     self.repeating_panel_1.items = Globals.daily_intakes
