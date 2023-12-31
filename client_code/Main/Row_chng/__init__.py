@@ -16,8 +16,12 @@ class Row_chng(Row_chngTemplate):
     self.init_components()    # **properties
     self.row = Globals.find_row_in_day("int_id", int_id)
     self.time_box.text = self.row["rd_time"]
+    self.time_copy = self.time_box.text
     self.medicine.text = self.row["rd_name"]
     self.pcs_copy = self.pcs_box.text
+    Globals.edited_time = ""
+    Globals.edited_pcs = 0.0
+    Globals.edited_notes = ""
     #  tp validate form's components
     self.validator = validation.Validator()
 
@@ -35,7 +39,7 @@ class Row_chng(Row_chngTemplate):
       # window.confirm(m)
       self.err_msg("time", m)
     else:
-      Globals.intake_time = self.time_box.text
+      Globals.edited_time = self.time_box.text
 
   def pcs_box_lost_focus(self, **event_args):
     self.pcs_box_pressed_enter()
@@ -49,7 +53,7 @@ class Row_chng(Row_chngTemplate):
       # window.confirm(m)
       self.err_msg("pcs", m)
     else:
-      Globals.intake_pcs = self.pcs_box.text
+      Globals.edited_pcs = self.pcs_box.text
 
   def err_msg(self, box: str, msg):
     self.time_box.scroll_into_view(smooth=True)
@@ -69,4 +73,4 @@ class Row_chng(Row_chngTemplate):
     self.msg_box.text = ""
 
   def notes_lost_focus(self, **event_args):
-    Globals.intake_notes = self.notes.text
+    Globals.edited_notes = self.notes.text

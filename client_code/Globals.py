@@ -28,6 +28,9 @@ intake_code = ""
 intake_pcs = 0.0
 intake_type = ""
 intake_notes = ""
+edited_time = ""      # during editing in Main.Row_chng
+edited_pcs = 0.0
+edited_notes = ""
 
 def load_data(date):
   global status  
@@ -109,11 +112,10 @@ def sorting():
   return()
 
 def find_row_in_day(s_key, value):
-
   result = [d for d in daily_intakes if d.get(s_key) == value]
   return(result[0])
 
-
+def update_intake(int_id):
 
   
 
