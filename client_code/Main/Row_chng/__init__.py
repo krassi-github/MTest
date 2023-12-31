@@ -7,17 +7,18 @@ from anvil.js import window
 from ... import Globals
 from ... import validation
 
+# daily_intakes FORMAT
+# rd_int_id, rd_time, rd_name, rd_weight, rd_pcs
+
 class Row_chng(Row_chngTemplate):
-  def __init__(self, time, med_code):
+  def __init__(self, int_id):
     # Set Form properties and Data Bindings.
     self.init_components()    # **properties
-    #if Globals.mode == "edit":
-      #daily_intakes = anvil.server.call("get_intakes", Globals.cur_date, med_code, time, )
-    self.time_box.text = anvil.server.call("get_time")[11:]
+    self.row = Globals.find_row_in_day("int_id", int_id)
+    self.time_box.text = self.row["rd_time"]
     self.time_copy = self.time_box.text
-    self.medicine.text = Globals.get_med_name(med_code)
-    self.pcs_box.text, self.type.text = Globals.get_pcs_type(med_code, time)
-    Globals.intake_pcs = self.pcs_box.text
+    self.medicine.text = self.row["rd_name"]
+    self.pcs_box.text = self.row["rd_pcs"]
     self.pcs_copy = self.pcs_box.text
     #  tp validate form's components
     self.validator = validation.Validator()

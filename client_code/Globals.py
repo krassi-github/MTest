@@ -14,8 +14,7 @@ status = []
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
          "e_ex": False, "on_need": r[on_need], "o_ex": False}'''
-#Intake data format:
-#int_id	time	m_code	det_code	type	pcs	note
+# single Intake data format: #int_id	time	m_code	det_code	type	pcs	note
 daily_intakes = []
 daily_intakes_cpy = []
 # daily_intakes FORMAT
@@ -112,6 +111,7 @@ def sorting():
 def find_row_in_day(s_key, value):
 
   result = [d for d in daily_intakes if d.get(s_key) == value]
+  return(result[0])
 
 
 
