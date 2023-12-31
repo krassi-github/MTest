@@ -116,6 +116,7 @@ def find_row_in_day(s_key, value):
   return(result[0])
 
 def update_intake(int_id):
+  pass
 
   
 

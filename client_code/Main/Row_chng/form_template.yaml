@@ -37,4 +37,18 @@ components:
     properties: {}
     type: TextArea
     event_bindings: {lost_focus: notes_lost_focus}
+- name: flow_panel_2
+  properties: {align: center}
+  type: FlowPanel
+  layout_properties: {grid_position: 'UGUNSN,WSHOQV'}
+  components:
+  - name: button_1
+    properties: {text: button_1}
+    type: Button
+  - name: button_2
+    properties: {text: button_2}
+    type: Button
+  - name: button_3
+    properties: {text: button_3}
+    type: Button
 is_package: true
