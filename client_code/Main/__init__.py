@@ -23,7 +23,8 @@ class Main(MainTemplate):
     self.edit.width = "90%"      #  self.spacer_1
     self.flow_panel_1.width = "330"
 
-    Globals.cur_date = anvil.server.call("get_time")
+    if not Globals.cur_date:
+      Globals.cur_date = anvil.server.call("get_time")
     self.show_date()
     self.is_pwa_on_mobile()
     #                                                          

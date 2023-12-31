@@ -21,7 +21,7 @@ daily_intakes_cpy = []
 # daily_intakes FORMAT
 # rd_int_id, rd_time, rd_name, rd_weight, rd_pcs
 
-cur_date = None     # YYYY/MM/DD
+cur_date = None     # YYYY/MM/DD HH:MM
 mode = "create"     # create or edit
 
 intake_time = ""
@@ -110,11 +110,8 @@ def sorting():
   return()
 
 def find_row_in_day(s_key, value):
-  search_key = "age"
-  value_to_find = 25
 
-# Perform the search
-result = [d for d in daily_intakes if d.get(s_key) == value]
+  result = [d for d in daily_intakes if d.get(s_key) == value]
 
 
 
