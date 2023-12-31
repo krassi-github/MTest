@@ -16,9 +16,7 @@ class Row_chng(Row_chngTemplate):
     self.init_components()    # **properties
     self.row = Globals.find_row_in_day("int_id", int_id)
     self.time_box.text = self.row["rd_time"]
-    self.time_copy = self.time_box.text
     self.medicine.text = self.row["rd_name"]
-    self.pcs_box.text = self.row["rd_pcs"]
     self.pcs_copy = self.pcs_box.text
     #  tp validate form's components
     self.validator = validation.Validator()
