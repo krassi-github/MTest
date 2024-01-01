@@ -30,5 +30,5 @@ class ItemTemplate1(ItemTemplate1Template):
   def chng_start(self):
     self.parent.parent.label_1.text += f"   {self.item['int_id']}"
     r = alert(Row_chng(self.dr_time.tag), 
-          title="Редактирай дневния прием!", 
-          buttons=[("ЗАПИС", True), ("Отказ", False)],)
+          title="Редактирай прием!", 
+          buttons=[("ИЗХОД", True), ("Отказ", False)],)

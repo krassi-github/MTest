@@ -116,28 +116,29 @@ def find_row_in_day(s_key, value):
 
 def update_intake(int_id):
   if edited_time and edited_pcs and edited_notes:
-    r = anvil.server.call("update_intake", int_id, time=edited_time, pcs=edited_pcs, notes=edited_notes)
+    r = anvil.server.call("update_intake", int_id, time=edited_time, pcs=edited_pcs, note=edited_notes)
   elif edited_time and edited_pcs:
-    r = anvil.server.call("update_intake", iint_id, time=edited_time, pcs=edited_pcs)
+    r = anvil.server.call("update_intake", int_id, time=edited_time, pcs=edited_pcs)
   elif edited_time and edited_notes:
-    r = anvil.server.call("update_intake", iint_id, time=edited_time, notes=edited_notes)
+    r = anvil.server.call("update_intake", int_id, time=edited_time, note=edited_notes)
   elif edited_pcs and edited_notes:
-    r = anvil.server.call("update_intake", iint_id, pcs=edited_pcs, notes=edited_notes)
+    r = anvil.server.call("update_intake", int_id, pcs=edited_pcs, note=edited_notes)
   elif edited_time:
-    r = anvil.server.call("update_intake", iint_id, time=edited_time)
+    r = anvil.server.call("update_intake", int_id, time=edited_time)
   elif edited_pcs:
-    r = anvil.server.call("update_intake", iint_id, pcs=edited_pcs)
+    r = anvil.server.call("update_intake", int_id, pcs=edited_pcs)
   elif edited_notes:
-    r = anvil.server.call("update_intake", iint_id, pcs=edited_notes)
+    r = anvil.server.call("update_intake", int_id, note=edited_notes)
   else:
     # None edited
     r = -1
   return(r)
-    
-    
-  
-  pass
 
+def delete_intake(int_id):
+  return(anvil.server.call("delete_intake", int_id))
+
+
+  
   
 
   
