@@ -74,3 +74,15 @@ class Row_chng(Row_chngTemplate):
 
   def notes_lost_focus(self, **event_args):
     Globals.edited_notes = self.notes.text
+
+  def save_b_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def clear_b_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def new_b_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass

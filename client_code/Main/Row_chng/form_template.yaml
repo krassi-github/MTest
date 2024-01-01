@@ -42,16 +42,19 @@ components:
   type: FlowPanel
   layout_properties: {grid_position: 'UGUNSN,WSHOQV'}
   components:
-  - name: button_1
+  - name: save_b
     properties: {text: ЗАПАЗИ, role: tonal-button}
     type: Button
     layout_properties: {}
-  - name: button_2
+    event_bindings: {click: save_b_click}
+  - name: clear_b
     properties: {text: ИЗЧИСТИ, role: outlined-button}
     type: Button
     layout_properties: {}
-  - name: button_3
+    event_bindings: {click: clear_b_click}
+  - name: new_b
     properties: {text: НОВ ЗАПИС, role: tonal-button}
     type: Button
     layout_properties: {}
+    event_bindings: {click: new_b_click}
 is_package: true
