@@ -12,10 +12,7 @@ class Change(ChangeTemplate):
     # #self.column_panel_1.width = "60%"
     # self.repeating_panel_1.width = "60%"
     self.set_event_handler("x-Date-Change", self.date_change)
-    self.label_1.text = Globals.cur_date[:10]
-    print(f"Change __init__()")
-    Globals.load_intakes(Globals.cur_date)
-    self.rp_refresh()
+    self.date_change()
 
 
   def date_change(self, **kw):

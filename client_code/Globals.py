@@ -28,9 +28,9 @@ intake_code = ""
 intake_pcs = 0.0
 intake_type = ""
 intake_notes = ""
-edited_time = ""      # during editing in Main.Row_chng
-edited_pcs = 0.0
-edited_notes = ""
+edited_time = None      # during editing in Main.Row_chng
+edited_pcs = None
+edited_notes = None
 
 def load_data(date):
   global status  
@@ -40,7 +40,6 @@ def load_data(date):
 def load_intakes(date):  # YYYY/MM/DD
   global daily_intakes
   r, daily_intakes = anvil.server.call("get_daily_intakes", date[:10])
-
   return(r)
   
 def get_med_name(med_code):
@@ -116,6 +115,27 @@ def find_row_in_day(s_key, value):
   return(result[0])
 
 def update_intake(int_id):
+  if edited_time and edited_pcs and edited_notes:
+    r = anvil.server.call(int_id, time=edited_time, pcs=edited_pcs, notes=edited_notes)
+  elif edited_time and edited_pcs:
+    r = anvil.server.call(int_id, time=edited_time, pcs=edited_pcs)
+  elif edited_time and edited_notes:
+    r = anvil.server.call(int_id, time=edited_time, notes=edited_notes)
+  elif edited_pcs and edited_notes:
+    r = anvil.server.call(int_id, pcs=edited_pcs, notes=edited_notes)
+  elif edited_time:
+    r = anvil.server.call(int_id, time=edited_time)
+  elif edited_pcs:
+    r = anvil.server.call(int_id, pcs=edited_pcs)
+  elif edited_notes:
+    r = anvil.server.call(int_id, pcs=edited_notes)
+  else:
+    # None edited
+    r = -1
+  return(r)
+    
+    
+  
   pass
 
   

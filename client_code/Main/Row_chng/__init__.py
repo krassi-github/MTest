@@ -19,9 +19,9 @@ class Row_chng(Row_chngTemplate):
     self.time_copy = self.time_box.text
     self.medicine.text = self.row["rd_name"]
     self.pcs_copy = self.pcs_box.text
-    Globals.edited_time = ""
-    Globals.edited_pcs = 0.0
-    Globals.edited_notes = ""
+    Globals.edited_time = None
+    Globals.edited_pcs = None
+    Globals.edited_notes = None
     #  tp validate form's components
     self.validator = validation.Validator()
 
@@ -33,13 +33,14 @@ class Row_chng(Row_chngTemplate):
     self.time_copy = self.time_box.text
 
   def time_box_pressed_enter(self, **event_args):
-    m = ""
-    r, m = self.validator.validate_time(self.time_box.text)
-    if not r:
-      # window.confirm(m)
-      self.err_msg("time", m)
-    else:
-      Globals.edited_time = self.time_box.text
+    if time_copy != self.time_box.text:        
+      m = ""
+      r, m = self.validator.validate_time(self.time_box.text)
+      if not r:
+        # window.confirm(m)    # test JS call
+        self.err_msg("time", m)
+      else:
+        Globals.edited_time = self.time_box.text
 
   def pcs_box_lost_focus(self, **event_args):
     self.pcs_box_pressed_enter()
@@ -48,12 +49,13 @@ class Row_chng(Row_chngTemplate):
     self.pcs_copy = self.pcs_box.text
 
   def pcs_box_pressed_enter(self, **event_args):
-    r, m = self.validator.validate_pcs(self.pcs_box.text)
-    if not r:
-      # window.confirm(m)
-      self.err_msg("pcs", m)
-    else:
-      Globals.edited_pcs = self.pcs_box.text
+    if ocs_copy != self.pcs_box.text:
+      r, m = self.validator.validate_pcs(self.pcs_box.text)
+      if not r:
+        # window.confirm(m)
+        self.err_msg("pcs", m)
+      else:
+        Globals.edited_pcs = self.pcs_box.text
 
   def err_msg(self, box: str, msg):
     self.time_box.scroll_into_view(smooth=True)
@@ -73,11 +75,22 @@ class Row_chng(Row_chngTemplate):
     self.msg_box.text = ""
 
   def notes_lost_focus(self, **event_args):
-    Globals.edited_notes = self.notes.text
+    if self.notes.text:
+      Globals.edited_notes = self.notes.text
 
   def save_b_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    r = Globals.update_intake()
+    if not r:
+      return()
+    if r == -1:
+      self.msg_box.text = "Няма променени полета"
+      self.msg_box.foreground = "red"      
+    elif r < 0:
+      self.msg_box.text = f"Код  {r}"
+      self.msg_box.foreground = "red"
+    time.sleep(3.5)
+    self.msg_box.text = ''f"Код  {r}"''
+    self.msg_box.foreground = "black"
 
   def clear_b_click(self, **event_args):
     """This method is called when the button is clicked"""
