@@ -18,7 +18,7 @@ status = []
 daily_intakes = []
 daily_intakes_cpy = []
 # daily_intakes FORMAT
-# rd_int_id, rd_time, rd_name, rd_weight, rd_pcs
+# int_id, rd_time, rd_name, rd_weight, rd_pcs
 
 cur_date = None     # YYYY/MM/DD HH:MM
 mode = "create"     # create or edit
@@ -116,19 +116,19 @@ def find_row_in_day(s_key, value):
 
 def update_intake(int_id):
   if edited_time and edited_pcs and edited_notes:
-    r = anvil.server.call(int_id, time=edited_time, pcs=edited_pcs, notes=edited_notes)
+    r = anvil.server.call("update_intake", int_id, time=edited_time, pcs=edited_pcs, notes=edited_notes)
   elif edited_time and edited_pcs:
-    r = anvil.server.call(int_id, time=edited_time, pcs=edited_pcs)
+    r = anvil.server.call("update_intake", iint_id, time=edited_time, pcs=edited_pcs)
   elif edited_time and edited_notes:
-    r = anvil.server.call(int_id, time=edited_time, notes=edited_notes)
+    r = anvil.server.call("update_intake", iint_id, time=edited_time, notes=edited_notes)
   elif edited_pcs and edited_notes:
-    r = anvil.server.call(int_id, pcs=edited_pcs, notes=edited_notes)
+    r = anvil.server.call("update_intake", iint_id, pcs=edited_pcs, notes=edited_notes)
   elif edited_time:
-    r = anvil.server.call(int_id, time=edited_time)
+    r = anvil.server.call("update_intake", iint_id, time=edited_time)
   elif edited_pcs:
-    r = anvil.server.call(int_id, pcs=edited_pcs)
+    r = anvil.server.call("update_intake", iint_id, pcs=edited_pcs)
   elif edited_notes:
-    r = anvil.server.call(int_id, pcs=edited_notes)
+    r = anvil.server.call("update_intake", iint_id, pcs=edited_notes)
   else:
     # None edited
     r = -1

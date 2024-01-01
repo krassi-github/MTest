@@ -8,7 +8,7 @@ from ... import Globals
 from ... import validation
 
 # daily_intakes FORMAT
-# rd_int_id, rd_time, rd_name, rd_weight, rd_pcs
+# int_id, rd_time, rd_name, rd_weight, rd_pcs
 
 class Row_chng(Row_chngTemplate):
   def __init__(self, int_id):
@@ -18,6 +18,7 @@ class Row_chng(Row_chngTemplate):
     self.time_box.text = self.row["rd_time"]
     self.time_copy = self.time_box.text
     self.medicine.text = self.row["rd_name"]
+    self.pcs_box.text = self.row["rd_pcs"]
     self.pcs_copy = self.pcs_box.text
     Globals.edited_time = None
     Globals.edited_pcs = None
@@ -49,7 +50,7 @@ class Row_chng(Row_chngTemplate):
     self.pcs_copy = self.pcs_box.text
 
   def pcs_box_pressed_enter(self, **event_args):
-    if ocs_copy != self.pcs_box.text:
+    if pcs_copy != self.pcs_box.text:
       r, m = self.validator.validate_pcs(self.pcs_box.text)
       if not r:
         # window.confirm(m)
@@ -79,7 +80,7 @@ class Row_chng(Row_chngTemplate):
       Globals.edited_notes = self.notes.text
 
   def save_b_click(self, **event_args):
-    r = Globals.update_intake()
+    r = Globals.update_intake(self.row["int_id"])
     if not r:
       return()
     if r == -1:
