@@ -15,7 +15,9 @@ class Row_chng(Row_chngTemplate):
     # Set Form properties and Data Bindings.
     self.init_components()    # **properties
     self.row = Globals.find_row_in_day("int_id", int_id)
-    self.save_b.width = self.clear_b.width = "95%"
+    #self.save_b.width = self.clear_b.width = "95%"
+    self.delete_b.background = "red"
+    self.delete_b.foreground = "white"
     self.time_box.text = self.row["rd_time"]
     self.time_copy = self.time_box.text
     self.medicine.text = self.row["rd_name"]
