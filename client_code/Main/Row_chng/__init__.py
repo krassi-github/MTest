@@ -23,6 +23,7 @@ class Row_chng(Row_chngTemplate):
     self.medicine.text = self.row["rd_name"]
     self.pcs_box.text = self.row["rd_pcs"]
     self.pcs_copy = self.pcs_box.text
+    self.notes_box.text = self.row["rd_note"]
     Globals.edited_time = None
     Globals.edited_pcs = None
     Globals.edited_notes = None
@@ -78,9 +79,9 @@ class Row_chng(Row_chngTemplate):
       self.pcs_box.text = self.pcs_copy
     self.msg_box.text = ""
 
-  def notes_lost_focus(self, **event_args):
-    if self.notes.text:
-      Globals.edited_notes = self.notes.text
+  def notes_box_lost_focus(self, **event_args):
+    if self.notes_box.text:
+      Globals.edited_notes = self.notes_box.text
 
   def save_b_click(self, **event_args):
     r = alert(content="Потвърдете промяна на данни! \nПроцесът е НЕОБРАТИМ!",

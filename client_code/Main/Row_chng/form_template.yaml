@@ -33,10 +33,10 @@ components:
     properties: {text: 'Бележки:', role: input-prompt, italic: true}
     type: Label
     layout_properties: {}
-  - name: notes
+  - name: notes_box
     properties: {}
     type: TextArea
-    event_bindings: {lost_focus: notes_lost_focus}
+    event_bindings: {lost_focus: notes_box_lost_focus}
 - name: flow_panel_2
   properties: {align: center}
   type: FlowPanel
