@@ -45,7 +45,7 @@ class Row_chng(Row_chngTemplate):
         # window.confirm(m)    # test JS call
         self.err_msg("time", m)
       else:
-        Globals.edited_time = self.row["rd_time"][:10] + ' ' + self.time_box.text
+        Globals.edited_time = Globals.cur_date[:10] + ' ' + self.time_box.text
 
   def pcs_box_lost_focus(self, **event_args):
     self.pcs_box_pressed_enter()
