@@ -28,7 +28,8 @@ intake_code = ""
 intake_pcs = 0.0
 intake_type = ""
 intake_notes = ""
-edited_time = None      # during editing in Main.Row_chng
+# changes during editing in Main.Row_chng
+edited_time = None      # YYYY/MM/DD HH:MM
 edited_pcs = None
 edited_notes = None
 
@@ -110,11 +111,16 @@ def sorting():
   daily_intakes = sorted(daily_intakes, key=lambda x: x['rd_name'], reverse=n)
   return()
 
+
 def find_row_in_day(s_key, value):
+  global daily_intakes
   result = [d for d in daily_intakes if d.get(s_key) == value]
   return(result[0])
 
+
 def update_intake(int_id):
+  global edited_time, edited_pcs, edited_notes
+  
   if edited_time and edited_pcs and edited_notes:
     r = anvil.server.call("update_intake", int_id, time=edited_time, pcs=edited_pcs, note=edited_notes)
   elif edited_time and edited_pcs:
@@ -132,7 +138,11 @@ def update_intake(int_id):
   else:
     # None edited
     r = -1
+  edited_time = None      # during editing in Main.Row_chng
+  edited_pcs = None
+  edited_notes = None
   return(r)
+
 
 def delete_intake(int_id):
   return(anvil.server.call("delete_intake", int_id))
