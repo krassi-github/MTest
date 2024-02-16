@@ -13,12 +13,28 @@ components:
 - name: data_grid_1
   properties:
     columns:
-    - {id: JKSDUP, title: Лекарство, data_key: m_name, width: ''}
-    - {id: VJQQOR, title: Количество, data_key: column_2}
-    - {id: OJLQEN, title: Column 3, data_key: column_3}
+    - {id: JKSDUP, title: Лекарство, data_key: '', width: ''}
+    - {id: VJQQOR, title: Количество, data_key: ''}
+    - {id: OJLQEN, title: Column 3, data_key: ''}
     show_page_controls: false
   type: DataGrid
   components:
+  - name: data_row_panel_1
+    properties: {}
+    type: DataRowPanel
+    components:
+    - name: medicine_lbl
+      properties: {}
+      type: Label
+      layout_properties: {column: JKSDUP}
+    - name: pcs_box
+      properties: {}
+      type: TextBox
+      layout_properties: {column: VJQQOR}
+    - name: erase_btn
+      properties: {text: '', icon: 'fa:trash', align: left, tooltip: Изтрива реда}
+      type: Button
+      layout_properties: {column: OJLQEN}
   - name: repeating_panel_1
     properties: {item_template: Main.Take_group.RowTemplate2}
     type: RepeatingPanel
