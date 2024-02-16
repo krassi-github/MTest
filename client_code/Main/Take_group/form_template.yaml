@@ -1,0 +1,26 @@
+container: {type: ColumnPanel}
+components:
+- name: msg_box
+  properties: {align: center}
+  type: Label
+  layout_properties: {grid_position: 'WTUIUZ,JHPKUY'}
+- name: time_box
+  properties: {align: center}
+  type: TextBox
+  layout_properties: {grid_position: 'LOSQRJ,XEJKFA'}
+  event_bindings: {lost_focus: time_box_lost_focus, pressed_enter: time_box_pressed_enter,
+    focus: time_box_focus}
+- name: data_grid_1
+  properties:
+    columns:
+    - {id: JKSDUP, title: Лекарство, data_key: m_name, width: ''}
+    - {id: VJQQOR, title: Column 2, data_key: column_2}
+    - {id: OJLQEN, title: Column 3, data_key: column_3}
+    show_page_controls: false
+  type: DataGrid
+  components:
+  - name: repeating_panel_1
+    properties: {item_template: Main.Take_group.RowTemplate2}
+    type: RepeatingPanel
+  layout_properties: {grid_position: 'WWZIFY,DLZZOZ'}
+is_package: true
