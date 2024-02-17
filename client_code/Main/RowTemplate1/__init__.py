@@ -45,9 +45,10 @@ class RowTemplate1(RowTemplate1Template):
 
 
   def link_1_click(self, **event_args):
-    if self.link_1.tag.startswith("gr_"):
-      # a group_name is selected => call (gr_name, gr_type)
-      r = Globals.load_group(self.link_1.tag, self.link_2.tag)
+    if type(self.link_1.tag) is str:
+      if self.link_1.tag.startswith("gr_"):
+        # a group_name is selected => call (gr_name, gr_type)
+        r = Globals.load_group(self.link_1.tag, self.link_2.tag)
 
 
   def link_2_click(self, **event_args):
