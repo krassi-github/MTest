@@ -154,7 +154,7 @@ def delete_intake(int_id):
 
 
 def load_group(gr_code, gr_type):
-
+  print(f"{gr_code}  ---  {gr_type}")
   r = anvil.server.call("load_group", gr_code, gr_type)
   print(r)
   
