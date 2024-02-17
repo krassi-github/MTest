@@ -2,8 +2,8 @@ from ._anvil_designer import TakeTemplate
 import time
 from anvil import *
 import anvil.server
-import anvil.js
-from anvil.js import window
+#import anvil.js
+#from anvil.js import window
 from ... import Globals
 from ... import validation
 

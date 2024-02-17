@@ -2,8 +2,8 @@ from ._anvil_designer import Take_groupTemplate
 import time
 from anvil import *
 import anvil.server
-import anvil.js
-from anvil.js import window
+#import anvil.js
+#from anvil.js import window
 from ... import Globals
 from ... import validation
 
@@ -16,6 +16,7 @@ class Take_group(Take_groupTemplate):
     self.time_box.text = anvil.server.call("get_time")[11:]
     Globals.intake_time = self.time_box.text
     self.time_copy = self.time_box.text
+    
     self.medicine.text = Globals.get_med_name(med_code)
     self.pcs_box.text, self.type.text = Globals.get_pcs_type(med_code, time)
     Globals.intake_pcs = self.pcs_box.text

@@ -7,15 +7,22 @@ from .. Take import Take
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
-         "e_ex": False, "on_need": r[on_need], "o_ex": False}'''
+         "e_ex": False, "on_need": r[on_need], "o_ex": False}
+for Groups:
+        s = {"p_id": g[gr_code], "name": g[gr_name], "code": g[gr_type], "morning": None,
+         "m_ex": False, "noon": None, "n_ex": False, "evening": None,
+         "e_ex": False, "on_need": None, "o_ex": False}
+         '''
 
 class RowTemplate1(RowTemplate1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # code of the medicine
-    self.link_2.tag=self.link_3.tag=self.link_4.tag=self.link_5.tag = self.item["code"]    
-    # Labels data bunding
+    self.link_1.tag = self.item["p_id"]
+    self.link_2.tag=self.link_3.tag=self.link_4.tag=self.link_5.tag = self.item["code"]
+    
+    # Labels data binding
     self.name.text = self.item["name"]
     self.m.text = self.item["morning"]
     if self.item["m_ex"]:
@@ -38,8 +45,10 @@ class RowTemplate1(RowTemplate1Template):
 
 
   def link_1_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    pass
+    if self.link_1.tag.startswith("gr_"):
+      # a group_name is selected
+      r = Globals.get_group(self.link_1.tag)
+
 
   def link_2_click(self, **event_args):
     self.take('m', self.link_2.tag)
