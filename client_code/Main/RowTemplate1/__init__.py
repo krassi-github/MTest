@@ -12,7 +12,7 @@ for Groups:
         s = {"p_id": g[gr_code], "name": g[gr_name], "code": g[gr_type], "morning": None,
          "m_ex": False, "noon": None, "n_ex": False, "evening": None,
          "e_ex": False, "on_need": None, "o_ex": False}
-         '''
+'''
 
 class RowTemplate1(RowTemplate1Template):
   def __init__(self, **properties):
