@@ -20,6 +20,8 @@ class Take_group(Take_groupTemplate):
       self.err_msg("msg", f" Code= {r}")
     else:
       self.repeating_panel_1.items = ret
+      self.medicine_lbl.text = "will come"
+      self.pcs_box.text = "is coming"
 
     #  tp validate form's components
     self.validator = validation.Validator()

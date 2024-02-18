@@ -7,8 +7,7 @@ class RowTemplate2(RowTemplate2Template):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    self.medicine_lbl.text = "will come"
-    self.pcb_box.text = "is coming"
+
     
 
 
