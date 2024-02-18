@@ -8,19 +8,15 @@ from ... import Globals
 from ... import validation
 
 class Take_group(Take_groupTemplate):
-  def __init__(self, time, med_code):
+  def __init__(self, gr_name, gr_type):
     # Set Form properties and Data Bindings.
     self.init_components()    # **properties
-    #if Globals.mode == "edit":
-      #daily_intakes = anvil.server.call("get_intakes", Globals.cur_date, med_code, time, )
+
     self.time_box.text = anvil.server.call("get_time")[11:]
     Globals.intake_time = self.time_box.text
     self.time_copy = self.time_box.text
-    
-    self.medicine.text = Globals.get_med_name(med_code)
-    self.pcs_box.text, self.type.text = Globals.get_pcs_type(med_code, time)
-    Globals.intake_pcs = self.pcs_box.text
-    self.pcs_copy = self.pcs_box.text
+    r = Globals.load_group(self.link_1.tag, self.link_2.tag)
+
     #  tp validate form's components
     self.validator = validation.Validator()
 

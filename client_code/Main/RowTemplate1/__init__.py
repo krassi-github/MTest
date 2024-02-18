@@ -48,8 +48,10 @@ class RowTemplate1(RowTemplate1Template):
     if type(self.link_1.tag) is str:
       if self.link_1.tag.startswith("gr"):
         # a group_name is selected => call (gr_name, gr_type)
-        r = Globals.load_group(self.link_1.tag, self.link_2.tag)
-
+        r = alert(Take_group(self.link_1.tag, self.link_2.tag), 
+          title="Въведи Група!", 
+          buttons=[("ЗАПИС", True), ("Отказ", False)],)
+        
 
   def link_2_click(self, **event_args):
     self.take('m', self.link_2.tag)
