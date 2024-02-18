@@ -61,7 +61,7 @@ class Take(TakeTemplate):
       self.pcs_box.background = 'pink'
     self.msg_box.text = msg
     self.msg_box.foreground = "red"
-    time.sleep(3.5) #Ensures that the warning text persists for ~1.5 seconds 
+    time.sleep(3.5) #Ensures that the warning text persists for 3.5 seconds 
     if box == "time":
       self.time_box.background = None
       self.time_box.text = self.time_copy

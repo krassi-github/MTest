@@ -15,13 +15,11 @@ class Take_group(Take_groupTemplate):
     self.time_box.text = anvil.server.call("get_time")[11:]
     Globals.intake_time = self.time_box.text
     self.time_copy = self.time_box.text
-    r, ret = Globals.load_group(gr_name, gr_type)
+    r = Globals.load_group(gr_name, gr_type)
     if r < 0:
       self.err_msg("msg", f" Code= {r}")
     else:
-      self.repeating_panel_1.items = ret
-      self.medicine_lbl.text = "will come"
-      self.pcs_box.text = "is coming"
+      self.repeating_panel_1.items = Globals.med_group
 
     #  tp validate form's components
     self.validator = validation.Validator()

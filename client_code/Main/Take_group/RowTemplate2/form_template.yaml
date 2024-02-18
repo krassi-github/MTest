@@ -1,3 +1,21 @@
 is_package: true
 container: {type: DataRowPanel}
-components: []
+components:
+- name: data_row_panel_1
+  properties: {}
+  type: DataRowPanel
+  layout_properties: {}
+  components: []
+- name: pcs_box
+  properties: {}
+  type: TextBox
+  layout_properties: {column: VJQQOR}
+- name: medicine_lbl
+  properties: {}
+  type: Label
+  layout_properties: {column: JKSDUP}
+- name: erase_btn
+  properties: {text: '', icon: 'fa:trash', align: left, tooltip: Изтрива лекарството}
+  type: Button
+  layout_properties: {column: OJLQEN}
+  event_bindings: {click: erase_btn_click}

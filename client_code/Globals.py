@@ -37,6 +37,10 @@ intake_notes = ""
 edited_time = None      # YYYY/MM/DD HH:MM
 edited_pcs = None
 edited_notes = None
+# loaded group of medicine FORMAT [[name, pcs], ...... ]
+med_group = []
+
+# FUNCS
 
 def load_data(date):
   global status  
@@ -154,8 +158,10 @@ def delete_intake(int_id):
 
 
 def load_group(gr_code, gr_type):
-  return(anvil.server.call("load_group", gr_code, gr_type))
-  # print(r)
+  global med_group
+  
+  r, med_group = anvil.server.call("load_group", gr_code, gr_type)
+  return(r)
   
 
   
