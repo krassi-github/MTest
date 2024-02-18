@@ -29,7 +29,7 @@ cur_date = None     # YYYY/MM/DD HH:MM
 mode = "create"     # create or edit
 
 intake_time = ""
-intake_code = "" 
+intake_code = ""    # code of the medicine
 intake_pcs = 0.0
 intake_type = ""
 intake_notes = ""
@@ -88,6 +88,7 @@ def get_pcs_type(med_code, time):
   return(r, t)
       
 
+# def put_intake(time, m_code, type, pcs, note)
 def put_intake():
   global intake_time, intake_pcs, intake_type, intake_notes, status
   
