@@ -15,7 +15,7 @@ components:
     columns:
     - {id: JKSDUP, title: Лекарство, data_key: '', width: ''}
     - {id: VJQQOR, title: Количество, data_key: ''}
-    - {id: OJLQEN, title: Column 3, data_key: ''}
+    - {id: OJLQEN, title: '', data_key: ''}
     show_page_controls: false
   type: DataGrid
   components:

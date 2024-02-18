@@ -3,6 +3,7 @@ from anvil import *
 import anvil.server
 from ... import Globals
 from .. Take import Take
+from .. Take_group import Take_group
 
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
