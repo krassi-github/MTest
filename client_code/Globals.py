@@ -37,7 +37,7 @@ intake_notes = ""
 edited_time = None      # YYYY/MM/DD HH:MM
 edited_pcs = None
 edited_notes = None
-# loaded group of medicine FORMAT [[name, pcs], ...... ]
+# loaded group of medicine FORMAT [[name, pcs, code], ...... ]
 med_group = []
 
 # FUNCS
