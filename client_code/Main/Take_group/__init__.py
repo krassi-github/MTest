@@ -39,7 +39,6 @@ class Take_group(Take_groupTemplate):
     m = ""
     r, m = self.validator.validate_time(self.time_box.text)
     if not r:
-      # window.confirm(m)
       self.err_msg("time", m)
     else:
       Globals.intake_time = self.time_box.text

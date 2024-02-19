@@ -39,8 +39,9 @@ edited_pcs = None
 edited_notes = None
 # loaded group of medicine FORMAT [[name, pcs, code], ...... ]
 med_group = []
+group_type = ""   # morning, noon, evening, on_need
 
-# FUNCS
+# FUNCS ********************************************************************************
 
 def load_data(date):
   global status  
@@ -90,11 +91,10 @@ def get_pcs_type(med_code, time):
 
 # def put_intake(time, m_code, type, pcs, note)
 def put_intake():
-  global intake_time, intake_pcs, intake_type, intake_notes, status
+  global intake_time, intake_pcs, intake_type, intake_notes, status, cur_date
   
-  date = cur_date
   # parameters list: time, m_code, type, pcs, notes 
-  r = anvil.server.call("put_intake", date[:10]+' '+intake_time, intake_code, \
+  r = anvil.server.call("put_intake", cur_date[:10]+' '+intake_time, intake_code, \
                         intake_type, intake_pcs, intake_notes)
   return(r)
 
@@ -159,12 +159,12 @@ def delete_intake(int_id):
 
 
 def load_group(gr_code, gr_type):
-  global med_group
+  global med_group, group_type
   
   r, med_group = anvil.server.call("load_group", gr_code, gr_type)
+  group_type = gr_type
   return(r)
   
-
 # Erase a row of the local group's data
 def erase_group_row(m_name):
   global med_group
@@ -172,6 +172,26 @@ def erase_group_row(m_name):
   m_g = med_group
   med_group[:] = [m for m in m_g if m[0] != m_name]
   
+# Change pcs in a row of the local group's data
+def change_pcs(name: str, pcs: str):
+  global med_group
+
+  for m in med_group:
+    if m[0] == name:
+      m[1] = float(pcs)
+
+
+def put_group():
+  global med_group, group_type
+
+  # intake_time = SET in Take_group already
+  intake_type = group_type[:3]
+  intake_notes = ""
+  for mg in med_group:
+    intake_code = mg[2]
+    intake_pcs = mg[1]
+    put_intake()
+    
 
 # ====================================================================================
 # for real testing only 
