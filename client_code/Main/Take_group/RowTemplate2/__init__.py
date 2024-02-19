@@ -1,6 +1,9 @@
 from ._anvil_designer import RowTemplate2Template
 from anvil import *
 import anvil.server
+from ... import Globals
+
+# # loaded group of medicine FORMAT [[name, pcs, code], ...... ]
 
 class RowTemplate2(RowTemplate2Template):
   def __init__(self, **properties):
@@ -13,7 +16,9 @@ class RowTemplate2(RowTemplate2Template):
     print(event_args)
     r = alert(f"Сигурни ли сте за ИЗТРИВАНЕ на {self.item[0]} ?", buttons=[("Да", True), ("НЕ", False)])
     if r:
-      pass
+      r = alert(f"Сигурни ли сте за ИЗТРИВАНЕ на {self.item[0]} !\n Процесът е необратим", buttons=[("Да", True), ("НЕ", False)])
+      if r:
+        Globals.erase_group_row(self.item[1], self.item[2])
       
 
 

@@ -165,6 +165,9 @@ def load_group(gr_code, gr_type):
   return(r)
   
 
+# Erase a row of the local group's data
+def erase_group_row(m_name, m_code):
+  global med_group
   
 
 # ====================================================================================
