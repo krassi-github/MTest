@@ -17,8 +17,8 @@ class RowTemplate2(RowTemplate2Template):
     if r:
       r = alert(f"Потвърдете ИЗТРИВАНЕ на {self.item[0]} !\n Процесът е необратим !", buttons=[("Да", True), ("НЕ", False)])
       if r:
-        Globals.erase_group_row(self.item[1])
-        self.parent.parent.parent()
+        Globals.erase_group_row(self.item[0])
+        self.parent.parent.parent.show_group()
       
 
 

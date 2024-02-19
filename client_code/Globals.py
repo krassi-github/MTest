@@ -168,8 +168,9 @@ def load_group(gr_code, gr_type):
 # Erase a row of the local group's data
 def erase_group_row(m_name):
   global med_group
-
-  med_group[:] = [medicine for m in med_group if m[1] != m_name]
+  
+  m_g = med_group
+  med_group[:] = [m for m in m_g if m[0] != m_name]
   
 
 # ====================================================================================
