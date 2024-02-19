@@ -27,7 +27,7 @@ daily_intakes_cpy = []
 
 cur_date = None     # YYYY/MM/DD HH:MM
 mode = "create"     # create or edit
-
+# intake parameters
 intake_time = ""
 intake_code = ""    # code of the medicine
 intake_pcs = 0.0
@@ -92,7 +92,7 @@ def get_pcs_type(med_code, time):
 # def put_intake(time, m_code, type, pcs, note)
 def put_intake():
   global intake_time, intake_pcs, intake_type, intake_notes, status, cur_date
-  
+
   # parameters list: time, m_code, type, pcs, notes 
   r = anvil.server.call("put_intake", cur_date[:10]+' '+intake_time, intake_code, \
                         intake_type, intake_pcs, intake_notes)
@@ -182,15 +182,15 @@ def change_pcs(name: str, pcs: str):
 
 
 def put_group():
-  global med_group, group_type
+  global med_group, group_type,intake_time, intake_code, \
+        intake_type, intake_pcs, intake_notes
 
   # intake_time = SET in Take_group already
-  intake_type = group_type[:3]
-  intake_notes = ""
+  intake_type = group_type
+  intake_notes = "group"
   for mg in med_group:
     intake_code = mg[2]
     intake_pcs = mg[1]
-    print(intake_code)
     r = put_intake()
     if r < 0:
       return(r)

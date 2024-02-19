@@ -62,6 +62,7 @@ class RowTemplate1(RowTemplate1Template):
           alert(f"Неуспешен запис  {r}", title="Съобщение")
         else:
           alert(f"Успешен запис ", title="Съобщение")
+          self.parent.parent.parent.parent.refresh_data(Globals.cur_date)    # to reach Main
         
 
   def link_2_click(self, **event_args):
