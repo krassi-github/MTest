@@ -19,12 +19,16 @@ class Take_group(Take_groupTemplate):
     if r < 0:
       self.err_msg("msg", f" Code= {r}")
     else:
-      self.repeating_panel_1.items = Globals.med_group
+      self.show_group()
 
     #  tp validate form's components
     self.validator = validation.Validator()
 
+  
+  def show_group(self):
+    self.repeating_panel_1.items = Globals.med_group
 
+  
   def time_box_lost_focus(self, **event_args):
     self.time_box_pressed_enter()
 

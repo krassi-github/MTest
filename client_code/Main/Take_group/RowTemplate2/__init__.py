@@ -13,12 +13,12 @@ class RowTemplate2(RowTemplate2Template):
     self.pcs_box.text = self.item[1]
 
   def erase_btn_click(self, **event_args):
-    print(event_args)
     r = alert(f"Сигурни ли сте за ИЗТРИВАНЕ на {self.item[0]} ?", buttons=[("Да", True), ("НЕ", False)])
     if r:
-      r = alert(f"Сигурни ли сте за ИЗТРИВАНЕ на {self.item[0]} !\n Процесът е необратим", buttons=[("Да", True), ("НЕ", False)])
+      r = alert(f"Потвърдете ИЗТРИВАНЕ на {self.item[0]} !\n Процесът е необратим !", buttons=[("Да", True), ("НЕ", False)])
       if r:
-        Globals.erase_group_row(self.item[1], self.item[2])
+        Globals.erase_group_row(self.item[1])
+        self.parent.parent.parent()
       
 
 
