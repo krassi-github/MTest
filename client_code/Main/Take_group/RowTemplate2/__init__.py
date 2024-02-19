@@ -2,6 +2,7 @@ from ._anvil_designer import RowTemplate2Template
 from anvil import *
 import anvil.server
 from ... import Globals
+from .... import validation
 
 # loaded group of medicine FORMAT: [[name, pcs, code], ...... ]
 
@@ -12,6 +13,7 @@ class RowTemplate2(RowTemplate2Template):
     self.medicine_lbl.text = self.item[0]
     self.pcs_box.text = self.item[1]
     self.pcs_copy = self.item[1]
+    self.validator = validation.Validator()
 
   def erase_btn_click(self, **event_args):
     r = alert(f"Сигурни ли сте за ИЗТРИВАНЕ на {self.item[0]} ?", buttons=[("Да", True), ("НЕ", False)])
@@ -19,19 +21,22 @@ class RowTemplate2(RowTemplate2Template):
       r = alert(f"Потвърдете ИЗТРИВАНЕ на {self.item[0]} !\n Процесът е необратим !", buttons=[("Да", True), ("НЕ", False)])
       if r:
         Globals.erase_group_row(self.item[0])
-        self.parent.parent.parent.show_group()
+        self.parent.parent.parent.show_group()    # to reach Take_group
 
   def pcs_box_focus(self, **event_args):
     self.pcs_copy = self.pcs_box.text
 
   def pcs_box_lost_focus(self, **event_args):
-    pcs_box_pressed_enter()
+    self.pcs_box_pressed_enter()
 
   def pcs_box_pressed_enter(self, **event_args):
     if self.pcs_copy != self.pcs_box.text:
       r, m = self.validator.validate_pcs(self.pcs_box.text)
       if not r:
-        self.parent.parent.err_msg("pcs", m)
+        self.pcs_box.background = 'pink'
+        self.parent.parent.parent.err_msg("pcs", m)    # to reach Take_group
+        self.pcs_box.background = None
+        self.pcs_box.text = self.pcs_copy
       else:
         Globals.change_pcs(self.item[0], self.pcs_box.text)
 

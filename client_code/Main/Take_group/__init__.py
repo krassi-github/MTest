@@ -43,26 +43,14 @@ class Take_group(Take_groupTemplate):
     else:
       Globals.intake_time = self.time_box.text
 
-  def pcs_box_lost_focus(self, **event_args):
-    self.pcs_box_pressed_enter()
-
-  def pcs_box_focus(self, **event_args):
-    self.pcs_copy = self.pcs_box.text
-
-  def pcs_box_pressed_enter(self, **event_args):
-    r, m = self.validator.validate_pcs(self.pcs_box.text)
-    if not r:
-      # window.confirm(m)
-      self.err_msg("pcs", m)
-    else:
-      Globals.intake_pcs = self.pcs_box.text
 
   def err_msg(self, box: str, msg):
     self.time_box.scroll_into_view(smooth=True)
     if box == "time":
       self.time_box.background = 'pink'
     elif box == "pcs":
-      self.pcs_box.background = 'pink'
+      #self.pcs_box.background = 'pink'
+      pass
     self.msg_box.text = msg
     self.msg_box.foreground = "red"
     time.sleep(3.5) #Ensures that the warning text persists for ~1.5 seconds
@@ -70,9 +58,7 @@ class Take_group(Take_groupTemplate):
       self.time_box.background = None
       self.time_box.text = self.time_copy
     elif box == "pcs":
-      self.pcs_box.background = None
-      self.pcs_box.text = self.pcs_copy
+      pass
+      #self.pcs_box.background = None
+      #self.pcs_box.text = self.pcs_copy
     self.msg_box.text = ""
-
-  def notes_lost_focus(self, **event_args):
-    Globals.intake_notes = self.notes.text

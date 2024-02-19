@@ -52,6 +52,16 @@ class RowTemplate1(RowTemplate1Template):
         r = alert(Take_group(self.link_1.tag, self.link_2.tag), 
           title="Въведи Група!", 
           buttons=[("ЗАПИС", True), ("Отказ", False)],)
+        if r:
+          r = alert(content="Потвърдете запис на данни! \nПроцесът е НЕОБРАТИМ!",
+          title="Потвърждение",
+          buttons=[("ЗАПИС", True), ("Отказ", False)],)
+      if r:
+        r = Globals.put_group()
+        if r < 0:
+          alert(f"Неуспешен запис  {r}", title="Съобщение")
+        else:
+          alert(f"Успешен запис ", title="Съобщение")
         
 
   def link_2_click(self, **event_args):

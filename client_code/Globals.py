@@ -190,7 +190,10 @@ def put_group():
   for mg in med_group:
     intake_code = mg[2]
     intake_pcs = mg[1]
-    put_intake()
+    r = put_intake()
+    if r < 0:
+      return(r)
+  return(0)
     
 
 # ====================================================================================
