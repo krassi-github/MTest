@@ -19,6 +19,18 @@ class RowTemplate2(RowTemplate2Template):
       if r:
         Globals.erase_group_row(self.item[0])
         self.parent.parent.parent.show_group()
+
+  def pcs_box_focus(self, **event_args):
+    """This method is called when the TextBox gets focus"""
+    pass
+
+  def pcs_box_lost_focus(self, **event_args):
+    """This method is called when the TextBox loses focus"""
+    pass
+
+  def pcs_box_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass
       
 
 

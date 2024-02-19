@@ -7,15 +7,16 @@ components:
   layout_properties: {}
   components: []
 - name: pcs_box
-  properties: {}
+  properties: {tooltip: Промяна на количество}
   type: TextBox
   layout_properties: {column: VJQQOR}
-- name: medicine_lbl
-  properties: {}
-  type: Label
-  layout_properties: {column: JKSDUP}
+  event_bindings: {focus: pcs_box_focus, lost_focus: pcs_box_lost_focus, pressed_enter: pcs_box_pressed_enter}
 - name: erase_btn
   properties: {text: '', icon: 'fa:trash', align: left, tooltip: Изтрива лекарството}
   type: Button
   layout_properties: {column: OJLQEN}
   event_bindings: {click: erase_btn_click}
+- name: medicine_lbl
+  properties: {}
+  type: Label
+  layout_properties: {column: JKSDUP}
