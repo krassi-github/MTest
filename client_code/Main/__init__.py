@@ -106,7 +106,6 @@ class Main(MainTemplate):
   def edit_click(self, **event_args):
     if Globals.mode == "create":
       self.edit.background = "red"
-      self.flag.text = '*'
       Globals.mode = "edit"
       self.content_panel.clear()
       self.new_panel = Change()
@@ -115,7 +114,6 @@ class Main(MainTemplate):
       #self.content_panel.raise_event("x-Date-Change")    #Не сработи i s self.edit
     else:
       self.edit.background = "white"
-      self.flag.text = ''
       Globals.mode = "create"
       self.content_panel.clear()
       open_form("Main")
