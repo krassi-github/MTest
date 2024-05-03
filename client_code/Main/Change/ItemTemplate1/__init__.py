@@ -32,6 +32,6 @@ class ItemTemplate1(ItemTemplate1Template):
     r = alert(Row_chng(self.dr_time.tag), 
           title="Редактирай прием!", 
           buttons=[("ИЗХОД", True), ("Отказ", False)],)
+    self.parent.parent.date_change()
     self.__init__()
-    self.link_1_click()
     
