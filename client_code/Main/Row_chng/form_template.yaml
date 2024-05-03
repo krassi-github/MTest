@@ -47,16 +47,6 @@ components:
     type: Button
     layout_properties: {}
     event_bindings: {click: save_b_click}
-  - name: clear_b
-    properties: {text: ИЗЧИСТИ, role: outlined-button}
-    type: Button
-    layout_properties: {}
-    event_bindings: {click: clear_b_click}
-  - name: new_b
-    properties: {text: НОВ ЗАПИС, role: tonal-button}
-    type: Button
-    layout_properties: {}
-    event_bindings: {click: new_b_click}
   - name: delete_b
     properties: {text: 'ИЗТРИЙ
 
