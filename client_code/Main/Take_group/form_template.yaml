@@ -8,8 +8,7 @@ components:
   properties: {align: center}
   type: TextBox
   layout_properties: {grid_position: 'LOSQRJ,XEJKFA'}
-  event_bindings: {lost_focus: time_box_lost_focus, pressed_enter: time_box_pressed_enter,
-    focus: time_box_focus}
+  event_bindings: {lost_focus: time_box_lost_focus, pressed_enter: time_box_pressed_enter, focus: time_box_focus}
 - name: data_grid_1
   properties:
     columns:

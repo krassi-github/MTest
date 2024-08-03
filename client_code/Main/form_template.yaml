@@ -45,8 +45,7 @@ components:
     type: Spacer
     layout_properties: {width: 11}
   - name: left_b
-    properties: {text: '', icon: 'fa:arrow-up', role: tonal-button, icon_align: top,
-      align: center}
+    properties: {text: '', icon: 'fa:arrow-up', role: tonal-button, icon_align: top, align: center}
     type: Button
     layout_properties: {}
     event_bindings: {click: left_b_click}
@@ -55,8 +54,7 @@ components:
     type: Label
     layout_properties: {}
   - name: right_b
-    properties: {text: '', icon: 'fa:arrow-down', role: tonal-button, icon_align: top,
-      align: left}
+    properties: {text: '', icon: 'fa:arrow-down', role: tonal-button, icon_align: top, align: left}
     type: Button
     layout_properties: {}
     event_bindings: {click: right_b_click}

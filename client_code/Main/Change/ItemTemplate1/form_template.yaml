@@ -1,8 +1,7 @@
 is_package: true
 container:
   type: ColumnPanel
-  properties: {wrap_on: never, col_widths: '{"MYJMHG":15,"DZAQHQ":10,"DZTDDV":30,"YFVSJB":5,"DQFFVC":50,"OJKPGO":10}',
-    role: 0height, spacing_above: none, spacing_below: none}
+  properties: {wrap_on: never, col_widths: '{"MYJMHG":15,"DZAQHQ":10,"DZTDDV":30,"YFVSJB":5,"DQFFVC":50,"OJKPGO":10}', role: 0height, spacing_above: none, spacing_below: none}
 components:
 - name: data_row_panel_1
   properties: {}
@@ -19,8 +18,7 @@ components:
   type: Label
   layout_properties: {grid_position: 'FHCQNU,DZTDDV ZJCLSZ,DQFFVC'}
 - name: link_1
-  properties: {wrap_on: never, role: selected, icon: 'fa:sort', spacing_above: none,
-    spacing_below: none, icon_align: left_edge}
+  properties: {wrap_on: never, role: selected, icon: 'fa:sort', spacing_above: none, spacing_below: none, icon_align: left_edge}
   type: Link
   layout_properties: {grid_position: 'FHCQNU,DZTDDV ZJCLSZ,OJKPGO'}
   event_bindings: {click: link_1_click}

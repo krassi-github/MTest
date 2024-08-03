@@ -125,6 +125,8 @@ def sorting():
 def find_row_in_day(s_key, value):
   global daily_intakes
   result = [d for d in daily_intakes if d.get(s_key) == value]
+  #print(f"int_id= {value}")      # 03-08-2024 debug
+  #print(f"result= {result}")
   return(result[0])
 
 
