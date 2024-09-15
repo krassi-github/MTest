@@ -1,22 +1,22 @@
-is_package: true
-container: {type: DataRowPanel}
 components:
-- name: data_row_panel_1
+- components: []
+  layout_properties: {}
+  name: data_row_panel_1
   properties: {}
   type: DataRowPanel
-  layout_properties: {}
-  components: []
-- name: pcs_box
+- event_bindings: {focus: pcs_box_focus, lost_focus: pcs_box_lost_focus, pressed_enter: pcs_box_pressed_enter}
+  layout_properties: {column: VJQQOR}
+  name: pcs_box
   properties: {tooltip: Промяна на количество}
   type: TextBox
-  layout_properties: {column: VJQQOR}
-  event_bindings: {focus: pcs_box_focus, lost_focus: pcs_box_lost_focus, pressed_enter: pcs_box_pressed_enter}
-- name: erase_btn
-  properties: {text: '', icon: 'fa:trash', align: left, tooltip: Изтрива лекарството}
-  type: Button
+- event_bindings: {click: erase_btn_click}
   layout_properties: {column: OJLQEN}
-  event_bindings: {click: erase_btn_click}
-- name: medicine_lbl
+  name: erase_btn
+  properties: {align: left, icon: 'fa:trash', text: '', tooltip: Изтрива лекарството}
+  type: Button
+- layout_properties: {column: JKSDUP}
+  name: medicine_lbl
   properties: {}
   type: Label
-  layout_properties: {column: JKSDUP}
+container: {type: DataRowPanel}
+is_package: true

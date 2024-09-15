@@ -1,33 +1,33 @@
-is_package: true
-container:
-  type: ColumnPanel
-  properties: {wrap_on: never, col_widths: '{"MYJMHG":15,"DZAQHQ":10,"DZTDDV":30,"YFVSJB":5,"DQFFVC":50,"OJKPGO":10}', role: 0height, spacing_above: none, spacing_below: none}
 components:
-- name: data_row_panel_1
-  properties: {}
-  type: DataRowPanel
-  layout_properties: {grid_position: 'FHCQNU,MYJMHG'}
-  components:
-  - name: dr_time
+- components:
+  - event_bindings: {focus: dr_time_focus}
+    layout_properties: {}
+    name: dr_time
     properties: {role: 0height}
     type: TextBox
-    layout_properties: {}
-    event_bindings: {focus: dr_time_focus}
-- name: dr_med
+  layout_properties: {grid_position: 'FHCQNU,MYJMHG'}
+  name: data_row_panel_1
+  properties: {}
+  type: DataRowPanel
+- layout_properties: {grid_position: 'FHCQNU,DZTDDV ZJCLSZ,DQFFVC'}
+  name: dr_med
   properties: {}
   type: Label
-  layout_properties: {grid_position: 'FHCQNU,DZTDDV ZJCLSZ,DQFFVC'}
-- name: link_1
-  properties: {wrap_on: never, role: selected, icon: 'fa:sort', spacing_above: none, spacing_below: none, icon_align: left_edge}
-  type: Link
+- event_bindings: {click: link_1_click}
   layout_properties: {grid_position: 'FHCQNU,DZTDDV ZJCLSZ,OJKPGO'}
-  event_bindings: {click: link_1_click}
-- name: dr_qty
+  name: link_1
+  properties: {icon: 'fa:sort', icon_align: left_edge, role: selected, spacing_above: none, spacing_below: none, wrap_on: never}
+  type: Link
+- layout_properties: {grid_position: 'FHCQNU,YFVSJB'}
+  name: dr_qty
   properties: {role: 0height}
   type: Label
-  layout_properties: {grid_position: 'FHCQNU,YFVSJB'}
-- name: dr_pcs
+- event_bindings: {focus: dr_pcs_focus}
+  layout_properties: {grid_position: 'FHCQNU,DZAQHQ'}
+  name: dr_pcs
   properties: {role: 0height}
   type: TextBox
-  layout_properties: {grid_position: 'FHCQNU,DZAQHQ'}
-  event_bindings: {focus: dr_pcs_focus}
+container:
+  properties: {col_widths: '{"MYJMHG":15,"DZAQHQ":10,"DZTDDV":30,"YFVSJB":5,"DQFFVC":50,"OJKPGO":10}', role: 0height, spacing_above: none, spacing_below: none, wrap_on: never}
+  type: ColumnPanel
+is_package: true

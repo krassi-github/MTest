@@ -1,57 +1,57 @@
-container: {type: ColumnPanel}
 components:
-- name: msg_box
+- layout_properties: {grid_position: 'WTUIUZ,JHPKUY'}
+  name: msg_box
   properties: {align: center}
   type: Label
-  layout_properties: {grid_position: 'WTUIUZ,JHPKUY'}
-- name: time_box
-  properties: {align: center}
-  type: TextBox
+- event_bindings: {focus: time_box_focus, lost_focus: time_box_lost_focus, pressed_enter: time_box_pressed_enter}
   layout_properties: {grid_position: 'LOSQRJ,XEJKFA'}
-  event_bindings: {lost_focus: time_box_lost_focus, pressed_enter: time_box_pressed_enter, focus: time_box_focus}
-- name: medicine
-  properties: {align: center}
-  type: Label
-  layout_properties: {grid_position: 'MYDOZY,YHQWTE'}
-- name: pcs_box
+  name: time_box
   properties: {align: center}
   type: TextBox
-  layout_properties: {grid_position: 'NTUBMV,LKFEPL'}
-  event_bindings: {pressed_enter: pcs_box_pressed_enter, lost_focus: pcs_box_lost_focus, focus: pcs_box_focus}
-- name: type
+- layout_properties: {grid_position: 'MYDOZY,YHQWTE'}
+  name: medicine
   properties: {align: center}
   type: Label
-  layout_properties: {grid_position: 'PNYOMD,XLSMIL'}
-- name: flow_panel_1
+- event_bindings: {focus: pcs_box_focus, lost_focus: pcs_box_lost_focus, pressed_enter: pcs_box_pressed_enter}
+  layout_properties: {grid_position: 'NTUBMV,LKFEPL'}
+  name: pcs_box
   properties: {align: center}
-  type: FlowPanel
-  layout_properties: {grid_position: 'IAVITJ,YNUNFE'}
-  components:
-  - name: lbl
-    properties: {text: 'Бележки:', role: input-prompt, italic: true}
+  type: TextBox
+- layout_properties: {grid_position: 'PNYOMD,XLSMIL'}
+  name: type
+  properties: {align: center}
+  type: Label
+- components:
+  - layout_properties: {}
+    name: lbl
+    properties: {italic: true, role: input-prompt, text: 'Бележки:'}
     type: Label
-    layout_properties: {}
-  - name: notes_box
+  - event_bindings: {lost_focus: notes_box_lost_focus}
+    name: notes_box
     properties: {}
     type: TextArea
-    event_bindings: {lost_focus: notes_box_lost_focus}
-- name: flow_panel_2
+  layout_properties: {grid_position: 'IAVITJ,YNUNFE'}
+  name: flow_panel_1
   properties: {align: center}
   type: FlowPanel
-  layout_properties: {grid_position: 'UGUNSN,WSHOQV'}
-  components:
-  - name: save_b
-    properties: {text: ЗАПАЗИ, role: tonal-button}
-    type: Button
+- components:
+  - event_bindings: {click: save_b_click}
     layout_properties: {}
-    event_bindings: {click: save_b_click}
-  - name: delete_b
+    name: save_b
+    properties: {role: tonal-button, text: ЗАПАЗИ}
+    type: Button
+  - event_bindings: {click: delete_b_click}
+    layout_properties: {}
+    name: delete_b
     properties:
+      background: ''
+      role: outlined-button
       text: |
         ИЗТРИЙ
-      role: outlined-button
-      background: ''
     type: Button
-    layout_properties: {}
-    event_bindings: {click: delete_b_click}
+  layout_properties: {grid_position: 'UGUNSN,WSHOQV'}
+  name: flow_panel_2
+  properties: {align: center}
+  type: FlowPanel
+container: {type: ColumnPanel}
 is_package: true

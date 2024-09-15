@@ -1,77 +1,77 @@
-is_package: true
-container:
-  type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}', spacing_above: none, spacing_below: none}
-  name: content_panel
-  layout_properties: {slot: default}
-  components:
-  - name: data_grid_1
-    properties:
-      columns:
-      - {id: JKSDUP, title: Лекарство, data_key: name, width: '180', expand: false}
-      - {id: VJQQOR, title: Су, data_key: morning}
-      - {id: OJLQEN, title: Об, data_key: noon}
-      - {id: TMDUTV, data_key: evening, title: Ве}
-      - {id: OJKCOG, data_key: on_need, title: Ну}
-      rows_per_page: 15
-      show_page_controls: false
-      spacing_above: none
-      auto_header: true
-      spacing_below: none
-    type: DataGrid
-    components:
+- components:
+  - components:
     - name: repeating_panel_1
       properties: {item_template: Main.RowTemplate1, role: tonal-card}
       type: RepeatingPanel
     layout_properties: {grid_position: 'HJVISW,FIBJEX'}
-  - name: dgnst
+    name: data_grid_1
+    properties:
+      auto_header: true
+      columns:
+      - {data_key: name, expand: false, id: JKSDUP, title: Лекарство, width: '180'}
+      - {data_key: morning, id: VJQQOR, title: Су}
+      - {data_key: noon, id: OJLQEN, title: Об}
+      - {data_key: evening, id: TMDUTV, title: Ве}
+      - {data_key: on_need, id: OJKCOG, title: Ну}
+      rows_per_page: 15
+      show_page_controls: false
+      spacing_above: none
+      spacing_below: none
+    type: DataGrid
+  - layout_properties: {grid_position: 'XQENWZ,UEMJUX'}
+    name: dgnst
     properties: {}
     type: Label
-    layout_properties: {grid_position: 'XQENWZ,UEMJUX'}
-- type: FlowPanel
-  properties: {spacing_below: none}
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_widths: '{}', spacing_above: none, spacing_below: none}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
   name: navbar_links
-  layout_properties: {slot: nav-right}
-- name: flow_panel_1
-  properties: {spacing: none, vertical_align: top, align: left, spacing_below: none}
+  properties: {spacing_below: none}
   type: FlowPanel
-  layout_properties: {slot: title}
-  components:
-  - name: spacer_1
+- components:
+  - layout_properties: {width: 11}
+    name: spacer_1
     properties: {height: 32, spacing_below: none}
     type: Spacer
-    layout_properties: {width: 11}
-  - name: left_b
-    properties: {text: '', icon: 'fa:arrow-up', role: tonal-button, icon_align: top, align: center}
-    type: Button
+  - event_bindings: {click: left_b_click}
     layout_properties: {}
-    event_bindings: {click: left_b_click}
-  - name: date
+    name: left_b
+    properties: {align: center, icon: 'fa:arrow-up', icon_align: top, role: tonal-button, text: ''}
+    type: Button
+  - layout_properties: {}
+    name: date
     properties: {text: 2023/11/27}
     type: Label
+  - event_bindings: {click: right_b_click}
     layout_properties: {}
-  - name: right_b
-    properties: {text: '', icon: 'fa:arrow-down', role: tonal-button, icon_align: top, align: left}
+    name: right_b
+    properties: {align: left, icon: 'fa:arrow-down', icon_align: top, role: tonal-button, text: ''}
     type: Button
-    layout_properties: {}
-    event_bindings: {click: right_b_click}
-  - name: spacer_2
+  - layout_properties: {width: 85.86115800781249}
+    name: spacer_2
     properties: {height: 35.99998474121094}
     type: Spacer
-    layout_properties: {width: 85.86115800781249}
-  - name: edit
-    properties: {text: '', icon: 'fa:edit', role: outlined-button, icon_align: top}
-    type: Button
+  - event_bindings: {click: edit_click}
     layout_properties: {}
-    event_bindings: {click: edit_click}
-  - name: flag
+    name: edit
+    properties: {icon: 'fa:edit', icon_align: top, role: outlined-button, text: ''}
+    type: Button
+  - layout_properties: {}
+    name: flag
     properties: {icon_align: top}
     type: Label
-    layout_properties: {}
-- name: title
-  properties: {text: Intake, spacing_below: none}
+  layout_properties: {slot: title}
+  name: flow_panel_1
+  properties: {align: left, spacing: none, spacing_below: none, vertical_align: top}
+  type: FlowPanel
+- layout_properties: {slot: top-left-btn}
+  name: title
+  properties: {spacing_below: none, text: Intake}
   type: Label
-  layout_properties: {slot: top-left-btn}
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

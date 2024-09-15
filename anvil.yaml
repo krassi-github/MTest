@@ -1,14 +1,14 @@
-dependencies: []
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
-startup: {type: form, module: Main}
-package_name: MobiTest
 allow_embedding: false
+dependencies: []
+metadata: {description: Test Mobi App to be integrated to MH project later on, logo_img: 'asset:kag2.jpg', title: MobiTest}
 name: MobiTest
-runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox, server_spec: null}
-metadata: {logo_img: 'asset:kag2.jpg', description: Test Mobi App to be integrated to MH project later on, title: MobiTest}
+package_name: MobiTest
+renamed: true
+runtime_options: {client_version: '3', server_spec: null, server_version: python3-sandbox, version: 2}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+startup: {module: Main, type: form}
 startup_form: null
 uplink_visible: true
-renamed: true

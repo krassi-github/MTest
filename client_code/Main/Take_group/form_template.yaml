@@ -1,25 +1,25 @@
-container: {type: ColumnPanel}
 components:
-- name: msg_box
+- layout_properties: {grid_position: 'WTUIUZ,JHPKUY'}
+  name: msg_box
   properties: {align: center}
   type: Label
-  layout_properties: {grid_position: 'WTUIUZ,JHPKUY'}
-- name: time_box
+- event_bindings: {focus: time_box_focus, lost_focus: time_box_lost_focus, pressed_enter: time_box_pressed_enter}
+  layout_properties: {grid_position: 'LOSQRJ,XEJKFA'}
+  name: time_box
   properties: {align: center}
   type: TextBox
-  layout_properties: {grid_position: 'LOSQRJ,XEJKFA'}
-  event_bindings: {lost_focus: time_box_lost_focus, pressed_enter: time_box_pressed_enter, focus: time_box_focus}
-- name: data_grid_1
-  properties:
-    columns:
-    - {id: JKSDUP, title: Лекарство, data_key: '', width: ''}
-    - {id: VJQQOR, title: Количество, data_key: ''}
-    - {id: OJLQEN, title: '', data_key: ''}
-    show_page_controls: false
-  type: DataGrid
-  components:
+- components:
   - name: repeating_panel_1
     properties: {item_template: Main.Take_group.RowTemplate2}
     type: RepeatingPanel
   layout_properties: {grid_position: 'WWZIFY,DLZZOZ'}
+  name: data_grid_1
+  properties:
+    columns:
+    - {data_key: '', id: JKSDUP, title: Лекарство, width: ''}
+    - {data_key: '', id: VJQQOR, title: Количество}
+    - {data_key: '', id: OJLQEN, title: ''}
+    show_page_controls: false
+  type: DataGrid
+container: {type: ColumnPanel}
 is_package: true

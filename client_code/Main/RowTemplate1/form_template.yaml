@@ -1,59 +1,59 @@
-is_package: true
-container:
-  type: DataRowPanel
-  properties: {role: null}
 components:
-- name: link_1
-  properties: {role: 0height}
-  type: Link
-  layout_properties: {column: JKSDUP}
-  components:
-  - name: name
+- components:
+  - layout_properties: {grid_position: 'BSCNDA,ZZTGYQ'}
+    name: name
     properties:
+      role: [0height]
       spacing_above: none
       spacing_below: none
-      role: [0height]
     type: Label
-    layout_properties: {grid_position: 'BSCNDA,ZZTGYQ'}
   event_bindings: {click: link_1_click}
-- name: link_2
+  layout_properties: {column: JKSDUP}
+  name: link_1
   properties: {role: 0height}
   type: Link
-  layout_properties: {column: VJQQOR}
-  components:
-  - name: m
-    properties: {text: '', role: 0height}
+- components:
+  - layout_properties: {grid_position: 'DQAVTV,KXOCPA'}
+    name: m
+    properties: {role: 0height, text: ''}
     type: Label
-    layout_properties: {grid_position: 'DQAVTV,KXOCPA'}
   event_bindings: {click: link_2_click}
-- name: link_3
+  layout_properties: {column: VJQQOR}
+  name: link_2
   properties: {role: 0height}
   type: Link
-  layout_properties: {column: OJLQEN}
-  components:
-  - name: n
-    properties: {text: '', role: 0height}
+- components:
+  - layout_properties: {grid_position: 'GFOVAD,HSYYIN'}
+    name: n
+    properties: {role: 0height, text: ''}
     type: Label
-    layout_properties: {grid_position: 'GFOVAD,HSYYIN'}
   event_bindings: {click: link_3_click}
-- name: link_4
+  layout_properties: {column: OJLQEN}
+  name: link_3
+  properties: {role: 0height}
+  type: Link
+- components:
+  - layout_properties: {grid_position: 'UKHHXN,DYXPIF'}
+    name: e
+    properties: {role: 0height, text: ''}
+    type: Label
+  event_bindings: {click: link_4_click}
+  layout_properties: {column: TMDUTV}
+  name: link_4
   properties:
     role: [0height]
   type: Link
-  layout_properties: {column: TMDUTV}
-  components:
-  - name: e
-    properties: {text: '', role: 0height}
+- components:
+  - layout_properties: {grid_position: 'SVFINZ,GYXXYF'}
+    name: 'on'
+    properties: {role: 0height, text: ''}
     type: Label
-    layout_properties: {grid_position: 'UKHHXN,DYXPIF'}
-  event_bindings: {click: link_4_click}
-- name: link_5
+  event_bindings: {click: link_5_click}
+  layout_properties: {column: OJKCOG}
+  name: link_5
   properties: {role: 0height}
   type: Link
-  layout_properties: {column: OJKCOG}
-  components:
-  - name: 'on'
-    properties: {text: '', role: 0height}
-    type: Label
-    layout_properties: {grid_position: 'SVFINZ,GYXXYF'}
-  event_bindings: {click: link_5_click}
+container:
+  properties: {role: null}
+  type: DataRowPanel
+is_package: true

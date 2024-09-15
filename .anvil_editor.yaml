@@ -1,4 +1,8 @@
 unique_ids:
+  assets:
+    kag2.jpg: '1701095087192500313938017.88495'
+    standard-page.html: O75LNY7NXZ2ORRHTXGMLGJZTTV7ESVPT
+    theme.css: TFO5KR2CAK47O3UJ2K4Y5AEAYNW77JHZ
   forms:
     Main: A6XF4MPRH37CB27TGP46DVPO6ZEFXEPD
     Main.Change: '1703544044018185681171027.3234'
@@ -11,9 +15,5 @@ unique_ids:
   modules:
     Globals: '1701080729372913005356497.5184'
     validation: '1701237795429887748777594.299'
-  server_modules: {}
-  assets:
-    kag2.jpg: '1701095087192500313938017.88495'
-    standard-page.html: O75LNY7NXZ2ORRHTXGMLGJZTTV7ESVPT
-    theme.css: TFO5KR2CAK47O3UJ2K4Y5AEAYNW77JHZ
   scripts: {}
+  server_modules: {}

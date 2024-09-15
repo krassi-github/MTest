@@ -1,19 +1,19 @@
-container:
-  type: ColumnPanel
-  properties: {border: '"thin"'}
 components:
-- name: column_panel_1
-  properties: {background: 'theme:Dark Overlay 2', border: thin}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'OWBCTY,IVXYLX'}
-  data_bindings: []
-  components:
-  - name: label_1
+- components:
+  - layout_properties: {grid_position: 'ASRPSB,WIHUAE'}
+    name: label_1
     properties: {align: center}
     type: Label
-    layout_properties: {grid_position: 'ASRPSB,WIHUAE'}
-- name: repeating_panel_1
+  data_bindings: []
+  layout_properties: {grid_position: 'OWBCTY,IVXYLX'}
+  name: column_panel_1
+  properties: {background: 'theme:Dark Overlay 2', border: thin}
+  type: ColumnPanel
+- layout_properties: {grid_position: 'ZRFMLT,UHDGSS'}
+  name: repeating_panel_1
   properties: {item_template: Main.Change.ItemTemplate1, role: scroll}
   type: RepeatingPanel
-  layout_properties: {grid_position: 'ZRFMLT,UHDGSS'}
+container:
+  properties: {border: '"thin"'}
+  type: ColumnPanel
 is_package: true
