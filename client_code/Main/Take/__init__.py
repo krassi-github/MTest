@@ -75,12 +75,12 @@ class Take(TakeTemplate):
     Globals.intake_notes = self.notes.text
 
   def half_b_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    self.pcs_box.text = "{:.1f}".format(float(self.pcs_box.text) / 2)
+    self.pcs_box_pressed_enter()
 
   def double_b_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    self.pcs_box.text = "{:.1f}".format(float(self.pcs_box.text) * 2)
+    self.pcs_box_pressed_enter()
 
 
 
