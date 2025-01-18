@@ -74,5 +74,13 @@ class Take(TakeTemplate):
   def notes_lost_focus(self, **event_args):
     Globals.intake_notes = self.notes.text
 
+  def half_b_click(self, **event_args):
+    self.pcs_box.text = "{:.1f}".format(float(self.pcs_box.text) / 2)
+    self.pcs_box_pressed_enter()
+
+  def double_b_click(self, **event_args):
+    self.pcs_box.text = "{:.1f}".format(float(self.pcs_box.text) * 2)
+    self.pcs_box_pressed_enter()
+
 
 
