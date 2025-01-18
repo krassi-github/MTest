@@ -9,8 +9,9 @@ components:
   properties: {align: center}
   type: TextBox
 - components:
-  - name: button_1
-    properties: {text: button_1}
+  - layout_properties: {}
+    name: double_b
+    properties: {font_size: 20, text: '* 2'}
     type: Button
   - name: medicine
     properties: {align: center}
