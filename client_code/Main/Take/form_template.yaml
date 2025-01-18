@@ -9,14 +9,16 @@ components:
   properties: {align: center}
   type: TextBox
 - components:
-  - layout_properties: {}
+  - event_bindings: {click: double_b_click}
+    layout_properties: {}
     name: double_b
     properties: {font_size: 20, text: '* 2'}
     type: Button
   - name: medicine
     properties: {align: center}
     type: Label
-  - layout_properties: {}
+  - event_bindings: {click: half_b_click}
+    layout_properties: {}
     name: half_b
     properties: {font_size: 20, text: 1 / 2}
     type: Button

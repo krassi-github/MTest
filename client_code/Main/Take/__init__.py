@@ -74,5 +74,13 @@ class Take(TakeTemplate):
   def notes_lost_focus(self, **event_args):
     Globals.intake_notes = self.notes.text
 
+  def half_b_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def double_b_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
 
 
