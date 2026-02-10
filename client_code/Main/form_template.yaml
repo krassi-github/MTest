@@ -39,7 +39,7 @@ components:
   - event_bindings: {click: left_b_click}
     layout_properties: {}
     name: left_b
-    properties: {align: center, icon: 'fa:arrow-up', icon_align: top, role: tonal-button, text: ''}
+    properties: {align: center, icon: 'fa:arrow-left', icon_align: top, role: tonal-button, text: ''}
     type: Button
   - layout_properties: {}
     name: date
@@ -48,7 +48,7 @@ components:
   - event_bindings: {click: right_b_click}
     layout_properties: {}
     name: right_b
-    properties: {align: left, icon: 'fa:arrow-down', icon_align: top, role: tonal-button, text: ''}
+    properties: {align: left, icon: 'fa:arrow-right', icon_align: top, role: tonal-button, text: ''}
     type: Button
   - layout_properties: {width: 85.86115800781249}
     name: spacer_2
