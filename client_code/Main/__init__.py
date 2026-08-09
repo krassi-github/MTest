@@ -7,6 +7,10 @@ import datetime
 from .. import Globals
 from . Change import Change
 
+import json
+from anvil import alert
+from anvil.js.window import a7GetMeasurements
+
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
          "m_ex": False, "noon": r[noon], "n_ex": False, "evening": r[evening],
@@ -56,7 +60,6 @@ class Main(MainTemplate):
     is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
     Globals.is_pwa = is_pwa
     Globals.is_mobile = is_mobile
-
 
 
   # Bunch of handlers 3d party
@@ -120,3 +123,60 @@ class Main(MainTemplate):
       self.content_panel.clear()
       open_form("Main")
 
+  @handle("button_1", "click")
+  def button_1_click(self, **event_args):
+    try:
+      result = a7GetMeasurements()
+  
+      records = json.loads(
+        result.recordsJson
+      )
+  
+      sync = anvil.server.call(
+        "a7_import",
+        records,
+        False
+      )
+  
+      if sync["collisions"] > 0:
+        alert(
+          (
+            f"User {sync['device_user']}\n"
+            f"Read: {sync['read']}\n"
+            f"Collisions: {sync['collisions']}\n\n"
+            "Nothing was imported."
+          ),
+          title="A7 Sync - ERROR"
+        )
+        return
+  
+      if sync["imported"] == 0:
+        text = (
+          f"User {sync['device_user']}\n"
+          f"Read: {sync['read']}\n"
+          f"Already present: "
+          f"{sync['duplicates']}\n\n"
+          "Database is up to date."
+        )
+  
+      else:
+        text = (
+          f"User {sync['device_user']}\n"
+          f"Read: {sync['read']}\n"
+          f"Already present: "
+          f"{sync['duplicates']}\n"
+          f"New imported: "
+          f"{sync['imported']}\n\n"
+          "Sync completed."
+        )
+  
+      alert(
+        text,
+        title="A7 Sync"
+      )
+  
+    except Exception as err:
+      alert(
+        str(err),
+        title="A7 Sync - ERROR"
+      )
