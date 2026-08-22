@@ -18,6 +18,19 @@ class Validator():
     else:
       return(False, f"НЕВАЛИДЕН HH:MM формат")
 
+  # Datetime format YYYY/MM/DD HH:MM     22-08-2026
+  def validate_datetime(self, datetime_str):
+    datetime_pattern = r'^\d{4}/\d{2}/\d{2} ([0-1][0-9]|2[0-3]):[0-5][0-9]$'
+
+    if not re.match(datetime_pattern, datetime_str):
+      return(False, "НЕВАЛИДЕН YYYY/MM/DD HH:MM формат")
+
+    try:
+      datetime.datetime.strptime(datetime_str, "%Y/%m/%d %H:%M")
+      return(True, "")
+    except ValueError:
+      return(False, "НЕВАЛИДНА дата или час")
+
   
   def validate_pcs(self, input_str):
     # Regular expression pattern for X.Y format decimal or one-digit integer
