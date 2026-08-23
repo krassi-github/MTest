@@ -28,8 +28,9 @@ class Intestine(IntestineTemplate):
     self.L = None
     self.N = None
     self.mucus = None
-    self.blood = frm.blood
-    self.note = frm.note
+    self.blood = None
+    self.note = None
+    
     # Link handlers to buttons
     for i in range(1, 8):
       b = getattr(self, f"bristol_{i}")
@@ -87,11 +88,12 @@ class Intestine(IntestineTemplate):
     )
   
     if ok:
-      self.L = frm.L
-      self.N = frm.N
-      self.mucus = frm.mucus
-      self.blood = frm.blood
-      self.note = frm.note
+      self.L = int(frm.tb_L.text) if frm.tb_L.text else None
+      self.N = int(frm.tb_N.text) if frm.tb_N.text else None
+      self.mucus = frm.cb_mucus.checked
+      self.blood = frm.cb_blood.checked
+      self.note = frm.ta_note.text
+      print(f"{self.L}  {self.N}  // {self.mucus}    {self.blood}  {self.note}")
 
 
       

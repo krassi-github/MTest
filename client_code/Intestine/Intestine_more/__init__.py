@@ -10,8 +10,8 @@ class Intestine_more(Intestine_moreTemplate):
 
     self.init_components(**properties)
 
-    self.L.text = "" if L is None else str(L)
-    self.N.text = "" if N is None else str(N)  
-    self.mucus.checked = mucus
-    self.blood.checked = blood
-    self.note.text = note
+    self.tb_L.text = "" if L is None else str(L)
+    self.tb_N.text = "" if N is None else str(N)  
+    self.cb_mucus.checked = mucus
+    self.cb_blood.checked = blood
+    self.ta_note.text = note
