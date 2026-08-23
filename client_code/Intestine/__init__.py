@@ -14,6 +14,7 @@ class Intestine(IntestineTemplate):
       #self.date_picker_1.date = datetime.datetime.now()
       self.date_picker_1.pick_time = True
       self.date_picker_1.date = datetime.datetime.now()
+      self.msg_box.text = timefstr
 
 
 
