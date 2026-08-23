@@ -4,8 +4,14 @@ import anvil.server
 
 
 class Intestine_more(Intestine_moreTemplate):
-  def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
-    super().__init__(**properties)
+  def __init__(self, L=None, N=None,
+                mucus=False, blood=False, note="",
+                **properties):
 
-    # Any code you write here will run before the form opens.
+    self.init_components(**properties)
+
+    self.L.text = "" if L is None else str(L)
+    self.N.text = "" if N is None else str(N)  
+    self.mucus.checked = mucus
+    self.blood.checked = blood
+    self.note.text = note

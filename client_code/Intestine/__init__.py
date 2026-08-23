@@ -3,6 +3,7 @@ from anvil import *
 import anvil.server
 
 from .. import validation
+from . Intestine_more import Intestine_more
 
 import datetime
 
@@ -23,6 +24,12 @@ class Intestine(IntestineTemplate):
     self.bristol = None
     self.relief = None
     self.strain = None
+
+    self.L = None
+    self.N = None
+    self.mucus = None
+    self.blood = frm.blood
+    self.note = frm.note
     # Link handlers to buttons
     for i in range(1, 8):
       b = getattr(self, f"bristol_{i}")
@@ -59,6 +66,32 @@ class Intestine(IntestineTemplate):
     for i in range(4):
       b = getattr(self, f"strain_{i}")
       b.role = "filled-button" if b.tag == self.strain else ""
+
+  @handle("more", "click")
+  def more_click(self, **event_args):
+    frm = Intestine_more(
+    L=self.L,
+    N=self.N,
+    mucus=self.mucus,
+    blood=self.blood,
+    note=self.note
+    )
+
+    ok = alert(
+      content=frm,
+      title="Допълнително",
+      buttons=[
+        ("ОТКАЗ", False),
+        ("OK", True)
+      ]
+    )
+  
+    if ok:
+      self.L = frm.L
+      self.N = frm.N
+      self.mucus = frm.mucus
+      self.blood = frm.blood
+      self.note = frm.note
 
 
       
