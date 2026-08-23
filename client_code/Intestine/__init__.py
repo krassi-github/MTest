@@ -14,7 +14,9 @@ class Intestine(IntestineTemplate):
       #self.date_picker_1.date = datetime.datetime.now()
       self.date_picker_1.pick_time = True
       self.date_picker_1.date = datetime.datetime.now()
-      self.msg_box.text = timefstr
+      self.datetime_box.text = "ДНЕС Е " + self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10] + '      '
+
+    self.validator = validation.Validator(
 
 
 
@@ -24,12 +26,3 @@ class Intestine(IntestineTemplate):
 
 
 
-# self.b_room_b.role = "elevated-button"
-
-  @handle("date_picker_1", "show")
-  def date_picker_1_show(self, **event_args):
-    c = DatePicker(format="%d %m %Y")
-
-    # Set to a datetime.datetime
-    c.pick_time = True
-    c.date = datetime.datetime.now()
