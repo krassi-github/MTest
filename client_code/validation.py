@@ -1,6 +1,6 @@
 import anvil.server
 import re
-
+import datetime
 
 class Validator():
 
@@ -16,7 +16,7 @@ class Validator():
     if re.match(time_pattern, time_str):
       return(True, "")
     else:
-      return(False, f"НЕВАЛИДЕН HH:MM формат")
+      return(False, "НЕВАЛИДЕН HH:MM формат")
 
   # Datetime format YYYY/MM/DD HH:MM     22-08-2026
   def validate_datetime(self, datetime_str):
@@ -40,5 +40,35 @@ class Validator():
     if re.match(decimal_integer_pattern, input_str):
         return(True, "")
     else:
-        return(False, f"НЕВАЛИДЕН формат") 
+        return(False, "НЕВАЛИДЕН формат") 
+
+
+  def validate_L(self, value):
+    if value in (None, ""):
+      return(True, "")
+
+    try:
+      value = int(value)
+    except:
+      return(False, "L трябва да е цяло число")
+  
+    if 1 <= value <= 60:
+      return(True, "")
+    else:
+      return(False, "L трябва да е между 1 и 60 cm")
+
+
+  def validate_N(self, value):
+    if value in (None, ""):
+      return(True, "")
+  
+    try:
+      value = int(value)
+    except:
+      return(False, "N трябва да е цяло число")
+  
+    if 1 <= value <= 30:
+      return(True, "")
+    else:
+      return(False, "N трябва да е между 1 и 30")
     
