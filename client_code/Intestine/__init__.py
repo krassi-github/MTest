@@ -93,7 +93,7 @@ class Intestine(IntestineTemplate):
       self.mucus = frm.cb_mucus.checked
       self.blood = frm.cb_blood.checked
       self.note = frm.ta_note.text
-      print(f"{self.L}  {self.N}  // {self.mucus}    {self.blood}  {self.note}")
+      #print(f"{self.L}  {self.N}  // {self.mucus}    {self.blood}  {self.note}")
 
   @handle("save_btn", "click")
   def save_btn_click(self, **event_args):
