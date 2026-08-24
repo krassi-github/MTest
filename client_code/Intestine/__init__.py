@@ -98,7 +98,7 @@ class Intestine(IntestineTemplate):
   @handle("save_btn", "click")
   def save_btn_click(self, **event_args):
     # add_intestine_event(event_dt, bristol, relief, strain, L=None, N=None, mucus=False, blood=False, note=None)
-    row = anvil.server.call("add_intestine_event", self.date_picker_1.date, 
+    row = anvil.server.call("add_intestine_event", self.date_picker_1.date.strftime("%Y-%m-%d %H:%M"), 
                       self.bristol, self.relief, self.strain, 
                       self.L, self.N,
                       self.mucus, self.blood,
