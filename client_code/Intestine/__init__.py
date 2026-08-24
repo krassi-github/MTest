@@ -95,5 +95,13 @@ class Intestine(IntestineTemplate):
       self.note = frm.ta_note.text
       print(f"{self.L}  {self.N}  // {self.mucus}    {self.blood}  {self.note}")
 
-
-      
+  @handle("save_btn", "click")
+  def save_btn_click(self, **event_args):
+    # add_intestine_event(event_dt, bristol, relief, strain, L=None, N=None, mucus=False, blood=False, note=None)
+    row = anvil.server.call("add_intestine_event", self.date_picker_1.date, 
+                      self.bristol, self.relief, self.strain, 
+                      self.L, self.N,
+                      self.mucus, self.blood,
+                      self.note)
+    if not row:
+      alert("НЕУСПЕШЕН ЗАПИС", title = "Съобщение")
