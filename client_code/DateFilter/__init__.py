@@ -11,9 +11,9 @@ class DateFilter(DateFilterTemplate):
     super().__init__(**properties)
 
     self.mode = "D"          # D / 7D / 30D / R
-    self.anchor_date = ...
-    self.tb = ...
-    self.te = ...
+    self.anchor_date = datetime.date.today()
+    self.tb = None
+    self.te = None
     self.range_from = None
     self.range_to = None
 
@@ -82,15 +82,27 @@ class DateFilter(DateFilterTemplate):
   # Buttons  --------------------------------------------------------
   @handle("prev_btn", "click")
   def prev_btn_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
+    delta = datetime.timedelta(days=1)
+    if self.mode == "R":
+      self.range_from -= delta
+      self.range_to -= delta
+    else:
+      self.anchor_date -= delta
+    self.refresh_period()
 
   @handle("next_btn", "click")
   def next_btn_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
-
+    delta = datetime.timedelta(days=1)
+    if self.mode == "R":
+      self.range_from += delta
+      self.range_to += delta
+    else:
+      self.anchor_date += delta  
+    self.refresh_period()
+    
   @handle("period_button", "click")
   def period_button_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
+    if self.mode == "R":
+      self.select_range()
+    else:
+      self.select_anchor_date()
