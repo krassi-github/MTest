@@ -641,6 +641,6 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup: {module: Intestine, type: form}
+startup: {module: DateFilter, type: form}
 startup_form: null
 uplink_visible: true
