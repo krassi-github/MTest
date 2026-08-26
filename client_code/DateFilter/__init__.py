@@ -39,6 +39,19 @@ class DateFilter(DateFilterTemplate):
     te=self.te
   )
 
+
+  def show_period(self):
+    if self.mode == "D":
+      self.period_button.text = self.tb.strftime("%d/%m")
+
+    else:
+      last_day = self.te - datetime.timedelta(days=1)
+  
+      self.period_button.text = (
+        self.tb.strftime("%d/%m") +
+        " - " +
+        last_day.strftime("%d/%m")
+    )
   
   # Radio buttons ------------------------------------------------
   @handle("rb_d", "change")
@@ -66,7 +79,7 @@ class DateFilter(DateFilterTemplate):
       self.select_range()
   
  
-
+  # Buttons  --------------------------------------------------------
   @handle("prev_btn", "click")
   def prev_btn_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -77,7 +90,7 @@ class DateFilter(DateFilterTemplate):
     """This method is called when the button is clicked"""
     pass  # Write Code Here
 
-  @handle("period_btn", "click")
-  def period_btn_click(self, **event_args):
+  @handle("period_button", "click")
+  def period_button_click(self, **event_args):
     """This method is called when the button is clicked"""
     pass  # Write Code Here
