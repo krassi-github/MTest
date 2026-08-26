@@ -2,6 +2,8 @@ from ._anvil_designer import DateFilterTemplate
 from anvil import *
 import anvil.server
 
+import datetime
+
 
 class DateFilter(DateFilterTemplate):
   def __init__(self, **properties):
@@ -15,25 +17,55 @@ class DateFilter(DateFilterTemplate):
     self.range_from = None
     self.range_to = None
 
-  @handle("D", "clicked")
-  def D_clicked(self, **event_args):
-    """This method is called when this radio button is selected"""
-    pass  # Write Code Here
 
-  @handle("radio_button_2", "clicked")
-  def radio_button_2_clicked(self, **event_args):
-    """This method is called when this radio button is selected"""
-    pass  # Write Code Here
+  def refresh_period(self):
+    if self.mode == "D":
+      self.tb = self.anchor_date
+      self.te = self.tb + datetime.timedelta(days=1)      
+    elif self.mode == "7D":
+      self.tb = self.anchor_date
+      self.te = self.tb + datetime.timedelta(days=7)  
+    elif self.mode == "30D":
+      self.tb = self.anchor_date
+      self.te = self.tb + datetime.timedelta(days=30)  
+    elif self.mode == "R":
+      self.tb = self.range_from
+      self.te = self.range_to + datetime.timedelta(days=1)
 
-  @handle("radio_button_3", "clicked")
-  def radio_button_3_clicked(self, **event_args):
-    """This method is called when this radio button is selected"""
-    pass  # Write Code Here
+    self.show_period()
+    self.raise_event(
+    "x-period-changed",
+    tb=self.tb,
+    te=self.te
+  )
 
-  @handle("R", "clicked")
-  def R_clicked(self, **event_args):
-    """This method is called when this radio button is selected"""
-    pass  # Write Code Here
+  
+  # Radio buttons ------------------------------------------------
+  @handle("rb_d", "change")
+  def rb_d_change(self, **event_args):
+    if self.rb_d.selected:
+      self.mode = "D"
+      self.refresh_period()
+  
+  @handle("rb_7d", "change")
+  def rb_7d_change(self, **event_args):
+    if self.rb_7d.selected:
+      self.mode = "7D"
+      self.refresh_period()
+  
+  @handle("rb_30d", "change")
+  def rb_30d_change(self, **event_args):
+    if self.rb_30d.selected:
+      self.mode = "30D"
+      self.refresh_period()
+  
+  @handle("rb_range", "change")
+  def rb_range_change(self, **event_args):
+    if self.rb_range.selected:
+      self.mode = "R"
+      self.select_range()
+  
+ 
 
   @handle("prev_btn", "click")
   def prev_btn_click(self, **event_args):
