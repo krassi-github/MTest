@@ -30,6 +30,8 @@ class Intestine(IntestineTemplate):
     self.mucus = None
     self.blood = None
     self.note = None
+
+    self.last_row = None
     
     # Link handlers to buttons
     for i in range(1, 8):
@@ -97,6 +99,18 @@ class Intestine(IntestineTemplate):
 
   @handle("save_btn", "click")
   def save_btn_click(self, **event_args):
+    row = anvil.server.call("save_intestine_event", None, self.date_picker_1.date.strftime("%Y-%m-%d %H:%M").replace("-", "/"), 
+    self.bristol, self.relief, self.strain, 
+    self.L, self.N,
+    self.mucus, self.blood,
+    self.note)
+    if not row:
+      alert("НЕУСПЕШЕН ЗАПИС", title = "Съобщение")
+    else:
+      self.last_row = row
+    
+  '''
+  def save_btn_click(self, **event_args):
     # add_intestine_event(event_dt, bristol, relief, strain, L=None, N=None, mucus=False, blood=False, note=None)
     row = anvil.server.call("add_intestine_event", (self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")).replace("-", "/"), 
                       self.bristol, self.relief, self.strain, 
@@ -105,3 +119,4 @@ class Intestine(IntestineTemplate):
                       self.note)
     if not row:
       alert("НЕУСПЕШЕН ЗАПИС", title = "Съобщение")
+  '''
