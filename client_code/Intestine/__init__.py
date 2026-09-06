@@ -21,18 +21,7 @@ class Intestine(IntestineTemplate):
       self.date_picker_1.max_date = (self.date_picker_1.date + datetime.timedelta(days=1)).strftime("%Y-%m-%d %H:%M")
       self.datetime_box.text = "ДНЕС Е " + self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10] + '     '
 
-    self.bristol = None
-    self.relief = None
-    self.strain = None
-
-    self.L = None
-    self.N = None
-    self.mucus = None
-    self.blood = None
-    self.note = None
-
-    self.last_row = None
-    
+    self.clear_vars()   
     # Link handlers to buttons
     for i in range(1, 8):
       b = getattr(self, f"bristol_{i}")
@@ -50,6 +39,29 @@ class Intestine(IntestineTemplate):
     self.validator = validation.Validator()
 
 
+  def clear_vars(self):
+    self.bristol = None
+    self.relief = None
+    self.strain = None
+
+    self.L = None
+    self.N = None
+    self.mucus = None
+    self.blood = None
+    self.note = None
+
+    self.last_row = None
+
+
+  def clear_fields(self):
+    for i in range(1, 8):
+      getattr(self, f"bristol_{i}", None).role = ''
+    for i in range(1, 4):
+      b = getattr(self, f"relief_{i}", None).role = ''   
+    for i in range(4):
+      b = getattr(self, f"strain_{i}", None).role = ''
+
+      
   # Handlers
   def bristol_click(self, sender, **event_args):
     self.bristol = sender.tag
@@ -99,15 +111,23 @@ class Intestine(IntestineTemplate):
 
   @handle("save_btn", "click")
   def save_btn_click(self, **event_args):
-    row = anvil.server.call("save_intestine_event", None, self.date_picker_1.date.strftime("%Y-%m-%d %H:%M").replace("-", "/"), 
-    self.bristol, self.relief, self.strain, 
-    self.L, self.N,
-    self.mucus, self.blood,
-    self.note)
-    if not row:
-      alert("НЕУСПЕШЕН ЗАПИС", title = "Съобщение")
-    else:
-      self.last_row = row
+    r = alert("Бристол {self.bristol}\nОблекчение {self.relief}\nНапън {self.strain}\n"
+          "L= {self.L}\n"
+          "N= {self.N}",
+          title="ПОТВЪРДИ ЗАПИС") buttons=[("ЗАПИС", True), ("Отказ", False)], )
+    if r:
+      row = anvil.server.call("save_intestine_event", None, self.date_picker_1.date.strftime("%Y-%m-%d %H:%M").replace("-", "/"), 
+      self.bristol, self.relief, self.strain, 
+      self.L, self.N,
+      self.mucus, self.blood,
+      self.note)
+      if not row:
+        alert("НЕУСПЕШЕН ЗАПИС", title = "Съобщение")
+      else:
+        self.last_row = row
+        self.clear_vars()
+        self.clear_fields()
+        
     
   '''
   def save_btn_click(self, **event_args):
