@@ -114,7 +114,7 @@ class Intestine(IntestineTemplate):
     r = alert("Бристол {self.bristol}\nОблекчение {self.relief}\nНапън {self.strain}\n"
           "L= {self.L}\n"
           "N= {self.N}",
-          title="ПОТВЪРДИ ЗАПИС") buttons=[("ЗАПИС", True), ("Отказ", False)], )
+          title="ПОТВЪРДИ ЗАПИС", buttons=[("ЗАПИС", True), ("Отказ", False)], )
     if r:
       row = anvil.server.call("save_intestine_event", None, self.date_picker_1.date.strftime("%Y-%m-%d %H:%M").replace("-", "/"), 
       self.bristol, self.relief, self.strain, 
