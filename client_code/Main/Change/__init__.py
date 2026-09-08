@@ -4,13 +4,13 @@ import anvil.server
 from ... import Globals
 from ... import validation
 
+
 class Change(ChangeTemplate):
-  def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
+  def __init__(self, main_form=None, **properties):
     self.init_components(**properties)
-    # Any code you write here will run before the form opens
     # #self.column_panel_1.width = "60%"
     # self.repeating_panel_1.width = "60%"
+    self.main_form = main_form
     self.set_event_handler("x-Date-Change", self.date_change)
     self.date_change()
 
@@ -26,7 +26,7 @@ class Change(ChangeTemplate):
 
   @handle("back_btn", "click")
   def back_btn_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
+    Globals.mode = "create"
+    self.main_form.show_main_content()
   
 

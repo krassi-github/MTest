@@ -25,11 +25,7 @@ class Main(MainTemplate):
     self.left_b.width = "90%"
     self.right_b.width = "90%"
     self.edit.width = "90%"      #  self.spacer_1
-    self.flow_panel_1.width = "330"
-
-    # screen design
-    #self.title.visible = False
-    #self.spacer_1.visible = False
+    #self.flow_panel_1.width = "330"
 
     if not Globals.cur_date:
       Globals.cur_date = anvil.server.call("get_time")
@@ -112,63 +108,21 @@ class Main(MainTemplate):
 
   
   def show_main_content(self):
-    # тук възстановяваш нормалното съдържание на Main
+    self.content_panel.clear()
     self.content_panel.add_component(self.flow_panel_2)
     self.content_panel.add_component(self.data_grid_1)
     self.content_panel.add_component(self.dgnst)
 
   
   def edit_click(self, **event_args):
-    if Globals.mode == "create":
-      self.edit.background = "red"
-      self.flag.text = "*"
-      Globals.mode = "edit"
-  
-      self.content_panel.clear()
-      self.content_panel.add_component(self.flow_panel_2)
-      self.new_panel = Change()
-      self.content_panel.add_component(self.new_panel)
+    Globals.mode = "edit"
+    self.content_panel.clear()
+    self.new_panel = Change(main_form=self)
+    self.content_panel.add_component(self.new_panel)
 
-    else:
-      self.edit.background = None
-      self.flag.text = ""
-      Globals.mode = "create"
 
-      print("BEFORE CLEAR:", self.content_panel.get_components())
-      self.content_panel.clear()
-      print("AFTER CLEAR:", self.content_panel.get_components())
-      #self.content_panel.clear()
-      self.show_main_content()
-      print("AFTER show_main_content:")
-
-      for c in self.content_panel.get_components():
-        print(
-          "component:", c,
-          "type:", type(c),
-          "visible:", c.visible,
-          "parent:", c.parent
-  )
-  '''
-  def edit_click(self, **event_args):
-    if Globals.mode == "create":
-      self.edit.background = "red"
-      self.flag.text = '*'
-      Globals.mode = "edit"
-      self.content_panel.clear()
-      self.new_panel = Change()
-      self.content_panel.add_component(self.new_panel)
-      #self.content_panel.raise_event_on_children("x-Date-Change")    # 
-      #self.content_panel.raise_event("x-Date-Change")    #Не сработи i s self.edit
-    else:
-      self.edit.background = "white"
-      self.flag.text = ''
-      Globals.mode = "create"
-      self.content_panel.clear()
-      open_form("Main")
-      ''' 
-
-  @handle("button_1", "click")
-  def button_1_click(self, **event_args):
+  @handle("A7import_btn", "click")
+  def A7import_btn_click(self, **event_args):
     try:
       result = a7GetMeasurements()
   
@@ -224,3 +178,26 @@ class Main(MainTemplate):
         str(err),
         title="A7 Sync - ERROR"
       )
+
+# ===============================================================================================
+# OLD code
+  '''  V0 colored button visible in both forms
+  def edit_click(self, **event_args):
+    if Globals.mode == "create":
+      self.edit.background = "red"
+      self.flag.text = "*"
+      Globals.mode = "edit"
+  
+      self.content_panel.clear()
+      #self.content_panel.add_component(self.flow_panel_2)
+      self.new_panel = Change()
+      self.content_panel.add_component(self.new_panel)
+
+    else:
+      self.edit.background = None
+      self.flag.text = ""
+      Globals.mode = "create"
+
+      self.content_panel.clear()
+      self.show_main_content()
+      ''' 

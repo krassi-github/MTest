@@ -4,21 +4,20 @@ components:
     - layout_properties: {}
       name: intestine_btn
       properties:
+        bold: true
         role: outlined-button
+        spacing:
+          padding: [null, '10', null, '10']
         text: |
           Bowel
       type: Button
     - event_bindings: {click: edit_click}
       layout_properties: {}
       name: edit
-      properties: {icon: 'fa:edit', icon_align: top, role: outlined-button, text: ''}
+      properties: {bold: true, icon: 'fa:edit', icon_align: top, role: outlined-button, text: ''}
       type: Button
     - layout_properties: {}
-      name: flag
-      properties: {icon_align: top}
-      type: Label
-    - layout_properties: {}
-      name: button_1
+      name: A7import_btn
       properties:
         bold: true
         role: outlined-button
