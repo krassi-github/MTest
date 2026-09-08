@@ -6,6 +6,7 @@ from anvil.js import window
 import datetime
 from .. import Globals
 from . Change import Change
+from .. Intestine import Intestine
 
 import json
 from anvil import alert
@@ -113,6 +114,12 @@ class Main(MainTemplate):
     self.content_panel.add_component(self.data_grid_1)
     self.content_panel.add_component(self.dgnst)
 
+  # ---------------------------------------------------------------------------------------------------
+  @handle("intestine_btn", "click")
+  def intestine_btn_click(self, **event_args):
+    self.content_panel.clear()
+    self.new_panel = Intestine(main_form=self)
+    self.content_panel.add_component(self.new_panel)
   
   def edit_click(self, **event_args):
     Globals.mode = "edit"
@@ -142,7 +149,7 @@ class Main(MainTemplate):
             f"User {sync['device_user']}\n"
             f"Read: {sync['read']}\n"
             f"Collisions: {sync['collisions']}\n\n"
-            "Nothing was imported."
+            "Nothing was imported"
           ),
           title="A7 Sync - ERROR"
         )
@@ -154,7 +161,7 @@ class Main(MainTemplate):
           f"Read: {sync['read']}\n"
           f"Already present: "
           f"{sync['duplicates']}\n\n"
-          "Database is up to date."
+          "Database is up to date"
         )
   
       else:
@@ -165,7 +172,7 @@ class Main(MainTemplate):
           f"{sync['duplicates']}\n"
           f"New imported: "
           f"{sync['imported']}\n\n"
-          "Sync completed."
+          "Sync completed"
         )
   
       alert(
@@ -201,3 +208,4 @@ class Main(MainTemplate):
       self.content_panel.clear()
       self.show_main_content()
       ''' 
+

@@ -8,10 +8,11 @@ from . Intestine_more import Intestine_more
 import datetime
 
 class Intestine(IntestineTemplate):
-  def __init__(self, **properties):
+  def __init__(self, main_form=None, **properties):
     # Set Form properties and Data Bindings.
     super().__init__(**properties)
 
+    self.main_form = main_form
     self.date_picker_1.format = "%Y/%m/%d %H:%M"
     if self.date_picker_1.date is None:
       #self.date_picker_1.date = datetime.datetime.now()
@@ -138,5 +139,4 @@ class Intestine(IntestineTemplate):
 
   @handle("cancel_btn", "click")
   def cancel_btn_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass  # Write Code Here
+    self.main_form.show_main_content()
