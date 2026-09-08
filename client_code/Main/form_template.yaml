@@ -1,6 +1,36 @@
 components:
 - components:
   - components:
+    - layout_properties: {}
+      name: intestine_btn
+      properties:
+        role: outlined-button
+        text: |
+          Bowel
+      type: Button
+    - event_bindings: {click: edit_click}
+      layout_properties: {}
+      name: edit
+      properties: {icon: 'fa:edit', icon_align: top, role: outlined-button, text: ''}
+      type: Button
+    - layout_properties: {}
+      name: flag
+      properties: {icon_align: top}
+      type: Label
+    - layout_properties: {}
+      name: button_1
+      properties:
+        bold: true
+        role: outlined-button
+        spacing:
+          padding: [null, '5', null, '5']
+        text: A7 imp
+      type: Button
+    layout_properties: {grid_position: 'OIBSVL,QSLDLZ'}
+    name: flow_panel_2
+    properties: {align: center}
+    type: FlowPanel
+  - components:
     - name: repeating_panel_1
       properties: {item_template: Main.RowTemplate1, role: tonal-card}
       type: RepeatingPanel
@@ -25,7 +55,13 @@ components:
     type: Label
   layout_properties: {slot: default}
   name: content_panel
-  properties: {col_widths: '{}', spacing_above: none, spacing_below: none}
+  properties:
+    col_widths: '{}'
+    spacing:
+      padding: ['0', null, '0', null]
+    spacing_above: none
+    spacing_below: none
+    wrap_on: never
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
   name: navbar_links
@@ -50,28 +86,6 @@ components:
     name: right_b
     properties: {align: left, icon: 'fa:arrow-right', icon_align: top, role: tonal-button, text: ''}
     type: Button
-  - layout_properties: {width: 85.86115800781249}
-    name: spacer_2
-    properties: {height: 35.99998474121094}
-    type: Spacer
-  - event_bindings: {click: edit_click}
-    layout_properties: {}
-    name: edit
-    properties: {icon: 'fa:edit', icon_align: top, role: outlined-button, text: ''}
-    type: Button
-  - layout_properties: {}
-    name: flag
-    properties: {icon_align: top}
-    type: Label
-  - layout_properties: {}
-    name: button_1
-    properties:
-      bold: true
-      role: outlined-button
-      spacing:
-        padding: [null, '5', null, '5']
-      text: A7 imp
-    type: Button
   layout_properties: {slot: title}
   name: flow_panel_1
   properties: {align: left, spacing: none, spacing_below: none, vertical_align: top}
@@ -81,6 +95,6 @@ components:
   properties: {spacing_below: none, text: Intake}
   type: Label
 container:
-  properties: {html: '@theme:standard-page.html'}
+  properties: {html: '@theme:standard-page.html', role: 0height}
   type: HtmlTemplate
 is_package: true
