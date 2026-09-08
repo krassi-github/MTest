@@ -131,8 +131,11 @@ class Main(MainTemplate):
       self.edit.background = None
       self.flag.text = ""
       Globals.mode = "create"
-  
+
+      print("BEFORE CLEAR:", self.content_panel.get_components())
       self.content_panel.clear()
+      print("AFTER CLEAR:", self.content_panel.get_components())
+      #self.content_panel.clear()
       self.show_main_content()
   '''
   def edit_click(self, **event_args):
