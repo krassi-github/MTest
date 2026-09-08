@@ -123,6 +123,7 @@ class Main(MainTemplate):
       Globals.mode = "edit"
   
       self.content_panel.clear()
+      self.content_panel.add_component(self.flow_panel_2)
       self.new_panel = Change()
       self.content_panel.add_component(self.new_panel)
 
