@@ -124,6 +124,7 @@ class Intestine(IntestineTemplate):
       if not row:
         alert("НЕУСПЕШЕН ЗАПИС", title = "Съобщение")
       else:
+        alert("УСПЕШЕН ЗАПИС", title = "Съобщение")
         self.last_row = row
         self.clear_vars()
         self.clear_fields()
