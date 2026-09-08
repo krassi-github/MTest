@@ -110,6 +110,30 @@ class Main(MainTemplate):
     self.show_date()
     self.refresh_data(Globals.cur_date)
 
+  
+  def show_main_content(self):
+    # тук възстановяваш нормалното съдържание на Main
+    self.content_panel.add_component(Main())
+
+  
+  def edit_click(self, **event_args):
+    if Globals.mode == "create":
+      self.edit.background = "red"
+      self.flag.text = "*"
+      Globals.mode = "edit"
+  
+      self.content_panel.clear()
+      self.new_panel = Change()
+      self.content_panel.add_component(self.new_panel)
+
+    else:
+      self.edit.background = None
+      self.flag.text = ""
+      Globals.mode = "create"
+  
+      self.content_panel.clear()
+      self.show_main_content()
+  '''
   def edit_click(self, **event_args):
     if Globals.mode == "create":
       self.edit.background = "red"
@@ -126,6 +150,7 @@ class Main(MainTemplate):
       Globals.mode = "create"
       self.content_panel.clear()
       open_form("Main")
+      ''' 
 
   @handle("button_1", "click")
   def button_1_click(self, **event_args):
