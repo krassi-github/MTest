@@ -113,7 +113,9 @@ class Main(MainTemplate):
   
   def show_main_content(self):
     # тук възстановяваш нормалното съдържание на Main
-    self.content_panel.add_component(Main())
+    self.content_panel.add_component(self.flow_panel_2)
+    self.content_panel.add_component(self.data_grid_1)
+    self.content_panel.add_component(self.dgnst)
 
   
   def edit_click(self, **event_args):
@@ -137,6 +139,15 @@ class Main(MainTemplate):
       print("AFTER CLEAR:", self.content_panel.get_components())
       #self.content_panel.clear()
       self.show_main_content()
+      print("AFTER show_main_content:")
+
+      for c in self.content_panel.get_components():
+        print(
+          "component:", c,
+          "type:", type(c),
+          "visible:", c.visible,
+          "parent:", c.parent
+  )
   '''
   def edit_click(self, **event_args):
     if Globals.mode == "create":
