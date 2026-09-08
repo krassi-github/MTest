@@ -67,23 +67,28 @@ class Intestine(IntestineTemplate):
     self.bristol = sender.tag
     for i in range(1, 8):
       b = getattr(self, f"bristol_{i}")
-      b.role = "filled-button" if b.tag == self.bristol else ""      
+      b.role = "filled-button" if b.tag == self.bristol else ""
+    self.save_btn.background = None if self.bristol is None or self.relief is None or\
+    self.strain is None else "#DFF2DF"
         
   def relief_click(self, sender, **event_args):
     self.relief = sender.tag
     for i in range(1, 4):
       b = getattr(self, f"relief_{i}")
       b.role = "filled-button" if b.tag == self.relief else ""
-      #print("This b= ", b)
+      self.save_btn.background = None if self.bristol is None or self.relief is None or\
+      self.strain is None else "#DFF2DF"
 
   def strain_click(self, sender, **event_args):
     self.strain = sender.tag
     for i in range(4):
       b = getattr(self, f"strain_{i}")
       b.role = "filled-button" if b.tag == self.strain else ""
+      self.save_btn.background = None if self.bristol is None or self.relief is None or\
+      self.strain is None else "#DFF2DF"
 
-  @handle("more", "click")
-  def more_click(self, **event_args):
+  @handle("more_btn", "click")
+  def more_btn_click(self, **event_args):
     frm = Intestine_more(
     L=self.L,
     N=self.N,
@@ -91,7 +96,6 @@ class Intestine(IntestineTemplate):
     blood=self.blood,
     note=self.note
     )
-
     ok = alert(
       content=frm,
       title="Допълнително",
@@ -99,8 +103,7 @@ class Intestine(IntestineTemplate):
         ("ОТКАЗ", False),
         ("OK", True)
       ]
-    )
-  
+    )  
     if ok:
       self.L = int(frm.tb_L.text) if frm.tb_L.text else None
       self.N = int(frm.tb_N.text) if frm.tb_N.text else None
@@ -111,9 +114,12 @@ class Intestine(IntestineTemplate):
 
   @handle("save_btn", "click")
   def save_btn_click(self, **event_args):
+    if not (self.bristol and self.relief and self.strain):
+      alert("ИЗБЕРЕТЕ СТОЙНОСТ ЗА ВСЕКИ РЕД! \nПолетата не са задължителни", title="ВНИМАНИЕ!")
+      return
     r = alert("Бристол {self.bristol}\nОблекчение {self.relief}\nНапън {self.strain}\n"
-          "L= {self.L}\n"
-          "N= {self.N}",
+          f"L= {self.L}\n"
+          f"N= {self.N}",
           title="ПОТВЪРДИ ЗАПИС", buttons=[("ЗАПИС", True), ("Отказ", False)], )
     if r:
       row = anvil.server.call("save_intestine_event", None, self.date_picker_1.date.strftime("%Y-%m-%d %H:%M").replace("-", "/"), 
@@ -129,15 +135,8 @@ class Intestine(IntestineTemplate):
         self.clear_vars()
         self.clear_fields()
         
-    
-  '''
-  def save_btn_click(self, **event_args):
-    # add_intestine_event(event_dt, bristol, relief, strain, L=None, N=None, mucus=False, blood=False, note=None)
-    row = anvil.server.call("add_intestine_event", (self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")).replace("-", "/"), 
-                      self.bristol, self.relief, self.strain, 
-                      self.L, self.N,
-                      self.mucus, self.blood,
-                      self.note)
-    if not row:
-      alert("НЕУСПЕШЕН ЗАПИС", title = "Съобщение")
-  '''
+
+  @handle("cancel_btn", "click")
+  def cancel_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass  # Write Code Here
