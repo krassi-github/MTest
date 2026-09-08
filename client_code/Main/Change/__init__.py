@@ -23,5 +23,10 @@ class Change(ChangeTemplate):
 
   def rp_refresh(self):
     self.repeating_panel_1.items = Globals.daily_intakes
+
+  @handle("back_btn", "click")
+  def back_btn_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass  # Write Code Here
   
 
