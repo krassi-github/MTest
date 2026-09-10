@@ -129,7 +129,7 @@ class Intestine(IntestineTemplate):
       self.mucus, self.blood,
       self.note)
       if not row:
-        alert("НЕУСПЕШЕН ЗАПИС", title = "Съобщение")
+        alert("====== NO ======\nНЕУСПЕШЕН ЗАПИС", title = "Съобщение")
       else:
         alert("УСПЕШЕН ЗАПИС", title = "Съобщение")
         self.last_row = row
