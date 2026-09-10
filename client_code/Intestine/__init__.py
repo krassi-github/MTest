@@ -115,10 +115,10 @@ class Intestine(IntestineTemplate):
 
   @handle("save_btn", "click")
   def save_btn_click(self, **event_args):
-    if not (self.bristol and self.relief and self.strain):
-      alert("ИЗБЕРЕТЕ СТОЙНОСТ ЗА ВСЕКИ РЕД! \nПолетата не са задължителни", title="ВНИМАНИЕ!")
+    if None in (self.bristol, self.relief, self.strain):
+      alert("ИЗБЕРЕТЕ СТОЙНОСТ ЗА ВСЕКИ РЕД!\n \nВ раздел ОЩЕ\nПолетата не са задължителни", title="ВНИМАНИЕ!")
       return
-    r = alert("Бристол {self.bristol}\nОблекчение {self.relief}\nНапън {self.strain}\n"
+    r = alert(f"Бристол {self.bristol}\nОблекчение {self.relief}\nНапън {self.strain}\n"
           f"L= {self.L}\n"
           f"N= {self.N}",
           title="ПОТВЪРДИ ЗАПИС", buttons=[("ЗАПИС", True), ("Отказ", False)], )
