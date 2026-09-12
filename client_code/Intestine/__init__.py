@@ -135,6 +135,7 @@ class Intestine(IntestineTemplate):
         self.last_row = row
         self.clear_vars()
         self.clear_fields()
+        self.save_btn.background = None
         
 
   @handle("cancel_btn", "click")
