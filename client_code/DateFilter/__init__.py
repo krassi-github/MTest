@@ -14,8 +14,10 @@ class DateFilter(DateFilterTemplate):
     self._anchor_date = datetime.date.today()
     self.tb = None
     self.te = None
-    self._range_from = None
-    self._range_to = None
+    self._range_from = self._anchor_date
+    self._range_to = self._anchor_date
+
+    self.refresh_period()
 
 
   def refresh_period(self):
@@ -34,10 +36,11 @@ class DateFilter(DateFilterTemplate):
 
     self.show_period()
     self.raise_event(
-    "x-period-changed",
-    tb=self.tb,
-    te=self.te
-  )
+      "x-period-changed",
+      mode=self.mode,
+      tb=self.tb,
+      te=self.te
+    )
 
 
   def show_period(self):
@@ -52,13 +55,89 @@ class DateFilter(DateFilterTemplate):
         " - " +
         last_day.strftime("%d/%m")
     )
+
+  # Select_Functions ------------------------------------------------------------
+  def select_anchor_date(self):
+    dp = DatePicker(
+    date=self._anchor_date,
+    pick_time=False
+  )
+
+    result = alert(
+      content=dp,
+      title="Select date",
+      buttons=[
+        ("OK", True),
+        ("Cancel", False)
+      ]
+    )
+
+    if result and dp.date:
+      self._anchor_date = dp.date
+      self.refresh_period()
+
+
+  def select_range(self):
+    if self._range_from is None:
+      self._range_from = self._anchor_date
   
+    if self._range_to is None:
+      self._range_to = self._range_from
+  
+    dp_from = DatePicker(
+      date=self._range_from,
+      pick_time=False
+    )
+  
+    dp_to = DatePicker(
+      date=self._range_to,
+      pick_time=False
+    )
+  
+    panel = ColumnPanel()
+  
+    panel.add_component(
+      Label(text="From")
+    )
+    panel.add_component(dp_from)
+  
+    panel.add_component(
+      Label(text="To")
+    )
+    panel.add_component(dp_to)
+  
+    result = alert(
+      content=panel,
+      title="Select range",
+      buttons=[
+        ("OK", True),
+        ("Cancel", False)
+      ]
+    )
+  
+    if not result:
+      return
+  
+    if dp_from.date is None or dp_to.date is None:
+      return
+  
+    if dp_to.date < dp_from.date:
+      alert("End date cannot be before start date.")
+      return
+  
+    self._range_from = dp_from.date
+    self._range_to = dp_to.date
+  
+    self.refresh_period()
+    
+ 
   # Radio buttons ------------------------------------------------
   @handle("rb_d", "change")
   def rb_d_change(self, **event_args):
     if self.rb_d.selected:
       self.mode = "D"
       self.refresh_period()
+    
   
   @handle("rb_7d", "change")
   def rb_7d_change(self, **event_args):
