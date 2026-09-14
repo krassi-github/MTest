@@ -11,26 +11,26 @@ class DateFilter(DateFilterTemplate):
     super().__init__(**properties)
 
     self.mode = "D"          # D / 7D / 30D / R
-    self.anchor_date = datetime.date.today()
+    self._anchor_date = datetime.date.today()
     self.tb = None
     self.te = None
-    self.range_from = None
-    self.range_to = None
+    self._range_from = None
+    self._range_to = None
 
 
   def refresh_period(self):
     if self.mode == "D":
-      self.tb = self.anchor_date
+      self.tb = self._anchor_date
       self.te = self.tb + datetime.timedelta(days=1)      
     elif self.mode == "7D":
-      self.tb = self.anchor_date
+      self.tb = self._anchor_date
       self.te = self.tb + datetime.timedelta(days=7)  
     elif self.mode == "30D":
-      self.tb = self.anchor_date
+      self.tb = self._anchor_date
       self.te = self.tb + datetime.timedelta(days=30)  
     elif self.mode == "R":
-      self.tb = self.range_from
-      self.te = self.range_to + datetime.timedelta(days=1)
+      self.tb = self._range_from
+      self.te = self._range_to + datetime.timedelta(days=1)
 
     self.show_period()
     self.raise_event(
@@ -84,20 +84,20 @@ class DateFilter(DateFilterTemplate):
   def prev_btn_click(self, **event_args):
     delta = datetime.timedelta(days=1)
     if self.mode == "R":
-      self.range_from -= delta
-      self.range_to -= delta
+      self._range_from -= delta
+      self._range_to -= delta
     else:
-      self.anchor_date -= delta
+      self._anchor_date -= delta
     self.refresh_period()
 
   @handle("next_btn", "click")
   def next_btn_click(self, **event_args):
     delta = datetime.timedelta(days=1)
     if self.mode == "R":
-      self.range_from += delta
-      self.range_to += delta
+      self._range_from += delta
+      self._range_to += delta
     else:
-      self.anchor_date += delta  
+      self._anchor_date += delta  
     self.refresh_period()
     
   @handle("period_button", "click")
