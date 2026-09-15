@@ -132,6 +132,15 @@ class Main(MainTemplate):
   def A7import_btn_click(self, **event_args):
     try:
       result = a7GetMeasurements()
+      if result.records == 0:
+        alert(
+          (
+            f"User {result.user}\n"
+            "No measurements stored."
+          ),
+          title="A7 Sync"
+        )
+        return
   
       records = json.loads(
         result.recordsJson
