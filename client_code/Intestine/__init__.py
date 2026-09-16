@@ -152,10 +152,12 @@ class Intestine(IntestineTemplate):
 
   @handle("all_btn", "click")
   def all_btn_click(self, **event_args):
-    rows = anvil.server.call("get_intestine_events", "2026/08/24 00:00", "2026/09/03 23:59")
-    '''
+    rows = anvil.server.call("get_intestine_events", "2026/08/24 00:00", "2026/09/16 23:59")
+    #for r in rows:
+      #print(r)
+    
     for r in rows:
       r = r + '\n'
       txt.append(r)
-      '''
+      
     self.outlined_1.text = rows
