@@ -157,7 +157,7 @@ class Intestine(IntestineTemplate):
       #print(r)
     txt = []
     for r in rows:
-      r = r + '\n'
-      txt.append(r)
       
-    self.outlined_1.text = txt
+       #txt.append(r)
+      
+    
