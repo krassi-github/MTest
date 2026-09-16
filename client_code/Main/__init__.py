@@ -128,6 +128,10 @@ class Main(MainTemplate):
     self.content_panel.add_component(self.new_panel)
 
 
+  
+
+  # ===============================================================================================
+  # OLD code
   @handle("A7import_btn", "click")
   def A7import_btn_click(self, **event_args):
     try:
@@ -197,24 +201,3 @@ class Main(MainTemplate):
 
 # ===============================================================================================
 # OLD code
-  '''  V0 colored button visible in both forms
-  def edit_click(self, **event_args):
-    if Globals.mode == "create":
-      self.edit.background = "red"
-      self.flag.text = "*"
-      Globals.mode = "edit"
-  
-      self.content_panel.clear()
-      #self.content_panel.add_component(self.flow_panel_2)
-      self.new_panel = Change()
-      self.content_panel.add_component(self.new_panel)
-
-    else:
-      self.edit.background = None
-      self.flag.text = ""
-      Globals.mode = "create"
-
-      self.content_panel.clear()
-      self.show_main_content()
-      ''' 
-
