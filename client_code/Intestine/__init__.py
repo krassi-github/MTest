@@ -155,9 +155,9 @@ class Intestine(IntestineTemplate):
     rows = anvil.server.call("get_intestine_events", "2026/08/24 00:00", "2026/09/16 23:59")
     #for r in rows:
       #print(r)
-    
+    txt = []
     for r in rows:
       r = r + '\n'
       txt.append(r)
       
-    self.outlined_1.text = rows
+    self.outlined_1.text = txt
