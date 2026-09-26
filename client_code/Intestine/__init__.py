@@ -101,8 +101,8 @@ class Intestine(IntestineTemplate):
       content=frm,
       title="Допълнително",
       buttons=[
-        ("ОТКАЗ", False),
-        ("OK", True)
+        ("OK", True),
+        ("ОТКАЗ", False)        
       ]
     )  
     if ok:
