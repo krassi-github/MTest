@@ -13,7 +13,6 @@ class IntestineView(IntestineViewTemplate):
       self.date_filter_changed
     )
 
-
   
   def date_filter_changed(
     self,
