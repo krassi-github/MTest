@@ -22,6 +22,8 @@ class IntestineView(IntestineViewTemplate):
     **event_args
   ):
     
-    print(mode, tb, te)
-  
+    print(mode, tb, te)  
     self.show_intestine_data(tb, te)
+
+
+  def show_intestine_data(self, tb, te):
