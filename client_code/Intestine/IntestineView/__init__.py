@@ -24,14 +24,13 @@ class IntestineView(IntestineViewTemplate):
     tb=None,
     te=None,
     **event_args
-  ):
-    
+  ):    
     print(mode, tb, te)  
-    self.show_intestine_data(tb, te)
+    self.show_intestine_data(mode, tb, te)
 
 
   def show_intestine_data(self, tb, te):
-    print(f"{type(tb)} {tb}    {type(te)} {te}")
+    print(f"{tb}  --  {te}")
     rows = anvil.server.call(
       "get_intestine_events",
       tb.strftime("%Y-%m-%d"+ " 00:00"),
