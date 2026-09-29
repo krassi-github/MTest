@@ -4,6 +4,7 @@ import anvil.server
 
 from .. import validation
 from . Intestine_more import Intestine_more
+from . IntestineView import IntestineView
 
 import datetime
 
@@ -144,10 +145,9 @@ class Intestine(IntestineTemplate):
 
   @handle("view_btn", "click")
   def view_btn_click(self, **event_args):
-    rows = anvil.server.call("get_intestine_events", self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 00:00", \
+    open_form("IntestineView", self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 00:00", \
                              self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 23:59")
-    self.msg_box.text = rows
-    print(rows)
+
     
 
   @handle("all_btn", "click")

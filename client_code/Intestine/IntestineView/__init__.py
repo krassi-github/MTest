@@ -4,7 +4,7 @@ import anvil.server
 
 
 class IntestineView(IntestineViewTemplate):
-  def __init__(self, **properties):
+  def __init__(self, tb, te, **properties):
     # Set Form properties and Data Bindings.
     super().__init__(**properties)
 
@@ -12,6 +12,8 @@ class IntestineView(IntestineViewTemplate):
       "x-period-changed",
       self.date_filter_changed
     )
+
+    self.show_intestine_data(tb, te)
 
   
   def date_filter_changed(
