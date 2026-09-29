@@ -27,3 +27,9 @@ class IntestineView(IntestineViewTemplate):
 
 
   def show_intestine_data(self, tb, te):
+    rows = anvil.server.call(
+      "get_intestine_events",
+      tb,
+      te
+    )
+    self.repeating_panel_1.items = rows
