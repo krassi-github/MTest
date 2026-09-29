@@ -2,11 +2,12 @@ from ._anvil_designer import IntestineTemplate
 from anvil import *
 import anvil.server
 
+import datetime
+
 from .. import validation
 from . Intestine_more import Intestine_more
 from . IntestineView import IntestineView
 
-import datetime
 
 class Intestine(IntestineTemplate):
   def __init__(self, main_form=None, **properties):
@@ -147,6 +148,7 @@ class Intestine(IntestineTemplate):
   def view_btn_click(self, **event_args):
     open_form("Intestine.IntestineView", self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 00:00", \
                              self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 23:59")
+
     
 
   @handle("all_btn", "click")
