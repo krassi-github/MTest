@@ -2,6 +2,8 @@ from ._anvil_designer import IntestineViewTemplate
 from anvil import *
 import anvil.server
 
+import datetime
+
 
 class IntestineView(IntestineViewTemplate):
   def __init__(self, tb, te, **properties):
@@ -29,10 +31,10 @@ class IntestineView(IntestineViewTemplate):
 
 
   def show_intestine_data(self, tb, te):
-    print(f"{type(tb)} {tb}  {type(te)}  {te}")
+    print(f"{type(tb)} ")
     rows = anvil.server.call(
       "get_intestine_events",
-      tb,
-      te
+      tb.strftime("%Y-%m-%d"+ " 00:00"),
+      te.strftime("%Y-%m-%d"+ " 23:59")
     )
     self.repeating_panel_1.items = rows
