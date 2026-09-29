@@ -15,7 +15,7 @@ class IntestineView(IntestineViewTemplate):
       self.date_filter_changed
     )
 
-    self.show_intestine_data(tb, te)
+    self.show_intestine_data('D', tb, te)
 
   
   def date_filter_changed(
@@ -29,7 +29,7 @@ class IntestineView(IntestineViewTemplate):
     self.show_intestine_data(mode, tb, te)
 
 
-  def show_intestine_data(self, tb, te):
+  def show_intestine_data(self, mode, tb, te):
     print(f"{tb}  --  {te}")
     rows = anvil.server.call(
       "get_intestine_events",
