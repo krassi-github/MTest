@@ -145,9 +145,8 @@ class Intestine(IntestineTemplate):
 
   @handle("view_btn", "click")
   def view_btn_click(self, **event_args):
-    open_form("IntestineView", self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 00:00", \
+    open_form("Intestine.IntestineView", self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 00:00", \
                              self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 23:59")
-
     
 
   @handle("all_btn", "click")

@@ -29,6 +29,7 @@ class IntestineView(IntestineViewTemplate):
 
 
   def show_intestine_data(self, tb, te):
+    print(f"{type(tb)} {tb}  {type(te)}  {te}")
     rows = anvil.server.call(
       "get_intestine_events",
       tb,
