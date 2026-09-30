@@ -21,6 +21,7 @@ class DateFilter(DateFilterTemplate):
 
 
   def refresh_period(self):
+    '''
     if self.mode == "D":
       self.tb = self._anchor_date
       self.te = self.tb + datetime.timedelta(days=1)      
@@ -33,7 +34,20 @@ class DateFilter(DateFilterTemplate):
     elif self.mode == "R":
       self.tb = self._range_from
       self.te = self._range_to + datetime.timedelta(days=1)
-
+      '''
+    # 30-09-2026
+    if self.mode == "D":
+      self.te = self._anchor_date + datetime.timedelta(days=1)
+      self.tb = self.te - datetime.timedelta(days=1)
+    
+    elif self.mode == "7D":
+      self.te = self._anchor_date + datetime.timedelta(days=1)
+      self.tb = self.te - datetime.timedelta(days=7)
+    
+    elif self.mode == "30D":
+      self.te = self._anchor_date + datetime.timedelta(days=1)
+      self.tb = self.te - datetime.timedelta(days=30)
+    
     self.show_period()
     self.raise_event(
       "x-period-changed",
