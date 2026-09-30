@@ -40,6 +40,10 @@ edited_notes = None
 # loaded group of medicine FORMAT [[name, pcs, code], ...... ]
 med_group = []
 group_type = ""   # morning, noon, evening, on_need
+# Memory of IntestineView
+intestine_view_tb = None
+intestine_view_te = None
+intestine_view_mode = 'D'
 
 # FUNCS ********************************************************************************
 

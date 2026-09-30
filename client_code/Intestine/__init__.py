@@ -146,20 +146,10 @@ class Intestine(IntestineTemplate):
 
   @handle("view_btn", "click")
   def view_btn_click(self, **event_args):
-    open_form("Intestine.IntestineView", self.date_picker_1.date, self.date_picker_1.date) 
-                                              # # .strftime("%Y-%m-%d %H:%M")[:10]+" 00:00"   .strftime("%Y-%m-%d %H:%M")[:10]+" 23:59"
+    open_form("Intestine.IntestineView")
 
     
 
-  @handle("all_btn", "click")
-  def all_btn_click(self, **event_args):
-    rows = anvil.server.call("get_intestine_events", "2026/08/24 00:00", "2026/09/16 23:59")
-    #for r in rows:
-      #print(r)
-    txt = []
-    for r in rows:
-      self.outlined_1.text = r
-      self.outlined_1.text += '\n'
-       #txt.append(r)
+  
       
     

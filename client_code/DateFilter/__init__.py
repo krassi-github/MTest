@@ -11,6 +11,7 @@ class DateFilter(DateFilterTemplate):
     super().__init__(**properties)
 
     self.mode = "D"          # D / 7D / 30D / R
+    self.rb_d.selected = True
     self._anchor_date = datetime.date.today()
     self.tb = None
     self.te = None
