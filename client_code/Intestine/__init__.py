@@ -148,6 +148,7 @@ class Intestine(IntestineTemplate):
   def view_btn_click(self, **event_args):
     open_form("Intestine.IntestineView")
 
+
     
 
   
