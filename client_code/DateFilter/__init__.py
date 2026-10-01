@@ -116,9 +116,6 @@ class DateFilter(DateFilterTemplate):
       Label(text="To")
     )
     panel.add_component(dp_to)
-    comps = panel.container.get_components() 
-    for c in comps:
-      print(f" {c}")
     
     result = alert(
       content=panel,
