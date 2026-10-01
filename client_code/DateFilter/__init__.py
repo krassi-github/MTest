@@ -94,33 +94,32 @@ class DateFilter(DateFilterTemplate):
 
   def select_range(self):
     if self._range_from is None:
-      self._range_from = self._anchor_date
-  
+      self._range_from = self._anchor_date  
     if self._range_to is None:
       self._range_to = self._range_from
-  
+    # create date pickers
     dp_from = DatePicker(
       date=self._range_from,
       pick_time=False
-    )
-  
+    )  
     dp_to = DatePicker(
       date=self._range_to,
       pick_time=False
     )
-  
-    panel = ColumnPanel()
-  
+    # panel
+    panel = ColumnPanel()  
     panel.add_component(
       Label(text="From")
     )
-    panel.add_component(dp_from)
-  
+    panel.add_component(dp_from)  
     panel.add_component(
       Label(text="To")
     )
     panel.add_component(dp_to)
-  
+    comps = panel.container.get_components() 
+    for c in comps:
+      print(f" {c}")
+    
     result = alert(
       content=panel,
       title="Select range",
@@ -131,11 +130,9 @@ class DateFilter(DateFilterTemplate):
     )
   
     if not result:
-      return
-  
+      return  
     if dp_from.date is None or dp_to.date is None:
-      return
-  
+      return  
     if dp_to.date < dp_from.date:
       alert("End date cannot be before start date.")
       return
