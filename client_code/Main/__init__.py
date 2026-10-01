@@ -128,7 +128,6 @@ class Main(MainTemplate):
     self.content_panel.add_component(self.new_panel)
 
 
-  
 
   # ===============================================================================================
   # OLD code

@@ -27,6 +27,5 @@ class Change(ChangeTemplate):
   @handle("back_btn", "click")
   def back_btn_click(self, **event_args):
     Globals.mode = "create"
-    self.main_form.show_main_content()
-  
+    self.main_form.show_main_content() 
 
