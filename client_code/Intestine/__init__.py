@@ -10,12 +10,14 @@ from . IntestineView import IntestineView
 
 
 class Intestine(IntestineTemplate):
+  main_form = None  # static return
+  
   def __init__(self, main_form=None, **properties):
     # Set Form properties and Data Bindings.
     super().__init__(**properties)
 
-    if self.main_form is None:
-      self.main_form = main_form
+    if Intestine.main_form is None:
+      Intestine.main_form = main_form
     self.date_picker_1.format = "%Y/%m/%d %H:%M"
     if self.date_picker_1.date is None:
       #self.date_picker_1.date = datetime.datetime.now()
@@ -143,10 +145,13 @@ class Intestine(IntestineTemplate):
 
   @handle("cancel_btn", "click")
   def cancel_btn_click(self, **event_args):
+    print("Cancel_btn", Intestine.main_form)
+    self.main_form = Intestine.main_form
     self.main_form.show_main_content()
 
   @handle("view_btn", "click")
   def view_btn_click(self, **event_args):
+    print("View_btn", Intestine.main_form)
     open_form("Intestine.IntestineView")
 
 

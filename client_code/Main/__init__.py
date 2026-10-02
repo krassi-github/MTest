@@ -109,6 +109,7 @@ class Main(MainTemplate):
 
   
   def show_main_content(self):
+    print("Show Main Content")
     self.content_panel.clear()
     self.content_panel.add_component(self.flow_panel_2)
     self.content_panel.add_component(self.data_grid_1)
@@ -127,7 +128,7 @@ class Main(MainTemplate):
     self.new_panel = Change(main_form=self)
     self.content_panel.add_component(self.new_panel)
 
-
+ 
 
   # ===============================================================================================
   # OLD code
