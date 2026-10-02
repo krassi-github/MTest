@@ -14,6 +14,7 @@ class Intestine(IntestineTemplate):
     # Set Form properties and Data Bindings.
     super().__init__(**properties)
 
+    if self.
     self.main_form = main_form
     self.date_picker_1.format = "%Y/%m/%d %H:%M"
     if self.date_picker_1.date is None:
