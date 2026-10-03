@@ -47,9 +47,14 @@ class Main(MainTemplate):
     self.hide_main_ui()
 
   def hide_main_ui(self):
+    print("MAIN COMPONENTS:")
     for component in self.get_components():
-      print(component)
-    
+      print(
+        component,
+        "content =", component is self.content_panel,
+        "flow1 =", component is self.flow_panel_1,
+        "flow2 =", component is self.flow_panel_2
+      )
 
   def refresh_data(self, date):
     r = Globals.load_data(date)
