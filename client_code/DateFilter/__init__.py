@@ -52,6 +52,13 @@ class DateFilter(DateFilterTemplate):
       self.te = self._range_to + datetime.timedelta(days=1)
       '''
     # 30-09-2026
+    print(
+      "REFRESH:",
+      self.mode,
+      self._anchor_date,
+      self._range_from,
+      self._range_to
+    )
     if self.mode == "D":
       self.te = self._anchor_date + datetime.timedelta(days=1)
       self.tb = self.te - datetime.timedelta(days=1)
@@ -108,6 +115,7 @@ class DateFilter(DateFilterTemplate):
 
 
   def select_range(self):
+    print("START range:", self._range_from, self._range_to)
     if self._range_from is None:
       self._range_from = self._anchor_date  
     if self._range_to is None:
@@ -142,7 +150,10 @@ class DateFilter(DateFilterTemplate):
         ("Cancel", False)
       ]
     )
-  
+
+    print("RESULT:", result)
+    print("PICKERS:", dp_from.date, dp_to.date)
+    
     if not result:
       return  
     if dp_from.date is None or dp_to.date is None:
