@@ -37,20 +37,6 @@ class DateFilter(DateFilterTemplate):
   
 
   def refresh_period(self):
-    '''
-    if self.mode == "D":
-      self.tb = self._anchor_date
-      self.te = self.tb + datetime.timedelta(days=1)      
-    elif self.mode == "7D":
-      self.tb = self._anchor_date
-      self.te = self.tb + datetime.timedelta(days=7)  
-    elif self.mode == "30D":
-      self.tb = self._anchor_date
-      self.te = self.tb + datetime.timedelta(days=30)  
-    elif self.mode == "R":
-      self.tb = self._range_from
-      self.te = self._range_to + datetime.timedelta(days=1)
-      '''
     # 30-09-2026
     print(
       "REFRESH:",
@@ -164,7 +150,8 @@ class DateFilter(DateFilterTemplate):
   
     self._range_from = dp_from.date
     self._range_to = dp_to.date
-  
+
+    print("REFRESH OUT:", self.mode, self.tb, self.te)
     self.refresh_period()
     
  
