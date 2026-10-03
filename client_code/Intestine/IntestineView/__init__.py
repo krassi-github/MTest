@@ -50,7 +50,7 @@ class IntestineView(IntestineViewTemplate):
     Globals.tb = tb
     Globals.te = te
     
-    print("date_filter_changed.IntestineView() ", mode, tb, te)  
+    print("date_filter_changed.IntestineView() ", mode, tb, ' ', te)  
     self.show_intestine_data(mode, tb, te)
 
 
@@ -60,7 +60,10 @@ class IntestineView(IntestineViewTemplate):
       tb.strftime("%Y-%m-%d" + " 00:00"),    # 
       te.strftime("%Y-%m-%d" + " 00:00")     # + " 23:59"
     )
-    self.repeating_panel_1.items = rows
+    for row in rows:
+      dt = datetime.datetime.strptime(row["event_dt"], "%Y/%m/%d %H:%M")
+      row["event_dt"] = dt.strftime("%d/%m %H:%M")    
+    self.repeating_panel_1.items = rows    
 
 
   # 03-10-2026
