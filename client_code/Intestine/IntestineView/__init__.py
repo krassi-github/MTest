@@ -5,10 +5,14 @@ from ... import Globals
 
 import datetime
 
-'''
+
 class IntestineView(IntestineViewTemplate):
-  def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
+  def __init__(
+    self,
+    main_form=None,
+    intestine_form=None,
+    **properties
+  ):
     super().__init__(**properties)
 
     mode = Globals.intestine_view_mode if Globals.intestine_view_mode else 'D'
@@ -19,23 +23,10 @@ class IntestineView(IntestineViewTemplate):
       "x-period-changed",
       self.date_filter_changed
     )
-'''
-class IntestineView(IntestineViewTemplate):
-  def __init__(
-    self,
-    main_form=None,
-    intestine_form=None,
-    **properties
-  ):
-    super().__init__(**properties)
-  
-    self.main_form = main_form
-    self.intestine_form = intestine_form
   '''
   Така `IntestineView`:  
   main_form       → съществуващият Main
   intestine_form  → старата Intestine инстанция
-      self.show_intestine_data(mode, tb, te)
   '''
 
   
@@ -63,6 +54,17 @@ class IntestineView(IntestineViewTemplate):
     self.repeating_panel_1.items = rows
 
 
+  # 03-10-2026
+  @handle("back_btn", "click")
+  def back_btn_click(self, **event_args):
+    self.remove_from_parent()
+
+    self.main_form.show_main_ui()
+    self.main_form.content_panel.add_component(
+      self.intestine_form
+    )
+
+  '''
   @handle("back_btn", "click")
   def back_btn_click(self, **event_args):
     # Chain of return:
@@ -71,7 +73,7 @@ class IntestineView(IntestineViewTemplate):
     self.main_form.content_panel.add_component(
       self.intestine_form
     )
-
+  '''
 
 
 

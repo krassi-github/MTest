@@ -44,26 +44,18 @@ class Main(MainTemplate):
       #self.timer_1.interval = None
       
     self.refresh_data(Globals.cur_date)
-    self.hide_main_ui()
 
+
+  # Handling the content panel for usage by lower leves (Intestine & IntestineView)
   def hide_main_ui(self):
-    print("MAIN COMPONENTS:")
-  
     for component in self.get_components():
-      names = []
-  
-      for name in dir(self):
-        try:
-          if getattr(self, name) is component:
-            names.append(name)
-        except:
-          pass
-  
-      print(
-        component,
-        type(component),
-        "names =", names
-      )
+      if component is not self.content_panel:
+        component.visible = False
+
+  def show_main_ui(self):
+    for component in self.get_components():
+      component.visible = True
+      
 
   def refresh_data(self, date):
     r = Globals.load_data(date)

@@ -152,6 +152,23 @@ class Intestine(IntestineTemplate):
   # 03-10=22026
   @handle("view_btn", "click")
   def view_btn_click(self, **event_args):
+    main = Intestine.main_form
+    intestine_form = self
+  
+    self.remove_from_parent()
+    main.hide_main_ui()
+  
+    view = IntestineView(
+      main_form=main,
+      intestine_form=intestine_form
+    )  
+    main.content_panel.add_component(view)
+
+
+
+  '''
+  @handle("view_btn", "click")
+  def view_btn_click(self, **event_args):
     main = Intestine.main_form  #
   
     # Запазваме точно тази инстанция на Intestine
@@ -171,7 +188,6 @@ class Intestine(IntestineTemplate):
     main.content_panel.add_component(view)
 
 
-  '''
   @handle("view_btn", "click")
   def view_btn_click(self, **event_args):
     print("View_btn", Intestine.main_form)
