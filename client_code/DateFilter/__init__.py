@@ -20,6 +20,21 @@ class DateFilter(DateFilterTemplate):
 
     self.refresh_period()
 
+  def set_period(self, mode, tb, te):
+    self.mode = mode
+    self.tb = tb
+    self.te = te
+  
+    if mode == "D":
+      self._anchor_date = tb  
+    elif mode in ("7D", "30D"):
+      self._anchor_date = tb  
+    elif mode == "R":
+      self._range_from = tb
+      self._range_to = te - datetime.timedelta(days=1)
+  
+    self.show_period()
+  
 
   def refresh_period(self):
     '''

@@ -20,17 +20,22 @@ class IntestineView(IntestineViewTemplate):
     '''
     super().__init__(**properties)
 
-    mode = Globals.intestine_view_mode if Globals.intestine_view_mode else 'D'
-    tb = Globals.intestine_view_tb if Globals.intestine_view_tb else datetime.datetime.now()
-    te = Globals.intestine_view_te if Globals.intestine_view_te else tb + datetime.timedelta(days=1)
+    # set up period
+    mode = Globals.mode or "D"
+    tb = Globals.tb or datetime.date.today()
+    te = Globals.te or (tb + datetime.timedelta(days=1))
+  
+    # set up DateFilter
+    self.date_filter.set_period(mode, tb, te)
+    
     self.main_form = main_form
-    self.intestine_form = intestine_form    
+    self.intestine_form = intestine_form 
 
     self.date_filter.set_event_handler(
       "x-period-changed",
       self.date_filter_changed
     )
-
+    
     self.show_intestine_data(mode, tb, te)
 
   
@@ -41,9 +46,9 @@ class IntestineView(IntestineViewTemplate):
     te=None,
     **event_args
   ):
-    Globals.intestine_view_mode = mode
-    Globals.intestine_view_tb = tb
-    Globals.intestine_view_te = te
+    Globals.mode = mode
+    Globals.tb = tb
+    Globals.te = te
     
     print("date_filter_changed.IntestineView() ", mode, tb, te)  
     self.show_intestine_data(mode, tb, te)
@@ -62,25 +67,5 @@ class IntestineView(IntestineViewTemplate):
   @handle("back_btn", "click")
   def back_btn_click(self, **event_args):
     self.remove_from_parent()
-
     self.main_form.show_main_ui()
     self.main_form.content_panel.add_component(self.intestine_form )
-
-  '''
-  @handle("back_btn", "click")
-  def back_btn_click(self, **event_args):
-    # Chain of return:
-    self.remove_from_parent()  
-    self.main_form.navigation_panel.visible = True  
-    self.main_form.content_panel.add_component(
-      self.intestine_form
-    )
-  '''
-
-
-
-  '''
-  @handle("back_btn", "click")
-  def back_btn_click(self, **event_args):
-    open_form("Intestine")
-  '''

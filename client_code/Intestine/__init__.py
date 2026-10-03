@@ -145,7 +145,6 @@ class Intestine(IntestineTemplate):
 
   @handle("cancel_btn", "click")
   def cancel_btn_click(self, **event_args):
-    print("Cancel_btn", Intestine.main_form)
     self.main_form = Intestine.main_form
     self.main_form.show_main_content()
 

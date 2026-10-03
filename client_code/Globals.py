@@ -41,9 +41,9 @@ edited_notes = None
 med_group = []
 group_type = ""   # morning, noon, evening, on_need
 # Memory of IntestineView
-intestine_view_tb = None
-intestine_view_te = None
-intestine_view_mode = 'D'
+mode = 'D'
+tb = None
+te = None
 
 # FUNCS ********************************************************************************
 
