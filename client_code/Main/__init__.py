@@ -44,6 +44,12 @@ class Main(MainTemplate):
       #self.timer_1.interval = None
       
     self.refresh_data(Globals.cur_date)
+    self.hide_main_ui()
+
+  def hide_main_ui(self):
+    for component in self.get_components():
+      print(component)
+    
 
   def refresh_data(self, date):
     r = Globals.load_data(date)
