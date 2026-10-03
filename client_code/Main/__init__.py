@@ -45,6 +45,18 @@ class Main(MainTemplate):
       
     self.refresh_data(Globals.cur_date)
 
+    print("ROW role =", self.role)
+
+    for c in self.get_components():
+      print(
+        "  ",
+        c,
+        type(c),
+        "role =", getattr(c, "role", None),
+        "margin =", getattr(c, "spacing_above", None),
+        getattr(c, "spacing_below", None)
+      )
+
 
   # Handling the content panel for usage by lower leves (Intestine & IntestineView)
   def hide_main_ui(self):
