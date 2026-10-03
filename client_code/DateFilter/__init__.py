@@ -47,15 +47,16 @@ class DateFilter(DateFilterTemplate):
     )
     if self.mode == "D":
       self.te = self._anchor_date + datetime.timedelta(days=1)
-      self.tb = self.te - datetime.timedelta(days=1)
-    
+      self.tb = self.te - datetime.timedelta(days=1)    
     elif self.mode == "7D":
       self.te = self._anchor_date + datetime.timedelta(days=1)
-      self.tb = self.te - datetime.timedelta(days=7)
-    
+      self.tb = self.te - datetime.timedelta(days=7)    
     elif self.mode == "30D":
       self.te = self._anchor_date + datetime.timedelta(days=1)
       self.tb = self.te - datetime.timedelta(days=30)
+    elif self.mode == "R":
+      self.tb = self._range_from
+      self.te = self._range_to + datetime.timedelta(days=1)
     
     self.show_period()
     self.raise_event(
