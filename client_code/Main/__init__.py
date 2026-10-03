@@ -48,12 +48,21 @@ class Main(MainTemplate):
 
   def hide_main_ui(self):
     print("MAIN COMPONENTS:")
+  
     for component in self.get_components():
+      names = []
+  
+      for name in dir(self):
+        try:
+          if getattr(self, name) is component:
+            names.append(name)
+        except:
+          pass
+  
       print(
         component,
-        "content =", component is self.content_panel,
-        "flow1 =", component is self.flow_panel_1,
-        "flow2 =", component is self.flow_panel_2
+        type(component),
+        "names =", names
       )
 
   def refresh_data(self, date):
