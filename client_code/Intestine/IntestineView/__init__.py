@@ -13,21 +13,25 @@ class IntestineView(IntestineViewTemplate):
     intestine_form=None,
     **properties
   ):
+    '''
+    Така `IntestineView`:  
+    main_form       → съществуващият Main
+    intestine_form  → старата Intestine инстанция
+    '''
     super().__init__(**properties)
 
     mode = Globals.intestine_view_mode if Globals.intestine_view_mode else 'D'
     tb = Globals.intestine_view_tb if Globals.intestine_view_tb else datetime.datetime.now()
     te = Globals.intestine_view_te if Globals.intestine_view_te else tb + datetime.timedelta(days=1)
-    
+    self.main_form = main_form
+    self.intestine_form = intestine_form    
+
     self.date_filter.set_event_handler(
       "x-period-changed",
       self.date_filter_changed
     )
-  '''
-  Така `IntestineView`:  
-  main_form       → съществуващият Main
-  intestine_form  → старата Intestine инстанция
-  '''
+
+    self.show_intestine_data(mode, tb, te)
 
   
   def date_filter_changed(
@@ -41,7 +45,7 @@ class IntestineView(IntestineViewTemplate):
     Globals.intestine_view_tb = tb
     Globals.intestine_view_te = te
     
-    print(mode, tb, te)  
+    print("date_filter_changed.IntestineView() ", mode, tb, te)  
     self.show_intestine_data(mode, tb, te)
 
 
@@ -60,9 +64,7 @@ class IntestineView(IntestineViewTemplate):
     self.remove_from_parent()
 
     self.main_form.show_main_ui()
-    self.main_form.content_panel.add_component(
-      self.intestine_form
-    )
+    self.main_form.content_panel.add_component(self.intestine_form )
 
   '''
   @handle("back_btn", "click")
