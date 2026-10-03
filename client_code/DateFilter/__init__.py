@@ -115,11 +115,13 @@ class DateFilter(DateFilterTemplate):
     # create date pickers
     dp_from = DatePicker(
       date=self._range_from,
-      pick_time=False
+      pick_time=False, 
+      format="%d/%m"
     )  
     dp_to = DatePicker(
       date=self._range_to,
-      pick_time=False
+      pick_time=False,
+      format="%d/%m"
     )
     # panel
     panel = ColumnPanel()  
