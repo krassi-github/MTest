@@ -79,7 +79,7 @@ class Main(MainTemplate):
       if doc:
         doc.scrollTop = 0
   
-    anvil.js.window.setTimeout(do_reset, 50)
+    anvil.js.window.setTimeout(do_reset, 200)
 
 
 
