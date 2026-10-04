@@ -75,4 +75,4 @@ class IntestineView(IntestineViewTemplate):
     self.main_form.show_app_bar()    # show the html app's bar in main
     
     self.main_form.content_panel.add_component(self.intestine_form )
-    self.main_form.reset_page_scroll()         #self.main_form.reset_content_scroll()
+    self.main_form.reset_scroll()         #self.main_form.reset_content_scroll()

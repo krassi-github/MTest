@@ -66,6 +66,24 @@ class Main(MainTemplate):
 
 
   # To combat a scroll issue    № 04-10-2026
+  def reset_scroll(self):
+    def do_reset():
+      for selector in (".content", ".nav-holder"):
+        el = anvil.js.window.document.querySelector(selector)
+        if el:
+          el.scrollTop = 0
+
+      anvil.js.window.scrollTo(0, 0)
+  
+      doc = anvil.js.window.document.scrollingElement
+      if doc:
+        doc.scrollTop = 0
+  
+    anvil.js.window.setTimeout(do_reset, 50)
+
+
+
+  
   def reset_content_scroll(self):
     node = anvil.js.get_dom_node(self.content_panel)
     node.scrollIntoView()
