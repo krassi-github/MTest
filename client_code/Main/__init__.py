@@ -48,6 +48,24 @@ class Main(MainTemplate):
 
   # Handling the content panel for usage by lower leves (Intestine & IntestineView)
   def hide_main_ui(self):
+    self._main_ui_visibility = {}
+
+    for component in self.get_components():
+      if component is self.content_panel:
+        continue
+      print("HIDE", type(component), component.visible)
+      self._main_ui_visibility[component] = component.visible
+      component.visible = False
+    
+
+  def show_main_ui(self):
+    for component, was_visible in self._main_ui_visibility.items():
+      print("RESTORE", type(component), was_visible)
+      component.visible = was_visible  
+    self._main_ui_visibility = {}
+
+  '''
+  def hide_main_ui(self):
     for component in self.get_components():
       if component is not self.content_panel:
         component.visible = False
@@ -55,6 +73,7 @@ class Main(MainTemplate):
   def show_main_ui(self):
     for component in self.get_components():
       component.visible = True
+  '''
 
   # Handling app bar
   import anvil.js
