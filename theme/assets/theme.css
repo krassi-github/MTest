@@ -3,7 +3,7 @@
  27-11-2023  0height role transfered from MH theme.css  kag
  27-12-2023  Repeating Panel Vertical scroll (at the file end) .anvil-role-scrol
              width & height programmable
- 03-10-2026  Проба с -4px in the 0height
+ 04-10-2026  .anvil-role-ThinDataRow
  **/
 
 /* Stop panel-cols cutting off drop shadows */
@@ -175,11 +175,11 @@ color: %color:On Primary Container%;
 /*=================================================================================================== */
 /*  04-10-2026    on DATA row  */
 .anvil-role-ThinDataRow {        
-  margin-top: 0px !important;    // Can  be negative
-  margin-bottom: 0px !important;
+  margin-top: -2px !important;    // Can  be negative
+  margin-bottom: -2px !important;
   padding-top: 0px;
   padding-bottom: 0px;
-  line-height: 10px;              // 
+  line-height: 2px;              // 
 }
 
 /*  27-11-2023 transfered from MH theme.css  */
