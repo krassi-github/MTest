@@ -38,13 +38,13 @@ class DateFilter(DateFilterTemplate):
 
   def refresh_period(self):
     # 30-09-2026
-    print(
+    '''print(
       "REFRESH:",
       self.mode,
       self._anchor_date,
       self._range_from,
       self._range_to
-    )
+    )'''
     if self.mode == "D":
       self.te = self._anchor_date + datetime.timedelta(days=1)
       self.tb = self.te - datetime.timedelta(days=1)    
@@ -102,7 +102,7 @@ class DateFilter(DateFilterTemplate):
 
 
   def select_range(self):
-    print("START range:", self._range_from, self._range_to)
+    #print("START range:", self._range_from, self._range_to)
     if self._range_from is None:
       self._range_from = self._anchor_date  
     if self._range_to is None:
@@ -137,9 +137,6 @@ class DateFilter(DateFilterTemplate):
         ("Cancel", False)
       ]
     )
-
-    print("RESULT:", result)
-    print("PICKERS:", dp_from.date, dp_to.date)
     
     if not result:
       return  
@@ -152,7 +149,7 @@ class DateFilter(DateFilterTemplate):
     self._range_from = dp_from.date
     self._range_to = dp_to.date
 
-    print("REFRESH OUT:", self.mode, self.tb, self.te)
+    #print("REFRESH OUT:", self.mode, self.tb, self.te)
     self.refresh_period()
     
  

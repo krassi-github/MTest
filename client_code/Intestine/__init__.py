@@ -144,9 +144,10 @@ class Intestine(IntestineTemplate):
         
 
   @handle("cancel_btn", "click")
-  def cancel_btn_click(self, **event_args):
+  def cancel_btn_click(self, **event_args):    
     self.main_form = Intestine.main_form
     self.main_form.show_main_content()
+    self.main_form.reset_page_scroll()
 
   # 03-10=22026
   @handle("view_btn", "click")
@@ -163,6 +164,7 @@ class Intestine(IntestineTemplate):
       intestine_form=intestine_form
     )  
     main.content_panel.add_component(view)
+    main.reset_page_scroll()                 # main.reset_content_scroll()
 
 
     

@@ -71,7 +71,8 @@ class IntestineView(IntestineViewTemplate):
   def back_btn_click(self, **event_args):
     self.remove_from_parent()
 
-    self.main_form.show_main_ui()    # To execute the FIRST (before show_app_bar())
+    self.main_form.show_main_ui()    # 
     self.main_form.show_app_bar()    # show the html app's bar in main
     
     self.main_form.content_panel.add_component(self.intestine_form )
+    self.main_form.reset_page_scroll()         #self.main_form.reset_content_scroll()

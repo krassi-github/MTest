@@ -53,16 +53,52 @@ class Main(MainTemplate):
     for component in self.get_components():
       if component is self.content_panel:
         continue
-      print("HIDE", type(component), component.visible)
+
       self._main_ui_visibility[component] = component.visible
       component.visible = False
     
 
   def show_main_ui(self):
     for component, was_visible in self._main_ui_visibility.items():
-      print("RESTORE", type(component), was_visible)
+
       component.visible = was_visible  
     self._main_ui_visibility = {}
+
+
+  # To combat a scroll issue    № 04-10-2026
+  def reset_content_scroll(self):
+    node = anvil.js.get_dom_node(self.content_panel)
+    node.scrollIntoView()
+
+
+  def reset_page_scroll(self):
+    doc = anvil.js.window.document.scrollingElement
+    if doc:
+      print("PAGE SCROLL before =", doc.scrollTop)
+      doc.scrollTop = 0
+      print("PAGE SCROLL after  =", doc.scrollTop)
+      
+  ''' 
+  def show_scroll_parents(self):
+    node = anvil.js.get_dom_node(self.content_panel)
+    el = node  
+    print("---- SCROLL PARENTS ----")
+  
+    while el:
+      style = anvil.js.window.getComputedStyle(el)
+  
+      print(
+        el.tagName,
+        el.className,
+        "scrollTop =", el.scrollTop,
+        "clientH =", el.clientHeight,
+        "scrollH =", el.scrollHeight,
+        "overflowY =", style.overflowY
+      )
+   
+      el = el.parentElement
+  '''
+    
 
   '''
   def hide_main_ui(self):
@@ -158,6 +194,7 @@ class Main(MainTemplate):
     self.content_panel.clear()
     self.new_panel = Intestine(main_form=self)
     self.content_panel.add_component(self.new_panel)
+    
   
   def edit_click(self, **event_args):
     Globals.mode = "edit"
