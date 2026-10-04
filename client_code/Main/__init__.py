@@ -65,7 +65,36 @@ class Main(MainTemplate):
     self._main_ui_visibility = {}
 
 
-  # To combat a scroll issue    № 04-10-2026
+  # To combat a scroll issue    № 04-10-2026  =======================================================
+  def show_scroll_state(self, txt=""):
+    w = anvil.js.window
+    d = w.document
+  
+    print("\n---", txt, "---")
+    print("window.scrollY =", w.scrollY)
+  
+    doc = d.scrollingElement
+    if doc:
+      print("document =", doc.tagName, "scrollTop =", doc.scrollTop)
+
+    for selector in (".content", ".nav-holder"):
+      el = d.querySelector(selector)
+      if el:
+        print(
+          selector,
+          "scrollTop =", el.scrollTop,
+          "clientH =", el.clientHeight,
+          "scrollH =", el.scrollHeight
+        )
+  
+    if w.visualViewport:
+      print(
+        "visualViewport:",
+        "pageTop =", w.visualViewport.pageTop,
+        "offsetTop =", w.visualViewport.offsetTop
+      )
+  
+  
   def reset_scroll(self):
     def do_reset():
       for selector in (".content", ".nav-holder"):
@@ -83,11 +112,10 @@ class Main(MainTemplate):
 
 
 
-  
+  '''
   def reset_content_scroll(self):
     node = anvil.js.get_dom_node(self.content_panel)
     node.scrollIntoView()
-
 
   def reset_page_scroll(self):
     doc = anvil.js.window.document.scrollingElement
@@ -96,7 +124,7 @@ class Main(MainTemplate):
       doc.scrollTop = 0
       print("PAGE SCROLL after  =", doc.scrollTop)
       
-  ''' 
+   
   def show_scroll_parents(self):
     node = anvil.js.get_dom_node(self.content_panel)
     el = node  

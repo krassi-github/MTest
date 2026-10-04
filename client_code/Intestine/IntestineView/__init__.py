@@ -67,6 +67,7 @@ class IntestineView(IntestineViewTemplate):
 
 
   # 03-10-2026
+  ''' 
   @handle("back_btn", "click")
   def back_btn_click(self, **event_args):
     self.remove_from_parent()
@@ -76,3 +77,30 @@ class IntestineView(IntestineViewTemplate):
     
     self.main_form.content_panel.add_component(self.intestine_form )
     self.main_form.reset_scroll()         #self.main_form.reset_content_scroll()
+  ''' 
+  # 04-10-2026
+  @handle("back_btn", "click")
+  def back_btn_click(self, **event_args):
+    self.main_form.show_scroll_state("BEFORE BACK")
+    
+    active = anvil.js.window.document.activeElement
+
+    print(
+      "ACTIVE before back:",
+      active.tagName if active else None,
+      active.className if active else None
+    )
+  
+    if active:
+      active.blur()
+  
+    self.remove_from_parent()
+  
+    self.main_form.show_app_bar()
+    self.main_form.show_main_ui()
+  
+    self.main_form.content_panel.add_component(
+      self.intestine_form
+    )
+  
+    self.main_form.reset_scroll()
