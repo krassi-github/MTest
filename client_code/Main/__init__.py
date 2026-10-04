@@ -45,18 +45,6 @@ class Main(MainTemplate):
       
     self.refresh_data(Globals.cur_date)
 
-    print("ROW role =", self.role)
-
-    for c in self.get_components():
-      print(
-        "  ",
-        c,
-        type(c),
-        "role =", getattr(c, "role", None),
-        "margin =", getattr(c, "spacing_above", None),
-        getattr(c, "spacing_below", None)
-      )
-
 
   # Handling the content panel for usage by lower leves (Intestine & IntestineView)
   def hide_main_ui(self):
@@ -67,6 +55,19 @@ class Main(MainTemplate):
   def show_main_ui(self):
     for component in self.get_components():
       component.visible = True
+
+  # Handling app bar
+  import anvil.js
+
+  def hide_app_bar(self):
+    bar = anvil.js.window.document.querySelector(".app-bar")
+    if bar:
+      bar.style.display = "none"
+  
+  def show_app_bar(self):
+    bar = anvil.js.window.document.querySelector(".app-bar")
+    if bar:
+      bar.style.display = ""
       
 
   def refresh_data(self, date):
@@ -102,25 +103,6 @@ class Main(MainTemplate):
     self.touch_start_y = None
     self.touch_end_y = None
 
-  '''My handlers 
-  def on_touch_start(self, **event_args):
-    pass
-  def on_touch_move(self, **event_args):
-    pass
-  def on_touch_end(self, **event_args):
-    pass
-  '''
-
-  def left_b_click(self, **event_args):
-    self.show_move("up")
-    if Globals.mode != "create":
-      self.content_panel.raise_event_on_children("x-Date-Change")
-
-  def right_b_click(self, **event_args):
-    self.show_move("dn")
-    if Globals.mode != "create":
-      self.content_panel.raise_event_on_children("x-Date-Change")
-      
 
   def show_move(self, direction):
     if direction == "up":
@@ -139,6 +121,19 @@ class Main(MainTemplate):
     self.content_panel.add_component(self.dgnst)
 
   # ---------------------------------------------------------------------------------------------------
+  # Button HANDLERS
+
+  def left_b_click(self, **event_args):
+    self.show_move("up")
+    if Globals.mode != "create":
+      self.content_panel.raise_event_on_children("x-Date-Change")
+
+  def right_b_click(self, **event_args):
+    self.show_move("dn")
+    if Globals.mode != "create":
+      self.content_panel.raise_event_on_children("x-Date-Change")
+
+
   @handle("intestine_btn", "click")
   def intestine_btn_click(self, **event_args):
     self.content_panel.clear()
@@ -149,12 +144,10 @@ class Main(MainTemplate):
     Globals.mode = "edit"
     self.content_panel.clear()
     self.new_panel = Change(main_form=self)
-    self.content_panel.add_component(self.new_panel)
-
- 
+    self.content_panel.add_component(self.new_panel) 
 
   # ===============================================================================================
-  # OLD code
+  # Microlife A7 BT import
   @handle("A7import_btn", "click")
   def A7import_btn_click(self, **event_args):
     try:
@@ -221,6 +214,3 @@ class Main(MainTemplate):
         str(err),
         title="A7 Sync - ERROR"
       )
-
-# ===============================================================================================
-# OLD code

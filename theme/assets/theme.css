@@ -174,9 +174,11 @@ color: %color:On Primary Container%;
 }
 
 /*=================================================================================================== */
+/* remove app bar of the app
 .app-bar {
   display: none !important;
 }
+*/
 
 /*  04-10-2026    on DATA row  (margin can be negative*/
 .anvil-role-ThinDataRow {        
