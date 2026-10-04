@@ -172,10 +172,20 @@ color: %color:On Primary Container%;
 .designer .structure {
   height: initial;
 }
+/*=================================================================================================== */
+/*  04-10-2026    on DATA row  */
+.anvil-role-ThinDataRow {        
+  margin-top: 0px !important;    // Can  be negative
+  margin-bottom: 0px !important;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  line-height: 10px;              // 
+}
+
 /*  27-11-2023 transfered from MH theme.css  */
 .anvil-role-0height {        
-  margin-top: -4px !important;    // 28-03-24 kag old value = 0px;
-  margin-bottom: -4px !important;
+  margin-top: 0px !important;    // 28-03-24 kag old value = 0px;
+  margin-bottom: 0px !important;
   padding-top: 0px;
   padding-bottom: 0px;
   line-height: 70%;              // kag It works well old value= 50%;
