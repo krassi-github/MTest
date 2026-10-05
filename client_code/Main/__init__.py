@@ -66,7 +66,6 @@ class Main(MainTemplate):
 
 
   # To combat a scroll issue    № 04-10-2026  =======================================================
-
   
   def show_scroll_state(self, txt=""):
     w = anvil.js.window
