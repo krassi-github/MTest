@@ -104,3 +104,8 @@ class IntestineView(IntestineViewTemplate):
     )
   
     self.main_form.reset_scroll()
+    # Logging the mobile  05-10-2026  23:18
+    anvil.js.window.setTimeout(
+      self.main_form.show_phone_scroll_state,
+      700
+    )

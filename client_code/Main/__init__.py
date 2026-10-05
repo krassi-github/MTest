@@ -94,9 +94,28 @@ class Main(MainTemplate):
         "offsetTop =", w.visualViewport.offsetTop
       )
 
+    print("OTHER SCROLLED ELEMENTS:")
+    found = False
+
+    for el in d.querySelectorAll("*"):
+      if el.scrollTop != 0:
+        found = True
+        print(
+          "tag =", el.tagName,
+          "id =", el.id,
+          "class =", el.getAttribute("class"),
+          "scrollTop =", el.scrollTop,
+          "clientH =", el.clientHeight,
+          "scrollH =", el.scrollHeight
+        )
+
+    if not found:
+      print("none")
+
+
   def reset_scroll(self):
     def do_reset():
-      self.show_scroll_state("AFTER BACK / BEFORE RESET")
+      self.show_scroll_state("BEFORE RESET")
 
       for selector in (".content", ".nav-holder"):
         el = anvil.js.window.document.querySelector(selector)
@@ -117,7 +136,6 @@ class Main(MainTemplate):
       )
 
     anvil.js.window.setTimeout(do_reset, 200)
-
 
   
   ''' Replaced with diagnostics (temporary maybe  )
@@ -140,7 +158,25 @@ class Main(MainTemplate):
 
   # Handling app bar
   import anvil.js
+  # Коригираща версия (тушира действията на HTML- a) 05-10-2026 23:42
+  '''вече .content.top = 106 и преди, и след връщането. 
+  Причината беше невъзстановеното отстояние за горната лента. 
+  Поправката е resize събитието в hide_app_bar() и show_app_bar().'''
+  def hide_app_bar(self):
+    w = anvil.js.window
+    bar = w.document.querySelector(".app-bar")
+    if bar:
+      bar.style.display = "none"
+      w.dispatchEvent(anvil.js.new(w.Event, "resize"))  #w.dispatchEvent(w.Event.new("resize"))
 
+  def show_app_bar(self):
+    w = anvil.js.window
+    bar = w.document.querySelector(".app-bar")
+    if bar:
+      bar.style.display = ""
+      w.dispatchEvent(anvil.js.new(w.Event, "resize"))  #w.dispatchEvent(w.Event.new("resize"))
+
+  '''
   def hide_app_bar(self):
     bar = anvil.js.window.document.querySelector(".app-bar")
     if bar:
@@ -150,8 +186,10 @@ class Main(MainTemplate):
     bar = anvil.js.window.document.querySelector(".app-bar")
     if bar:
       bar.style.display = ""
+  '''
       
 
+  # ----------------------------------------------------------------------------------------------------
   def refresh_data(self, date):
     r = Globals.load_data(date)
     self.repeating_panel_1.items = Globals.status
@@ -297,3 +335,34 @@ class Main(MainTemplate):
         str(err),
         title="A7 Sync - ERROR"
       )
+
+# Logging on the mobile 05-10-2026  23:16
+  def show_phone_scroll_state(self):
+    w = anvil.js.window
+    d = w.document
+
+    lines = [
+      f"window: {w.innerWidth} x {w.innerHeight}",
+      f"window.scrollY: {w.scrollY}"
+    ]
+
+    for selector in (".app-bar", ".content", ".nav-holder"):
+      el = d.querySelector(selector)
+      if el:
+        rect = el.getBoundingClientRect()
+        lines.append(
+          f"{selector}:"
+          f"\n top={rect.top:.1f}, height={rect.height:.1f}"
+          f"\n scroll={el.scrollTop:.1f},"
+          f" clientH={el.clientHeight}, scrollH={el.scrollHeight}"
+        )
+
+    lines.append("Scrolled elements:")
+    for el in d.querySelectorAll("*"):
+      if el.scrollTop != 0:
+        lines.append(
+          f"{el.tagName} {el.getAttribute('class')}: "
+          f"{el.scrollTop:.1f}"
+        )
+
+    anvil.alert("\n".join(lines), title="Phone diagnostics")

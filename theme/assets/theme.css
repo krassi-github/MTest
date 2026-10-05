@@ -186,12 +186,12 @@ color: %color:On Primary Container%;
   margin-bottom: -2px !important;
   padding-top: 0px;
   padding-bottom: 0px;
-  line-height: 2px;              // 
+  line-height: 2px;              
 }
 
 /*  27-11-2023 transfered from MH theme.css  */
 .anvil-role-0height {        
-  margin-top: 0px !important;    // 28-03-24 kag old value = 0px;
+  margin-top: 0px !important;    /* 28-03-24 kag old value = 0px;  */
   margin-bottom: 0px !important;
   padding-top: 0px;
   padding-bottom: 0px;

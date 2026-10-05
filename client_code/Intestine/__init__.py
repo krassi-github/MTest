@@ -147,15 +147,13 @@ class Intestine(IntestineTemplate):
   def cancel_btn_click(self, **event_args):    
     self.main_form = Intestine.main_form
     self.main_form.show_main_content()
-
-    self.main_form.show_main_content()
-
     self.main_form.reset_scroll()
 
   # 03-10=22026
   @handle("view_btn", "click")
   def view_btn_click(self, **event_args):
     main = Intestine.main_form      # = App's main
+    main.show_phone_scroll_state()   # Logging the mobile 05-10-2025 23:26
     intestine_form = self
   
     self.remove_from_parent()
