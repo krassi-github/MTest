@@ -148,12 +148,8 @@ class Intestine(IntestineTemplate):
     self.main_form = Intestine.main_form
     self.main_form.show_main_content()
 
-    main.show_main_content()
+    self.main.show_main_content()
 
-    anvil.js.window.setTimeout(
-      main.show_mobile_state,
-      300
-    )
     self.main_form.reset_scroll()
 
   # 03-10=22026

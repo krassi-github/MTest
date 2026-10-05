@@ -60,7 +60,6 @@ class Main(MainTemplate):
 
   def show_main_ui(self):
     for component, was_visible in self._main_ui_visibility.items():
-
       component.visible = was_visible  
     self._main_ui_visibility = {}
 
@@ -94,8 +93,34 @@ class Main(MainTemplate):
         "pageTop =", w.visualViewport.pageTop,
         "offsetTop =", w.visualViewport.offsetTop
       )
+
+  def reset_scroll(self):
+    def do_reset():
+      self.show_scroll_state("AFTER BACK / BEFORE RESET")
+
+      for selector in (".content", ".nav-holder"):
+        el = anvil.js.window.document.querySelector(selector)
+        if el:
+          el.scrollTop = 0
+
+      anvil.js.window.scrollTo(0, 0)
+
+      doc = anvil.js.window.document.scrollingElement
+      if doc:
+        doc.scrollTop = 0
+
+      self.show_scroll_state("AFTER RESET")
+
+      anvil.js.window.setTimeout(
+        lambda: self.show_scroll_state("LATER"),
+        300
+      )
+
+    anvil.js.window.setTimeout(do_reset, 200)
+
+
   
-  
+  ''' Replaced with diagnostics (temporary maybe  )
   def reset_scroll(self):
     def do_reset():
       for selector in (".content", ".nav-holder"):
@@ -110,53 +135,8 @@ class Main(MainTemplate):
         doc.scrollTop = 0
   
     anvil.js.window.setTimeout(do_reset, 200)
-
-
-
   '''
-  def reset_content_scroll(self):
-    node = anvil.js.get_dom_node(self.content_panel)
-    node.scrollIntoView()
 
-  def reset_page_scroll(self):
-    doc = anvil.js.window.document.scrollingElement
-    if doc:
-      print("PAGE SCROLL before =", doc.scrollTop)
-      doc.scrollTop = 0
-      print("PAGE SCROLL after  =", doc.scrollTop)
-      
-   
-  def show_scroll_parents(self):
-    node = anvil.js.get_dom_node(self.content_panel)
-    el = node  
-    print("---- SCROLL PARENTS ----")
-  
-    while el:
-      style = anvil.js.window.getComputedStyle(el)
-  
-      print(
-        el.tagName,
-        el.className,
-        "scrollTop =", el.scrollTop,
-        "clientH =", el.clientHeight,
-        "scrollH =", el.scrollHeight,
-        "overflowY =", style.overflowY
-      )
-   
-      el = el.parentElement
-  '''
-    
-
-  '''
-  def hide_main_ui(self):
-    for component in self.get_components():
-      if component is not self.content_panel:
-        component.visible = False
-
-  def show_main_ui(self):
-    for component in self.get_components():
-      component.visible = True
-  '''
 
   # Handling app bar
   import anvil.js
