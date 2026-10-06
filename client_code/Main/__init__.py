@@ -66,53 +66,28 @@ class Main(MainTemplate):
 
   # To combat a scroll issue    № 04-10-2026  =======================================================
   
-  def show_scroll_state(self, txt=""):
-    w = anvil.js.window
-    d = w.document
+
+
+  def reset_scroll(self):
+    def do_reset():
+      w = anvil.js.window
+
+      for selector in (".content", ".nav-holder"):
+        el = w.document.querySelector(selector)
+        if el:
+          el.scrollTop = 0
+
+      w.scrollTo(0, 0)
+
+      doc = w.document.scrollingElement
+      if doc:
+        doc.scrollTop = 0
+
+    anvil.js.window.setTimeout(do_reset, 200)
+
+    
+  ''' Replaced with diagnostics (temporary maybe  )
   
-    print("\n---", txt, "---")
-    print("window.scrollY =", w.scrollY)
-  
-    doc = d.scrollingElement
-    if doc:
-      print("document =", doc.tagName, "scrollTop =", doc.scrollTop)
-
-    for selector in (".content", ".nav-holder"):
-      el = d.querySelector(selector)
-      if el:
-        print(
-          selector,
-          "scrollTop =", el.scrollTop,
-          "clientH =", el.clientHeight,
-          "scrollH =", el.scrollHeight
-        )
-  
-    if w.visualViewport:
-      print(
-        "visualViewport:",
-        "pageTop =", w.visualViewport.pageTop,
-        "offsetTop =", w.visualViewport.offsetTop
-      )
-
-    print("OTHER SCROLLED ELEMENTS:")
-    found = False
-
-    for el in d.querySelectorAll("*"):
-      if el.scrollTop != 0:
-        found = True
-        print(
-          "tag =", el.tagName,
-          "id =", el.id,
-          "class =", el.getAttribute("class"),
-          "scrollTop =", el.scrollTop,
-          "clientH =", el.clientHeight,
-          "scrollH =", el.scrollHeight
-        )
-
-    if not found:
-      print("none")
-
-
   def reset_scroll(self):
     def do_reset():
       self.show_scroll_state("BEFORE RESET")
@@ -138,7 +113,6 @@ class Main(MainTemplate):
     anvil.js.window.setTimeout(do_reset, 200)
 
   
-  ''' Replaced with diagnostics (temporary maybe  )
   def reset_scroll(self):
     def do_reset():
       for selector in (".content", ".nav-holder"):
@@ -335,34 +309,3 @@ class Main(MainTemplate):
         str(err),
         title="A7 Sync - ERROR"
       )
-
-# Logging on the mobile 05-10-2026  23:16
-  def show_phone_scroll_state(self):
-    w = anvil.js.window
-    d = w.document
-
-    lines = [
-      f"window: {w.innerWidth} x {w.innerHeight}",
-      f"window.scrollY: {w.scrollY}"
-    ]
-
-    for selector in (".app-bar", ".content", ".nav-holder"):
-      el = d.querySelector(selector)
-      if el:
-        rect = el.getBoundingClientRect()
-        lines.append(
-          f"{selector}:"
-          f"\n top={rect.top:.1f}, height={rect.height:.1f}"
-          f"\n scroll={el.scrollTop:.1f},"
-          f" clientH={el.clientHeight}, scrollH={el.scrollHeight}"
-        )
-
-    lines.append("Scrolled elements:")
-    for el in d.querySelectorAll("*"):
-      if el.scrollTop != 0:
-        lines.append(
-          f"{el.tagName} {el.getAttribute('class')}: "
-          f"{el.scrollTop:.1f}"
-        )
-
-    anvil.alert("\n".join(lines), title="Phone diagnostics")

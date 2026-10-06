@@ -81,16 +81,7 @@ class IntestineView(IntestineViewTemplate):
   # 04-10-2026
   @handle("back_btn", "click")
   def back_btn_click(self, **event_args):
-    self.main_form.show_scroll_state("BEFORE BACK")
-    
-    active = anvil.js.window.document.activeElement
-
-    print(
-      "ACTIVE before back:",
-      active.tagName if active else None,
-      active.className if active else None
-    )
-  
+    active = anvil.js.window.document.activeElement  
     if active:
       active.blur()
   
@@ -104,8 +95,3 @@ class IntestineView(IntestineViewTemplate):
     )
   
     self.main_form.reset_scroll()
-    # Logging the mobile  05-10-2026  23:18
-    anvil.js.window.setTimeout(
-      self.main_form.show_phone_scroll_state,
-      700
-    )
