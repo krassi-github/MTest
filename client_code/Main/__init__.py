@@ -219,12 +219,12 @@ class Main(MainTemplate):
 
   def left_b_click(self, **event_args):
     self.show_move("up")
-    if Globals.mode != "create":
+    if Globals.entry_mode != "create":
       self.content_panel.raise_event_on_children("x-Date-Change")
 
   def right_b_click(self, **event_args):
     self.show_move("dn")
-    if Globals.mode != "create":
+    if Globals.entry_mode != "create":
       self.content_panel.raise_event_on_children("x-Date-Change")
 
 
@@ -236,7 +236,7 @@ class Main(MainTemplate):
     
   
   def edit_click(self, **event_args):
-    Globals.mode = "edit"
+    Globals.entry_mode = "edit"
     self.content_panel.clear()
     self.new_panel = Change(main_form=self)
     self.content_panel.add_component(self.new_panel) 

@@ -26,7 +26,7 @@ daily_intakes_cpy = []
 # int_id, rd_time, rd_name, rd_weight, rd_pcs
 
 cur_date = None     # YYYY/MM/DD HH:MM
-mode = "create"     # create or edit
+entry_mode = "create"     # create or edit
 # intake parameters
 intake_time = ""
 intake_code = ""    # code of the medicine
@@ -41,7 +41,7 @@ edited_notes = None
 med_group = []
 group_type = ""   # morning, noon, evening, on_need
 # Memory of IntestineView
-mode = 'D'
+mode = ''        # Date Filter mode D, 7D, 30D, R
 tb = None
 te = None
 

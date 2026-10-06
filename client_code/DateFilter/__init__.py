@@ -2,6 +2,7 @@ from ._anvil_designer import DateFilterTemplate
 from anvil import *
 import anvil.server
 
+from .. import Globals
 import datetime
 
 
@@ -10,8 +11,16 @@ class DateFilter(DateFilterTemplate):
     # Set Form properties and Data Bindings.
     super().__init__(**properties)
 
-    self.mode = "D"          # D / 7D / 30D / R
-    self.rb_d.selected = True
+    if Globals.mode in ('', 'D'):
+      self.mode = "D"          # D / 7D / 30D / R
+      self.rb_d.selected = True
+    elif Globals.mode == '7D':
+      self.rb_7d.selected = True
+    elif Globals.mode == '30D':
+      self.rb_30d.selected = True
+    elif Globals.mode == 'R':
+      self.rb_range.selected = True    
+    
     self._anchor_date = datetime.date.today()
     self.tb = None
     self.te = None
