@@ -19,6 +19,13 @@ status = []
          "m_ex": False, "noon": None, "n_ex": False, "evening": None,
          "e_ex": False, "on_need": None, "o_ex": False} 
          '''
+prescribed = []
+# prescribed index 
+# p_id, r_m_code, morning, noon, evening, on_need, name = (0, 1, 2, 3, 4, 5, 6)  
+''' prescribed format
+s = {r[p_id], r[name], [r_m_code], r[morning],
+     r[noon], r[evening], r[on_need]
+'''
 # single Intake data format: #int_id	time	m_code	det_code	type	pcs	note
 daily_intakes = []
 daily_intakes_cpy = []
@@ -26,7 +33,7 @@ daily_intakes_cpy = []
 # int_id, rd_time, rd_name, rd_weight, rd_pcs
 
 cur_date = None     # YYYY/MM/DD HH:MM
-mode = "create"     # create or edit
+entry_mode = "create"     # create or edit
 # intake parameters
 intake_time = ""
 intake_code = ""    # code of the medicine
@@ -40,12 +47,21 @@ edited_notes = None
 # loaded group of medicine FORMAT [[name, pcs, code], ...... ]
 med_group = []
 group_type = ""   # morning, noon, evening, on_need
+# Memory of IntestineView
+mode = ''        # Date Filter mode D, 7D, 30D, R
+tb = None
+te = None
 
 # FUNCS ********************************************************************************
 
 def load_data(date):
   global status  
   r, status = anvil.server.call("get_status", date)
+  return(r)
+
+def load_prescribed(date ):
+  global prescribed
+  r, prescribed = anvil.server.call("get_prescribed", date)
   return(r)
 
 def load_intakes(date):  # YYYY/MM/DD
@@ -61,27 +77,64 @@ def get_med_name(med_code):
   return("---")
 
 
-def get_pcs_type(med_code, time):
-  global status, intake_code, intake_type
+def get_pcs_type(med_code, _time):
+  global status, prescribed, intake_code, intake_type
+
+  def get_prescribed(med_code, _time):
+    p_id, r_m_code, morning, noon, evening, on_need, name = (0, 1, 2, 3, 4, 5, 6)
+    pr_index = {
+      "p_id": p_id,
+      "r_m_code": r_m_code,
+      "morning": morning,
+      "noon": noon,
+      "evening": evening,
+      "on_need": on_need,
+      "name": name,
+    }
+    #value = row[pr_index[field]] ex.
+    for row in prescribed:
+      if row[r_m_code] == med_code:
+        return(row[pr_index[_time]])
+    
   r = -1.0
   t = "-"
   for i in range(len(status)):
     if med_code == status[i]["code"]:
       intake_code = status[i]["code"]
-      if time == "m":
-        r = status[i]["morning"]
+      if _time == "m":
+        s = status[i]["morning"]
+        p = get_prescribed(med_code, "morning")
+        if status[i]["m_ex"]:    # qty already was taken
+          r = round(p - s, 1) if p - s >= 0 else 0
+        else:                    # nothing was taken yet
+          r = s        
         t = "сутрин"
         intake_type = "morning"
-      elif time == "n":
-        r = status[i]["noon"]
+      elif _time == "n":
+        s = status[i]["noon"]
+        p = get_prescribed(med_code, "noon")
+        if status[i]["n_ex"]:    # qty already was taken
+          r = round(p - s, 1) if p - s >= 0 else 0
+        else:
+          r = s
         t = "обед"
         intake_type = "noon"
-      elif time == "e":
-        r = status[i]["evening"]
+      elif _time == "e":
+        s = status[i]["evening"]
+        p = get_prescribed(med_code, "evening")
+        if status[i]["e_ex"]:    # qty already was taken
+          r = round(p - s, 1) if p - s >= 0 else 0
+        else:                    # nothing was taken yet
+          r = s
         t = "вечер"
         intake_type = "evening"
-      elif time == "on":
-        r = status[i]["on_need"]
+      elif _time == "on":
+        s = status[i]["on_need"]
+        p = get_prescribed(med_code, "on_need")
+        if status[i]["o_ex"]:    # qty already was taken
+          r = round(p - s, 1) if p - s >= 0 else 0
+        else:                    # nothing was taken yet
+          r = s
         t = "при нужда"
         intake_type = "on_need"
       else:

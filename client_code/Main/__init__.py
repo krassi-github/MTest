@@ -45,12 +45,75 @@ class Main(MainTemplate):
       
     self.refresh_data(Globals.cur_date)
 
+
+  # Handling the content panel for usage by lower leves (Intestine & IntestineView)
+  def hide_main_ui(self):
+    self._main_ui_visibility = {}
+
+    for component in self.get_components():
+      if component is self.content_panel:
+        continue
+
+      self._main_ui_visibility[component] = component.visible
+      component.visible = False
+    
+
+  def show_main_ui(self):
+    for component, was_visible in self._main_ui_visibility.items():
+      component.visible = was_visible  
+    self._main_ui_visibility = {}
+
+
+  # To combat a scroll issue    № 04-10-2026  =======================================================
+  
+
+
+  def reset_scroll(self):
+    def do_reset():
+      w = anvil.js.window
+
+      for selector in (".content", ".nav-holder"):
+        el = w.document.querySelector(selector)
+        if el:
+          el.scrollTop = 0
+
+      w.scrollTo(0, 0)
+
+      doc = w.document.scrollingElement
+      if doc:
+        doc.scrollTop = 0
+
+    anvil.js.window.setTimeout(do_reset, 200)
+
+  # Handling app bar
+  import anvil.js
+  # Коригираща версия (тушира действията на HTML- a) 05-10-2026 23:42
+  '''вече .content.top = 106 и преди, и след връщането. 
+  Причината беше невъзстановеното отстояние за горната лента. 
+  Поправката е resize събитието в hide_app_bar() и show_app_bar().'''
+  def hide_app_bar(self):
+    w = anvil.js.window
+    bar = w.document.querySelector(".app-bar")
+    if bar:
+      bar.style.display = "none"
+      w.dispatchEvent(anvil.js.new(w.Event, "resize"))  #w.dispatchEvent(w.Event.new("resize"))
+
+  def show_app_bar(self):
+    w = anvil.js.window
+    bar = w.document.querySelector(".app-bar")
+    if bar:
+      bar.style.display = ""
+      w.dispatchEvent(anvil.js.new(w.Event, "resize"))  #w.dispatchEvent(w.Event.new("resize"))
+
+
+  # ----------------------------------------------------------------------------------------------------
   def refresh_data(self, date):
     r = Globals.load_data(date)
+    r1 = Globals.load_prescribed(date)
     self.repeating_panel_1.items = Globals.status
     # self.dgnst.text = Globals.status
-    if r < 0:
-      self.date.text = f"Message {r}"
+    if r < 0 or r1 < 0:
+      self.date.text = f"Message ={r}   = {r1}"
       self.date.foreground = "red"
 
   def show_date(self):
@@ -78,25 +141,6 @@ class Main(MainTemplate):
     self.touch_start_y = None
     self.touch_end_y = None
 
-  '''My handlers 
-  def on_touch_start(self, **event_args):
-    pass
-  def on_touch_move(self, **event_args):
-    pass
-  def on_touch_end(self, **event_args):
-    pass
-  '''
-
-  def left_b_click(self, **event_args):
-    self.show_move("up")
-    if Globals.mode != "create":
-      self.content_panel.raise_event_on_children("x-Date-Change")
-
-  def right_b_click(self, **event_args):
-    self.show_move("dn")
-    if Globals.mode != "create":
-      self.content_panel.raise_event_on_children("x-Date-Change")
-      
 
   def show_move(self, direction):
     if direction == "up":
@@ -115,23 +159,47 @@ class Main(MainTemplate):
     self.content_panel.add_component(self.dgnst)
 
   # ---------------------------------------------------------------------------------------------------
+  # Button HANDLERS
+
+  def left_b_click(self, **event_args):
+    self.show_move("up")
+    if Globals.entry_mode != "create":
+      self.content_panel.raise_event_on_children("x-Date-Change")
+
+  def right_b_click(self, **event_args):
+    self.show_move("dn")
+    if Globals.entry_mode != "create":
+      self.content_panel.raise_event_on_children("x-Date-Change")
+
+
   @handle("intestine_btn", "click")
   def intestine_btn_click(self, **event_args):
     self.content_panel.clear()
     self.new_panel = Intestine(main_form=self)
     self.content_panel.add_component(self.new_panel)
+    
   
   def edit_click(self, **event_args):
-    Globals.mode = "edit"
+    Globals.entry_mode = "edit"
     self.content_panel.clear()
     self.new_panel = Change(main_form=self)
-    self.content_panel.add_component(self.new_panel)
+    self.content_panel.add_component(self.new_panel) 
 
-
+  # ===============================================================================================
+  # Microlife A7 BT import
   @handle("A7import_btn", "click")
   def A7import_btn_click(self, **event_args):
     try:
       result = a7GetMeasurements()
+      if result.records == 0:
+        alert(
+          (
+            f"User {result.user}\n"
+            "No measurements stored."
+          ),
+          title="A7 Sync"
+        )
+        return
   
       records = json.loads(
         result.recordsJson
@@ -185,27 +253,3 @@ class Main(MainTemplate):
         str(err),
         title="A7 Sync - ERROR"
       )
-
-# ===============================================================================================
-# OLD code
-  '''  V0 colored button visible in both forms
-  def edit_click(self, **event_args):
-    if Globals.mode == "create":
-      self.edit.background = "red"
-      self.flag.text = "*"
-      Globals.mode = "edit"
-  
-      self.content_panel.clear()
-      #self.content_panel.add_component(self.flow_panel_2)
-      self.new_panel = Change()
-      self.content_panel.add_component(self.new_panel)
-
-    else:
-      self.edit.background = None
-      self.flag.text = ""
-      Globals.mode = "create"
-
-      self.content_panel.clear()
-      self.show_main_content()
-      ''' 
-

@@ -2,17 +2,22 @@ from ._anvil_designer import IntestineTemplate
 from anvil import *
 import anvil.server
 
-from .. import validation
-from . Intestine_more import Intestine_more
-
 import datetime
 
+from .. import validation
+from . Intestine_more import Intestine_more
+from . IntestineView import IntestineView
+
+
 class Intestine(IntestineTemplate):
+  main_form = None  # static return
+  
   def __init__(self, main_form=None, **properties):
     # Set Form properties and Data Bindings.
     super().__init__(**properties)
 
-    self.main_form = main_form
+    if Intestine.main_form is None:
+      Intestine.main_form = main_form
     self.date_picker_1.format = "%Y/%m/%d %H:%M"
     if self.date_picker_1.date is None:
       #self.date_picker_1.date = datetime.datetime.now()
@@ -101,8 +106,8 @@ class Intestine(IntestineTemplate):
       content=frm,
       title="Допълнително",
       buttons=[
-        ("ОТКАЗ", False),
-        ("OK", True)
+        ("OK", True),
+        ("ОТКАЗ", False)        
       ]
     )  
     if ok:
@@ -139,21 +144,31 @@ class Intestine(IntestineTemplate):
         
 
   @handle("cancel_btn", "click")
-  def cancel_btn_click(self, **event_args):
+  def cancel_btn_click(self, **event_args):    
+    self.main_form = Intestine.main_form
     self.main_form.show_main_content()
+    self.main_form.reset_scroll()
 
-  @handle("day_btn", "click")
-  def day_btn_click(self, **event_args):
-    rows = anvil.server.call("get_intestine_events", self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 00:00", \
-                             self.date_picker_1.date.strftime("%Y-%m-%d %H:%M")[:10]+" 23:59")
-    self.msg_box.text = rows
+  # 03-10-2026
+  @handle("view_btn", "click")
+  def view_btn_click(self, **event_args):
+    main = Intestine.main_form      # = App's main
+    intestine_form = self
+  
+    self.remove_from_parent()
+    main.hide_main_ui()
+    main.hide_app_bar()    # hide the app bar of main form
+  
+    view = IntestineView(
+      main_form=main,
+      intestine_form=intestine_form
+    )  
+    main.content_panel.add_component(view)
+    main.reset_scroll()                 # main.reset_content_scroll()
+
+
     
 
-  @handle("all_btn", "click")
-  def all_btn_click(self, **event_args):
-    txt = []
-    rows = anvil.server.call("get_intestine_events", "2026/08/24 00:00", "2026/09/03 23:59")
-    for r in rows:
-      r = r + '\n'
-      txt.append(r)
-    self.outlined_1.text = txt
+  
+      
+    

@@ -13,6 +13,10 @@ components:
   properties: {align: center, bold: true}
   type: Label
 - components:
+  - layout_properties: {}
+    name: inc_b
+    properties: {role: outlined-button, text: '+1'}
+    type: Button
   - event_bindings: {click: double_b_click}
     layout_properties: {}
     name: double_b
@@ -21,7 +25,11 @@ components:
   - event_bindings: {click: half_b_click}
     layout_properties: {}
     name: half_b
-    properties: {font_size: 14, role: outlined-button, text: '.5'}
+    properties: {font_size: 14, role: outlined-button, text: /2}
+    type: Button
+  - layout_properties: {}
+    name: dec_b
+    properties: {role: outlined-button, text: '-1'}
     type: Button
   layout_properties: {grid_position: 'LGJLYS,THOYAZ'}
   name: flow_panel_2

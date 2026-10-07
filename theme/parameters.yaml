@@ -336,3 +336,4 @@ roles:
   display_in_toolbox: true
   name: scroll
   title: scroll role
+- {components: null, display_in_toolbox: true, name: ThinDataRow, title: ThinDataRow}
