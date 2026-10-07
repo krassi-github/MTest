@@ -82,5 +82,15 @@ class Take(TakeTemplate):
     self.pcs_box.text = "{:.1f}".format(float(self.pcs_box.text) * 2)
     self.pcs_box_pressed_enter()
 
+  @handle("inc_b", "click")
+  def inc_b_click(self, **event_args):
+    self.pcs_box.text = "{:.1f}".format(float(self.pcs_box.text) + 1)
+    self.pcs_box_pressed_enter()
+
+  @handle("dec_b", "click")
+  def dec_b_click(self, **event_args):
+    self.pcs_box.text = "{:.1f}".format(float(self.pcs_box.text) - 1)
+    self.pcs_box_pressed_enter()
+
 
 
