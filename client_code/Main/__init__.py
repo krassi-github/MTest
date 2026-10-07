@@ -109,10 +109,11 @@ class Main(MainTemplate):
   # ----------------------------------------------------------------------------------------------------
   def refresh_data(self, date):
     r = Globals.load_data(date)
+    r1 = Globals.load_prescribed(date)
     self.repeating_panel_1.items = Globals.status
     # self.dgnst.text = Globals.status
-    if r < 0:
-      self.date.text = f"Message {r}"
+    if r < 0 or r1 < 0:
+      self.date.text = f"Message ={r}   = {r1}"
       self.date.foreground = "red"
 
   def show_date(self):

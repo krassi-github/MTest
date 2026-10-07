@@ -57,12 +57,13 @@ te = None
 def load_data(date):
   global status  
   r, status = anvil.server.call("get_status", date)
-  print(status)
+  print("STATUS", status)
   return(r)
 
-def load_prescribed(cur_date ):
-  global prescribed, cur_date
-  r, prescribed = anvil.server.call("get_rescribed", cur_date)
+def load_prescribed(date ):
+  global prescribed
+  r, prescribed = anvil.server.call("get_prescribed", date)
+  print("PRESCRIBED", prescribed)
   return(r)
 
 def load_intakes(date):  # YYYY/MM/DD
@@ -78,26 +79,26 @@ def get_med_name(med_code):
   return("---")
 
 
-def get_pcs_type(med_code, time):
+def get_pcs_type(med_code, _time):
   global status, intake_code, intake_type
   r = -1.0
   t = "-"
   for i in range(len(status)):
     if med_code == status[i]["code"]:
       intake_code = status[i]["code"]
-      if time == "m":
+      if _time == "m":
         r = status[i]["morning"]
         t = "сутрин"
         intake_type = "morning"
-      elif time == "n":
+      elif _time == "n":
         r = status[i]["noon"]
         t = "обед"
         intake_type = "noon"
-      elif time == "e":
+      elif _time == "e":
         r = status[i]["evening"]
         t = "вечер"
         intake_type = "evening"
-      elif time == "on":
+      elif _time == "on":
         r = status[i]["on_need"]
         t = "при нужда"
         intake_type = "on_need"
