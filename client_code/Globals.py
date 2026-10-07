@@ -20,8 +20,8 @@ status = []
          "e_ex": False, "on_need": None, "o_ex": False} 
          '''
 prescribed = []
-# prescribed index
-p_id, r_m_code, morning, noon, evening, on_need, name = (0, 1, 2, 3, 4, 5, 6)  
+# prescribed index 
+# p_id, r_m_code, morning, noon, evening, on_need, name = (0, 1, 2, 3, 4, 5, 6)  
 ''' prescribed format
 s = {r[p_id], r[name], [r_m_code], r[morning],
      r[noon], r[evening], r[on_need]
@@ -57,7 +57,7 @@ te = None
 def load_data(date):
   global status  
   r, status = anvil.server.call("get_status", date)
-  print("STATUS", status)
+  #|print("STATUS", status)
   return(r)
 
 def load_prescribed(date ):
@@ -80,14 +80,26 @@ def get_med_name(med_code):
 
 
 def get_pcs_type(med_code, _time):
-  global status, intake_code, intake_type
+  global status, prescribed, intake_code, intake_type
+
+  def get_prescribed(med_code, _time):
+    print("get_prescribed()", med_code, _time)
+    prescribed_index = ("p_id", "r_m_code", "morning", "noon", "evening", "on_need", "name")
+    pr_values = (0, 1, 2, 3, 4, 5, 6)  
+    for row in prescribed:
+      if row[r_m_code] == med_code:
+        print("value= ", row[_time])
+        return(row[_time])
+    
   r = -1.0
   t = "-"
   for i in range(len(status)):
     if med_code == status[i]["code"]:
       intake_code = status[i]["code"]
       if _time == "m":
-        r = status[i]["morning"]
+        s = status[i]["morning"]
+        p = get_prescribed(med_code, "morning")
+        r = p - s if p - s >= 0 else 0
         t = "сутрин"
         intake_type = "morning"
       elif _time == "n":
