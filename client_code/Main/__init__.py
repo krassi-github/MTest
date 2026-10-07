@@ -85,51 +85,6 @@ class Main(MainTemplate):
 
     anvil.js.window.setTimeout(do_reset, 200)
 
-    
-  ''' Replaced with diagnostics (temporary maybe  )
-  
-  def reset_scroll(self):
-    def do_reset():
-      self.show_scroll_state("BEFORE RESET")
-
-      for selector in (".content", ".nav-holder"):
-        el = anvil.js.window.document.querySelector(selector)
-        if el:
-          el.scrollTop = 0
-
-      anvil.js.window.scrollTo(0, 0)
-
-      doc = anvil.js.window.document.scrollingElement
-      if doc:
-        doc.scrollTop = 0
-
-      self.show_scroll_state("AFTER RESET")
-
-      anvil.js.window.setTimeout(
-        lambda: self.show_scroll_state("LATER"),
-        300
-      )
-
-    anvil.js.window.setTimeout(do_reset, 200)
-
-  
-  def reset_scroll(self):
-    def do_reset():
-      for selector in (".content", ".nav-holder"):
-        el = anvil.js.window.document.querySelector(selector)
-        if el:
-          el.scrollTop = 0
-
-      anvil.js.window.scrollTo(0, 0)
-  
-      doc = anvil.js.window.document.scrollingElement
-      if doc:
-        doc.scrollTop = 0
-  
-    anvil.js.window.setTimeout(do_reset, 200)
-  '''
-
-
   # Handling app bar
   import anvil.js
   # Коригираща версия (тушира действията на HTML- a) 05-10-2026 23:42
@@ -150,18 +105,6 @@ class Main(MainTemplate):
       bar.style.display = ""
       w.dispatchEvent(anvil.js.new(w.Event, "resize"))  #w.dispatchEvent(w.Event.new("resize"))
 
-  '''
-  def hide_app_bar(self):
-    bar = anvil.js.window.document.querySelector(".app-bar")
-    if bar:
-      bar.style.display = "none"
-  
-  def show_app_bar(self):
-    bar = anvil.js.window.document.querySelector(".app-bar")
-    if bar:
-      bar.style.display = ""
-  '''
-      
 
   # ----------------------------------------------------------------------------------------------------
   def refresh_data(self, date):
