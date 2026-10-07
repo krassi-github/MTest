@@ -19,6 +19,13 @@ status = []
          "m_ex": False, "noon": None, "n_ex": False, "evening": None,
          "e_ex": False, "on_need": None, "o_ex": False} 
          '''
+prescribed = []
+# prescribed index
+p_id, r_m_code, morning, noon, evening, on_need, name = (0, 1, 2, 3, 4, 5, 6)  
+''' prescribed format
+s = {r[p_id], r[name], [r_m_code], r[morning],
+     r[noon], r[evening], r[on_need]
+'''
 # single Intake data format: #int_id	time	m_code	det_code	type	pcs	note
 daily_intakes = []
 daily_intakes_cpy = []
@@ -49,7 +56,7 @@ te = None
 
 def load_data(date):
   global status  
-  r, status = anvil.server.call("get_status", date)
+  r, status, prescribed = anvil.server.call("get_status", date)
   print(status)
   return(r)
 
