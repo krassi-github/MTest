@@ -50,7 +50,7 @@ class IntestineView(IntestineViewTemplate):
     Globals.tb = tb
     Globals.te = te
     
-    print("date_filter_changed.IntestineView() ", mode, tb, ' ', te)  
+    #print("date_filter_changed.IntestineView() ", mode, tb, ' ', te)  
     self.show_intestine_data(mode, tb, te)
 
 

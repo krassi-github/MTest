@@ -112,7 +112,6 @@ class DateFilter(DateFilterTemplate):
 
 
   def select_range(self):
-    #print("START range:", self._range_from, self._range_to)
     if self._range_from is None:
       self._range_from = self._anchor_date  
     if self._range_to is None:
@@ -159,7 +158,6 @@ class DateFilter(DateFilterTemplate):
     self._range_from = dp_from.date
     self._range_to = dp_to.date
 
-    #print("REFRESH OUT:", self.mode, self.tb, self.te)
     self.refresh_period()
     
  

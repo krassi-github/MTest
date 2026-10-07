@@ -50,6 +50,7 @@ te = None
 def load_data(date):
   global status  
   r, status = anvil.server.call("get_status", date)
+  print(status)
   return(r)
 
 def load_intakes(date):  # YYYY/MM/DD
