@@ -56,8 +56,13 @@ te = None
 
 def load_data(date):
   global status  
-  r, status, prescribed = anvil.server.call("get_status", date)
+  r, status = anvil.server.call("get_status", date)
   print(status)
+  return(r)
+
+def load_prescribed(cur_date ):
+  global prescribed, cur_date
+  r, prescribed = anvil.server.call("get_rescribed", cur_date)
   return(r)
 
 def load_intakes(date):  # YYYY/MM/DD
