@@ -57,13 +57,11 @@ te = None
 def load_data(date):
   global status  
   r, status = anvil.server.call("get_status", date)
-  #|print("STATUS", status)
   return(r)
 
 def load_prescribed(date ):
   global prescribed
   r, prescribed = anvil.server.call("get_prescribed", date)
-  print("PRESCRIBED", prescribed)
   return(r)
 
 def load_intakes(date):  # YYYY/MM/DD
@@ -84,12 +82,20 @@ def get_pcs_type(med_code, _time):
 
   def get_prescribed(med_code, _time):
     print("get_prescribed()", med_code, _time)
-    prescribed_index = ("p_id", "r_m_code", "morning", "noon", "evening", "on_need", "name")
-    pr_values = (0, 1, 2, 3, 4, 5, 6)  
+    p_id, r_m_code, morning, noon, evening, on_need, name = (0, 1, 2, 3, 4, 5, 6)
+    pr_index = {
+      "p_id": p_id,
+      "r_m_code": r_m_code,
+      "morning": morning,
+      "noon": noon,
+      "evening": evening,
+      "on_need": on_need,
+      "name": name,
+    }
+    #value = row[pr_index[field]] ex.
     for row in prescribed:
       if row[r_m_code] == med_code:
-        print("value= ", row[_time])
-        return(row[_time])
+        return(row[pr_index[_time]])
     
   r = -1.0
   t = "-"
@@ -99,19 +105,25 @@ def get_pcs_type(med_code, _time):
       if _time == "m":
         s = status[i]["morning"]
         p = get_prescribed(med_code, "morning")
-        r = p - s if p - s >= 0 else 0
+        r = round(p - s, 1) if p - s >= 0 else 0
         t = "сутрин"
         intake_type = "morning"
       elif _time == "n":
-        r = status[i]["noon"]
+        s = status[i]["noon"]
+        p = get_prescribed(med_code, "noon")
+        r = round(p - s, 1) if p - s >= 0 else 0
         t = "обед"
         intake_type = "noon"
       elif _time == "e":
-        r = status[i]["evening"]
+        s = status[i]["evening"]
+        p = get_prescribed(med_code, "evening")
+        r = round(p - s, 1) if p - s >= 0 else 0
         t = "вечер"
         intake_type = "evening"
       elif _time == "on":
-        r = status[i]["on_need"]
+        s = status[i]["on_need"]
+        p = get_prescribed(med_code, "on_need")
+        r = round(p - s, 1) if p - s >= 0 else 0
         t = "при нужда"
         intake_type = "on_need"
       else:
