@@ -57,6 +57,7 @@ te = None
 def load_data(date):
   global status  
   r, status = anvil.server.call("get_status", date)
+  # print("STATUS\n", status)
   return(r)
 
 def load_prescribed(date ):

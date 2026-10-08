@@ -111,6 +111,7 @@ class Main(MainTemplate):
     r = Globals.load_data(date)
     r1 = Globals.load_prescribed(date)
     self.repeating_panel_1.items = Globals.status
+    print("REFRESH DATA\n", self.repeating_panel_1.items[-2:])
     # self.dgnst.text = Globals.status
     if r < 0 or r1 < 0:
       self.date.text = f"Message ={r}   = {r1}"
