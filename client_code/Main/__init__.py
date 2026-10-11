@@ -189,6 +189,72 @@ class Main(MainTemplate):
   # ===============================================================================================
   # Microlife A7 BT import
   @handle("A7import_btn", "click")
+  def A7import_btn_click(
+    self,
+    **event_args
+  ):
+    try:
+      result = b6GetMeasurements()
+  
+      if result.records == 0:
+        alert(
+          (
+            f"User {result.user}\n"
+            "No measurements stored."
+          ),
+          title="B6 Sync"
+        )
+        return
+  
+      records = json.loads(
+        result.recordsJson
+      )
+  
+      sync = anvil.server.call(
+        "b6_import",
+        records,
+        False
+      )
+  
+      if sync["imported"] == 0:
+        text = (
+          f"User "
+          f"{sync['device_user']}\n"
+          f"Read: {sync['read']}\n"
+          f"Already present: "
+          f"{sync['duplicates']}\n"
+          f"Legacy conflicts: "
+          f"{sync['collisions']}\n\n"
+          "Database is up to date"
+        )
+  
+      else:
+        text = (
+          f"User "
+          f"{sync['device_user']}\n"
+          f"Read: {sync['read']}\n"
+          f"Already present: "
+          f"{sync['duplicates']}\n"
+          f"New imported: "
+          f"{sync['imported']}\n"
+          f"Legacy conflicts: "
+          f"{sync['collisions']}\n\n"
+          "Sync completed"
+        )
+  
+      alert(
+        text,
+        title="B6 Sync"
+      )
+  
+    except Exception as err:
+      alert(
+        str(err),
+        title="B6 Sync - ERROR"
+      )
+
+  ''' \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+  @handle("A7import_btn", "click")
   def A7import_btn_click(self, **event_args):
     try:
       result = a7GetMeasurements()
@@ -254,3 +320,4 @@ class Main(MainTemplate):
         str(err),
         title="A7 Sync - ERROR"
       )
+  '''
