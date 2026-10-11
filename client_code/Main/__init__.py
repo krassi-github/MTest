@@ -10,7 +10,7 @@ from .. Intestine import Intestine
 
 import json
 from anvil import alert
-from anvil.js.window import a7GetMeasurements
+from anvil.js.window import b6GetMeasurements
 
 # status FORMAT
 '''    s = {"p_id": r[p_id], "name": r[name], "code": r[r_m_code], "morning": r[morning],
