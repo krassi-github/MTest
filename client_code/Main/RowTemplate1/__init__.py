@@ -67,7 +67,7 @@ class RowTemplate1(RowTemplate1Template):
           if type(frm).__name__ == "Main" and hasattr(frm, "refresh_data"):
             frm.refresh_data(Globals.cur_date)
           else:
-            m = f"Main.RowTemplate1() form: {type(frm).__name__} OR attr= {hasattr(frm, 'refresh_data')}"
+            m = f"Main.RowTemplate1.link_1_click() form: {type(frm).__name__} OR attr= {hasattr(frm, 'refresh_data')}"
             print(m)
             anvil.server.call("mh_log", -500, m)
         
@@ -98,6 +98,13 @@ class RowTemplate1(RowTemplate1Template):
           alert(f"Неуспешен запис  {r}", title="Съобщение")
         else:
           alert("Успешен запис ", title="Съобщение")
-    self.parent.parent.parent.parent.refresh_data(Globals.cur_date)  # to reach the Main
+    # self.parent.parent.parent.parent.refresh_data(Globals.cur_date)  # to reach the Main
+    frm = get_open_form()
+    if type(frm).__name__ == "Main" and hasattr(frm, "refresh_data"):
+      frm.refresh_data(Globals.cur_date)
+    else:
+      m = f"Main.RowTemplate1.take() form: {type(frm).__name__} OR attr= {hasattr(frm, 'refresh_data')}"
+      print(m)
+      anvil.server.call("mh_log", -501, m)
       
       
