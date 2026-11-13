@@ -62,7 +62,14 @@ class RowTemplate1(RowTemplate1Template):
           alert(f"Неуспешен запис  {r}", title="Съобщение")
         else:
           alert("Успешен запис ", title="Съобщение")
-          self.parent.parent.parent.parent.refresh_data(Globals.cur_date)    # to reach Main
+          #self.parent.parent.parent.parent.refresh_data(Globals.cur_date)    # to reach Main
+          frm = get_open_form()
+          if type(frm).__name__ == "Main" and hasattr(frm, "refresh_data"):
+            frm.refresh_data(Globals.cur_date)
+          else:
+            m = f"Main.RowTemplate1() form: {type(frm).__name__} OR attr= {hasattr(frm, 'refresh_data')}"
+            print(m)
+            anvil.server.call("mh_log", -500, m)
         
 
   def link_2_click(self, **event_args):

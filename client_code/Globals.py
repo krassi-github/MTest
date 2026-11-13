@@ -139,7 +139,7 @@ def get_pcs_type(med_code, _time):
         t = "при нужда"
         intake_type = "on_need"
       else:
-        anvil.server.call("mh_log", -431, f"get_pcs_type() Invalid time= {time}")
+        anvil.server.call("mh_log", -431, f"get_pcs_type() Invalid time= {_time}")
   return(r, t)
       
 
