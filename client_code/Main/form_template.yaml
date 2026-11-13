@@ -23,7 +23,7 @@ components:
         role: outlined-button
         spacing:
           padding: [null, '5', null, '5']
-        text: A7 imp
+        text: B6 imp
       type: Button
     layout_properties: {grid_position: 'YVJLWW,UUETEE'}
     name: flow_panel_2

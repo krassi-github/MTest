@@ -61,7 +61,7 @@ class RowTemplate1(RowTemplate1Template):
         if r < 0:
           alert(f"Неуспешен запис  {r}", title="Съобщение")
         else:
-          alert(f"Успешен запис ", title="Съобщение")
+          alert("Успешен запис ", title="Съобщение")
           self.parent.parent.parent.parent.refresh_data(Globals.cur_date)    # to reach Main
         
 
@@ -90,7 +90,7 @@ class RowTemplate1(RowTemplate1Template):
         if r < 0:
           alert(f"Неуспешен запис  {r}", title="Съобщение")
         else:
-          alert(f"Успешен запис ", title="Съобщение")
+          alert("Успешен запис ", title="Съобщение")
     self.parent.parent.parent.parent.refresh_data(Globals.cur_date)  # to reach the Main
       
       
