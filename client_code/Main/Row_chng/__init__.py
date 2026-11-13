@@ -118,7 +118,7 @@ class Row_chng(Row_chngTemplate):
     if r:
       r = Globals.delete_intake(self.row["int_id"])
       if not r:
-        alert(f"Успешno изтриване ", title="Съобщение")
+        alert("Успешno изтриване ", title="Съобщение")
       else:
         alert(f"Неуспешно изтриване  {r}", title="Съобщение")
 
